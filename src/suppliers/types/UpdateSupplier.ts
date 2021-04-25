@@ -75,7 +75,7 @@ export interface UpdateSupplier_SupplierUpdate_user {
 export interface UpdateSupplier_SupplierUpdate {
   __typename: "SupplierUpdate";
   errors: UpdateSupplier_SupplierUpdate_errors[];
-  user: UpdateSupplier_SupplierUpdate_user | null;
+  supplier: UpdateSupplier_SupplierUpdate_user | null;
 }
 
 export interface UpdateSupplier {

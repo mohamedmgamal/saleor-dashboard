@@ -1,8 +1,7 @@
 import {
-  customerAddressesFragment,
-  customerDetailsFragment,
-  customerFragment
-} from "@saleor/fragments/customers";
+  supplierDetailsFragment,
+  supplierFragment
+} from "@saleor/fragments/suppliers";
 import makeQuery from "@saleor/hooks/makeQuery";
 import gql from "graphql-tag";
 
@@ -19,29 +18,22 @@ import {
 } from "./types/SupplierDetails";
 
 const supplierList = gql`
-  ${customerFragment}
-  query ListCustomers(
+  ${supplierFragment}
+  query suppliers(
     $after: String
     $before: String
     $first: Int
     $last: Int
-    $filter: CustomerFilterInput
-    $sort: UserSortingInput
-  ) {
-    customers(
+      ) {
+    suppliers(
       after: $after
       before: $before
       first: $first
       last: $last
-      filter: $filter
-      sortBy: $sort
     ) {
       edges {
         node {
-          ...CustomerFragment
-          orders {
-            totalCount
-          }
+          ...supplierFragment
         }
       }
       pageInfo {
@@ -59,34 +51,10 @@ export const useSupplierListQuery = makeQuery<
 >(supplierList);
 
 const supplierDetails = gql`
-  ${customerDetailsFragment}
-  query CustomerDetails($id: ID!) {
-    user(id: $id) {
-      ...CustomerDetailsFragment
-      orders(last: 5) {
-        edges {
-          node {
-            id
-            created
-            number
-            paymentStatus
-            total {
-              gross {
-                currency
-                amount
-              }
-            }
-          }
-        }
-      }
-      lastPlacedOrder: orders(last: 1) {
-        edges {
-          node {
-            id
-            created
-          }
-        }
-      }
+  ${supplierDetailsFragment}
+  query supplier($id: ID!) {
+    supplier(id: $id) {
+      ...SupplierDetailsFragment
     }
   }
 `;
@@ -94,12 +62,11 @@ export const TypedSupplierDetailsQuery = TypedQuery<
   SupplierDetails,
   SupplierDetailsVariables
 >(supplierDetails);
-
 const supplierAddresses = gql`
-  ${customerAddressesFragment}
-  query CustomerAddresses($id: ID!) {
-    user(id: $id) {
-      ...CustomerAddressesFragment
+  ${supplierDetailsFragment}
+  query supplier($id: ID!) {
+    supplier(id: $id) {
+      ...supplierDetailsFragment
     }
   }
 `;

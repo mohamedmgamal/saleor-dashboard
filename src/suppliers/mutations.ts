@@ -1,8 +1,8 @@
 import { fragmentAddress } from "@saleor/fragments/address";
 import {
   customerAddressesFragment,
-  customerDetailsFragment
-} from "@saleor/fragments/customers";
+  supplierDetailsFragment
+} from "@saleor/fragments/suppliers";
 import { accountErrorFragment } from "@saleor/fragments/errors";
 import gql from "graphql-tag";
 
@@ -42,14 +42,14 @@ import {
 
 const updateSupplier = gql`
   ${accountErrorFragment}
-  ${customerDetailsFragment}
-  mutation UpdateCustomer($id: ID!, $input: CustomerInput!) {
-    customerUpdate(id: $id, input: $input) {
+  ${supplierDetailsFragment}
+  mutation supplierUpdate($id: ID!, $input: SupplierUpdateInput!) {
+    supplierUpdate(id: $id, input: $input) {
       errors: accountErrors {
         ...AccountErrorFragment
       }
-      user {
-        ...CustomerDetailsFragment
+      supplier {
+       ...SupplierDetailsFragment
       }
     }
   }

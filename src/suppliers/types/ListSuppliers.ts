@@ -19,7 +19,7 @@ export interface ListSuppliers_Suppliers_edges_node {
   email: string;
   firstName: string;
   lastName: string;
-  orders: ListSuppliers_Suppliers_edges_node_orders | null;
+ // orders: ListSuppliers_Suppliers_edges_node_orders | null;
 }
 
 export interface ListSuppliers_Suppliers_edges {
@@ -42,7 +42,7 @@ export interface ListSuppliers_Suppliers {
 }
 
 export interface ListSuppliers {
-  Suppliers: ListSuppliers_Suppliers | null;
+  suppliers: ListSuppliers_Suppliers | null;
 }
 
 export interface ListSuppliersVariables {

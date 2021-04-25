@@ -1134,6 +1134,7 @@ export interface CustomerInput {
   isActive?: boolean | null;
   note?: string | null;
 }
+// todo: change for mutations
 export interface SupplierInput {
   defaultBillingAddress?: AddressInput | null;
   defaultShippingAddress?: AddressInput | null;

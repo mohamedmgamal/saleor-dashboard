@@ -61,6 +61,7 @@ export const CustomerList: React.FC<CustomerListProps> = ({ params }) => {
   const { updateListSettings, settings } = useListSettings(
     ListViews.CUSTOMER_LIST
   );
+  console.log("settings ",settings)
   const intl = useIntl();
   const shop = useShop();
 

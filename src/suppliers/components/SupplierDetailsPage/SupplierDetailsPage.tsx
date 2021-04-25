@@ -54,7 +54,7 @@ const SupplierDetailsPage: React.FC<SupplierDetailsPageProps> = ({
   onDelete
 }: SupplierDetailsPageProps) => {
   const intl = useIntl();
-
+console.log("Hello from SupplierDetailsPage")
   return (
     <Form
       initial={{

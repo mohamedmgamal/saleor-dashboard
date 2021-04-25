@@ -21,7 +21,7 @@ import createDialogActionHandlers from "@saleor/utils/handlers/dialogActionHandl
 import createFilterHandlers from "@saleor/utils/handlers/filterHandlers";
 import createSortHandler from "@saleor/utils/handlers/sortHandler";
 import { getSortParams } from "@saleor/utils/sort";
-import React, { useEffect } from "react";
+import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import SupplierListPage from "../../components/SupplierListPage";
@@ -52,12 +52,6 @@ interface SupplierListProps {
 }
 
 export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
-  console.log("here")
-  console.log("here")
-  console.log("here")
-  console.log("here")
-  console.log("here")
-  console.log(SupplierListPage)
   const navigate = useNavigator();
   const notify = useNotifier();
   const paginate = usePaginator();
@@ -69,8 +63,8 @@ export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
   );
   const intl = useIntl();
   const shop = useShop();
-
-  const paginationState = createPaginationState(settings.rowNumber, params);
+  // TODO: error was here
+  const  paginationState   = createPaginationState(settings.rowNumber, params);
   const queryVariables = React.useMemo(
     () => ({
       ...paginationState,
@@ -83,7 +77,6 @@ export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
     displayLoader: true,
     variables: queryVariables
   });
-
   const tabs = getFilterTabs();
 
   const currentTab =
@@ -132,7 +125,7 @@ export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
   };
 
   const { loadNextPage, loadPreviousPage, pageInfo } = paginate(
-    maybe(() => data.Suppliers.pageInfo),
+    maybe(() => data.suppliers.pageInfo),
     paginationState,
     params
   );
@@ -151,97 +144,96 @@ export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
 
   const handleSort = createSortHandler(navigate, supplierListUrl, params);
   const currencySymbol = maybe(() => shop.defaultCurrency, "USD");
-  return (<h1>h</h1>);
-  //   <TypedBulkRemoveSuppliers onCompleted={handleBulkSupplierDelete}>
-  //     {(BulkRemoveSupplier, bulkRemoveSuppliersOpts) => (
-  //       <>
-  //         <SupplierListPage
-  //           currencySymbol={currencySymbol}
-  //           currentTab={currentTab}
-  //           filterOpts={getFilterOpts(params)}
-  //           initialSearch={params.query || ""}
-  //           onSearchChange={handleSearchChange}
-  //           onFilterChange={changeFilters}
-  //           onAll={resetFilters}
-  //           onTabChange={handleTabChange}
-  //           onTabDelete={() => openModal("delete-search")}
-  //           onTabSave={() => openModal("save-search")}
-  //           tabs={tabs.map(tab => tab.name)}
-  //           Suppliers={maybe(() => data.Suppliers.edges.map(edge => edge.node))}
-  //           settings={settings}
-  //           disabled={loading}
-  //           pageInfo={pageInfo}
-  //           onAdd={() => navigate(supplierAddUrl)}
-  //           onNextPage={loadNextPage}
-  //           onPreviousPage={loadPreviousPage}
-  //           onUpdateListSettings={updateListSettings}
-  //           onRowClick={id => () => navigate(supplierUrl(id))}
-  //           onSort={handleSort}
-  //           toolbar={
-  //             <IconButton
-  //               color="primary"
-  //               onClick={() =>
-  //                 openModal("remove", {
-  //                   ids: listElements
-  //                 })
-  //               }
-  //             >
-  //               <DeleteIcon />
-  //             </IconButton>
-  //           }
-  //           isChecked={isSelected}
-  //           selected={listElements.length}
-  //           sort={getSortParams(params)}
-  //           toggle={toggle}
-  //           toggleAll={toggleAll}
-  //         />
-  //         <ActionDialog
-  //           open={
-  //             params.action === "remove" && maybe(() => params.ids.length > 0)
-  //           }
-  //           onClose={closeModal}
-  //           confirmButtonState={bulkRemoveSuppliersOpts.status}
-  //           onConfirm={() =>
-  //             BulkRemoveSupplier({
-  //               variables: {
-  //                 ids: params.ids
-  //               }
-  //             })
-  //           }
-  //           variant="delete"
-  //           title={intl.formatMessage({
-  //             defaultMessage: "Delete Suppliers",
-  //             description: "dialog header"
-  //           })}
-  //         >
-  //           <DialogContentText>
-  //             <FormattedMessage
-  //               defaultMessage="{counter,plural,one{Are you sure you want to delete this Supplier?} other{Are you sure you want to delete {displayQuantity} Suppliers?}}"
-  //               values={{
-  //                 counter: maybe(() => params.ids.length),
-  //                 displayQuantity: (
-  //                   <strong>{maybe(() => params.ids.length)}</strong>
-  //                 )
-  //               }}
-  //             />
-  //           </DialogContentText>
-  //         </ActionDialog>
-  //         <SaveFilterTabDialog
-  //           open={params.action === "save-search"}
-  //           confirmButtonState="default"
-  //           onClose={closeModal}
-  //           onSubmit={handleTabSave}
-  //         />
-  //         <DeleteFilterTabDialog
-  //           open={params.action === "delete-search"}
-  //           confirmButtonState="default"
-  //           onClose={closeModal}
-  //           onSubmit={handleTabDelete}
-  //           tabName={maybe(() => tabs[currentTab - 1].name, "...")}
-  //         />
-  //       </>
-  //     )}
-  //   </TypedBulkRemoveSuppliers>
-  // );
+  return(<TypedBulkRemoveSuppliers onCompleted={handleBulkSupplierDelete}>
+       {(BulkRemoveSupplier, bulkRemoveSuppliersOpts) => (
+         <>
+           <SupplierListPage
+             currencySymbol={currencySymbol}
+             currentTab={currentTab}
+             filterOpts={getFilterOpts(params)}
+             initialSearch={params.query || ""}
+             onSearchChange={handleSearchChange}
+             onFilterChange={changeFilters}
+             onAll={resetFilters}
+             onTabChange={handleTabChange}
+             onTabDelete={() => openModal("delete-search")}
+             onTabSave={() => openModal("save-search")}
+             tabs={tabs.map(tab => tab.name)}
+             Suppliers={maybe(() => data.suppliers.edges.map(edge => edge.node))}
+             settings={settings}
+             disabled={loading}
+             pageInfo={pageInfo}
+             onAdd={() => navigate(supplierAddUrl)}
+             onNextPage={loadNextPage}
+             onPreviousPage={loadPreviousPage}
+             onUpdateListSettings={updateListSettings}
+             onRowClick={id => () => navigate(supplierUrl(id))}
+             onSort={handleSort}
+             toolbar={
+               <IconButton
+                 color="primary"
+                 onClick={() =>
+                   openModal("remove", {
+                     ids: listElements
+                   })
+                 }
+               >
+                 <DeleteIcon />
+               </IconButton>
+             }
+             isChecked={isSelected}
+             selected={listElements.length}
+             sort={getSortParams(params)}
+             toggle={toggle}
+             toggleAll={toggleAll}
+           />
+           <ActionDialog
+             open={
+               params.action === "remove" && maybe(() => params.ids.length > 0)
+             }
+             onClose={closeModal}
+             confirmButtonState={bulkRemoveSuppliersOpts.status}
+             onConfirm={() =>
+               BulkRemoveSupplier({
+                 variables: {
+                   ids: params.ids
+                 }
+               })
+             }
+             variant="delete"
+             title={intl.formatMessage({
+               defaultMessage: "Delete Suppliers",
+               description: "dialog header"
+             })}
+           >
+             <DialogContentText>
+               <FormattedMessage
+                 defaultMessage="{counter,plural,one{Are you sure you want to delete this Supplier?} other{Are you sure you want to delete {displayQuantity} Suppliers?}}"
+                 values={{
+                   counter: maybe(() => params.ids.length),
+                   displayQuantity: (
+                     <strong>{maybe(() => params.ids.length)}</strong>
+                   )
+                 }}
+               />
+             </DialogContentText>
+           </ActionDialog>
+           <SaveFilterTabDialog
+             open={params.action === "save-search"}
+             confirmButtonState="default"
+             onClose={closeModal}
+             onSubmit={handleTabSave}
+           />
+           <DeleteFilterTabDialog
+             open={params.action === "delete-search"}
+             confirmButtonState="default"
+             onClose={closeModal}
+             onSubmit={handleTabDelete}
+             tabName={maybe(() => tabs[currentTab - 1].name, "...")}
+           />
+         </>
+       )}
+     </TypedBulkRemoveSuppliers>
+   );
 };
 export default SupplierList;

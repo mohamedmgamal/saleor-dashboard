@@ -48,7 +48,7 @@ export interface SupplierListProps
   Suppliers: ListSuppliers_Suppliers_edges_node[];
 }
 
-const numberOfColumns = 4;
+const numberOfColumns = 2;
 
 const SupplierList: React.FC<SupplierListProps> = props => {
   const {
@@ -114,7 +114,6 @@ const SupplierList: React.FC<SupplierListProps> = props => {
           onClick={() => onSort(SupplierListUrlSortField.orders)}
           className={classes.colOrders}
         >
-          <FormattedMessage defaultMessage="No. of Orders" />
         </TableCellHeader>
       </TableHead>
       <TableFooter>
@@ -159,12 +158,6 @@ const SupplierList: React.FC<SupplierListProps> = props => {
                 </TableCell>
                 <TableCell className={classes.colEmail}>
                   {maybe<React.ReactNode>(() => Supplier.email, <Skeleton />)}
-                </TableCell>
-                <TableCell className={classes.colOrders}>
-                  {maybe<React.ReactNode>(
-                    () => Supplier.orders.totalCount,
-                    <Skeleton />
-                  )}
                 </TableCell>
               </TableRow>
             );

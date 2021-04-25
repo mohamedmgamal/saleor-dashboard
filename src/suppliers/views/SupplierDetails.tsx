@@ -26,7 +26,6 @@ import {
   supplierUrl,
   SupplierUrlQueryParams
 } from "../urls";
-
 interface SupplierDetailsViewProps {
   id: string;
   params: SupplierUrlQueryParams;
@@ -61,7 +60,6 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
   };
 
   const handleBack = () => navigate(supplierListUrl());
-
   return (
     <TypedRemoveSupplierMutation
       variables={{ id }}
@@ -72,11 +70,10 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
           {(updateSupplier, updateSupplierOpts) => (
             <TypedSupplierDetailsQuery displayLoader variables={{ id }}>
               {SupplierDetails => {
-                const user = SupplierDetails.data?.user;
-
-                if (user === null) {
-                  return <NotFoundPage onBack={handleBack} />;
-                }
+                const supplier = SupplierDetails.data?.supplier;
+                 if (supplier === null) {
+                   return <NotFoundPage onBack={handleBack} />;
+                 }
 
                 const handleSubmit = async (
                   data: SupplierDetailsPageFormData
@@ -93,24 +90,23 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                       }
                     }
                   });
-
                   return result.data.SupplierUpdate.errors;
                 };
 
                 return (
                   <>
                     <WindowTitle
-                      title={maybe(() => SupplierDetails.data.user.email)}
+                      title={maybe(() => SupplierDetails.data.supplier.email)}
                     />
                     <SupplierDetailsPage
-                      Supplier={maybe(() => SupplierDetails.data.user)}
+                      Supplier={maybe(() => SupplierDetails.data.supplier)}
                       disabled={
                         SupplierDetails.loading ||
                         updateSupplierOpts.loading ||
                         removeSupplierOpts.loading
                       }
                       errors={
-                        updateSupplierOpts.data?.SupplierUpdate.errors || []
+                         []
                       }
                       saveButtonBar={updateSupplierOpts.status}
                       onAddressManageClick={() =>
@@ -130,7 +126,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                         navigate(
                           orderListUrl({
                             customer: maybe(
-                              () => SupplierDetails.data.user.email
+                              () => SupplierDetails.data.supplier.email
                             )
                           })
                         )
@@ -155,7 +151,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                             email: (
                               <strong>
                                 {maybe(
-                                  () => SupplierDetails.data.user.email,
+                                  () => SupplierDetails.data.supplier.email,
                                   "..."
                                 )}
                               </strong>

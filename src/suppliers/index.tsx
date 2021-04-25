@@ -1,7 +1,7 @@
 import { sectionNames } from "@saleor/intl";
 import { asSortParams } from "@saleor/utils/sort";
 import { parse as parseQs } from "qs";
-import React, { useEffect } from "react";
+import React from "react";
 import { useIntl } from "react-intl";
 import { Route, RouteComponentProps, Switch } from "react-router-dom";
 
@@ -66,9 +66,6 @@ const SupplierAddressesView: React.FC<RouteComponentProps<
 
 export const SupplierSection: React.FC<{}> = () => {
   const intl = useIntl();
-  useEffect(()=>{
-    console.log("from Supplier list")
-  })
   return (
     <>
       <WindowTitle title={intl.formatMessage(sectionNames.suppliers)} />

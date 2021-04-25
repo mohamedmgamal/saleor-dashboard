@@ -115,7 +115,7 @@ export interface SupplierDetails_user {
 }
 
 export interface SupplierDetails {
-  user: SupplierDetails_user | null;
+  supplier: SupplierDetails_user | null;
 }
 
 export interface SupplierDetailsVariables {
