@@ -1143,6 +1143,7 @@ export interface SupplierInput {
   email?: string | null;
   isActive?: boolean | null;
   note?: string | null;
+  phone?:string|null
 }
 
 export interface DateRangeInput {

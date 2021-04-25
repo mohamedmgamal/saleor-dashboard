@@ -11,13 +11,14 @@ import { TypedSupplierCreateDataQuery } from "../queries";
 import { CreateSupplier } from "../types/CreateSupplier";
 import { supplierListUrl, supplierUrl } from "../urls";
 
+
 export const SupplierCreate: React.FC<{}> = () => {
   const navigate = useNavigator();
   const notify = useNotifier();
   const intl = useIntl();
 
   const handleCreateSupplierSuccess = (data: CreateSupplier) => {
-    if (!data.SupplierCreate.errors.length) {
+    if (data.SupplierCreate.errors.length === 0) {
       notify({
         status: "success",
         text: intl.formatMessage({
@@ -26,6 +27,7 @@ export const SupplierCreate: React.FC<{}> = () => {
       });
       navigate(supplierUrl(data.SupplierCreate.supplier.id));
     }
+
   };
   return (
     <TypedSupplierCreateDataQuery displayLoader>
@@ -43,22 +45,24 @@ export const SupplierCreate: React.FC<{}> = () => {
               <SupplierCreatePage
                 countries={maybe(() => data.shop.countries, [])}
                 disabled={loading || createSupplierOpts.loading}
-                errors={createSupplierOpts.data?.SupplierCreate.errors||  []}
+                // ToDO: cant resolve errors of undefined need to be changed ps: bad response from Graphql
+                //   errors={createSupplierOpts.data?.SupplierCreate.errors||  []}
+                errors={[]}
                 saveButtonBar={createSupplierOpts.status}
                 onBack={() => navigate(supplierListUrl())}
                 onSubmit={formData => {
                   createSupplier({
                     variables: {
                       input: {
-                     //   defaultBillingAddress: formData.address,
-                     //   defaultShippingAddress: formData.address,
+                        //   defaultBillingAddress: formData.address,
+                        //   defaultShippingAddress: formData.address,
                         email: formData.email,
                         firstName: formData.SupplierFirstName,
                         lastName: formData.SupplierLastName,
                         note: formData.note,
-                        phone:formData.phone,
-                        password:formData.password,
-                        isActive:true
+                        phone: formData.phone,
+                        password: formData.password,
+                        isActive: true
                       }
                     }
                   });

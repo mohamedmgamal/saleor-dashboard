@@ -14,18 +14,19 @@ import { useIntl } from "react-intl";
 
 import { getUserName, maybe } from "../../../misc";
 import { SupplierDetails_user } from "../../types/SupplierDetails";
-import SupplierAddresses from "../SupplierAddresses";
+// import SupplierAddresses from "../SupplierAddresses";
 import SupplierDetails from "../SupplierDetails";
 import SupplierInfo from "../SupplierInfo";
-import SupplierOrders from "../SupplierOrders";
+// import SupplierOrders from "../SupplierOrders";
 import SupplierStats from "../SupplierStats";
+// import { date } from "@saleor/fixtures";
 
 export interface SupplierDetailsPageFormData {
   firstName: string;
   lastName: string;
   email: string;
   isActive: boolean;
-  note: string;
+  phone: string;
 }
 
 export interface SupplierDetailsPageProps {
@@ -48,13 +49,12 @@ const SupplierDetailsPage: React.FC<SupplierDetailsPageProps> = ({
   saveButtonBar,
   onBack,
   onSubmit,
-  onViewAllOrdersClick,
-  onRowClick,
-  onAddressManageClick,
+  // onViewAllOrdersClick,
+  // onRowClick,
+  // onAddressManageClick,
   onDelete
 }: SupplierDetailsPageProps) => {
   const intl = useIntl();
-console.log("Hello from SupplierDetailsPage")
   return (
     <Form
       initial={{
@@ -62,7 +62,7 @@ console.log("Hello from SupplierDetailsPage")
         firstName: maybe(() => Supplier.firstName, ""),
         isActive: maybe(() => Supplier.isActive, false),
         lastName: maybe(() => Supplier.lastName, ""),
-        note: maybe(() => Supplier.note, "")
+        phone: maybe(() => Supplier.phone, "")
       }}
       onSubmit={onSubmit}
       confirmLeave
@@ -84,25 +84,11 @@ console.log("Hello from SupplierDetailsPage")
               />
               <CardSpacer />
               <SupplierInfo
+                // TODO: phone number dont fetched
                 data={data}
                 disabled={disabled}
                 errors={errors}
                 onChange={change}
-              />
-              <CardSpacer />
-              <SupplierOrders
-                orders={maybe(() =>
-                  Supplier.orders.edges.map(edge => edge.node)
-                )}
-                onViewAllOrdersClick={onViewAllOrdersClick}
-                onRowClick={onRowClick}
-              />
-            </div>
-            <div>
-              <SupplierAddresses
-                Supplier={Supplier}
-                disabled={disabled}
-                onAddressManageClick={onAddressManageClick}
               />
               <CardSpacer />
               <SupplierStats Supplier={Supplier} />

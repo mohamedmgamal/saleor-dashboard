@@ -11,6 +11,5 @@ import { AccountErrorCode } from "./../../types/globalTypes";
 export interface AccountErrorFragment {
   __typename: "AccountError";
   code: AccountErrorCode;
-  massage:string | null ;
   field: string | null;
 }

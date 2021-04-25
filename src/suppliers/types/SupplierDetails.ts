@@ -106,6 +106,7 @@ export interface SupplierDetails_user {
   lastName: string;
   dateJoined: any;
   lastLogin: any | null;
+  phone:string|null
   defaultShippingAddress: SupplierDetails_user_defaultShippingAddress | null;
   defaultBillingAddress: SupplierDetails_user_defaultBillingAddress | null;
   note: string | null;

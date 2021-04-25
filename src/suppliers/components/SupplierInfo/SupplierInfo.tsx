@@ -33,6 +33,7 @@ export interface SupplierInfoProps {
     firstName: string;
     lastName: string;
     email: string;
+    phone:string;
   };
   disabled: boolean;
   errors: AccountErrorFragment[];
@@ -44,8 +45,7 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
 
   const classes = useStyles(props);
   const intl = useIntl();
-
-  const formErrors = getFormErrors(["firstName", "lastName", "email"], errors);
+  const formErrors = getFormErrors(["firstName", "lastName", "email","phone"], errors);
 
   return (
     <Card>
@@ -92,6 +92,7 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
             description="Supplier contact section, header"
           />
         </Typography>
+        <Grid variant="uniform">
         <TextField
           disabled={disabled}
           error={!!formErrors.email}
@@ -103,6 +104,18 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
           value={data.email}
           onChange={onChange}
         />
+        <TextField
+          disabled={disabled}
+          error={!!formErrors.phone}
+          fullWidth
+          helperText={getAccountErrorMessage(formErrors.phone, intl)}
+          name="phone"
+          type="string"
+          label={intl.formatMessage(commonMessages.phone)}
+          value={data.phone}
+          onChange={onChange}
+        />
+        </Grid>
       </CardContent>
     </Card>
   );

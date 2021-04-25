@@ -63,7 +63,8 @@ export function useAuthProvider(
 
       // FIXME: Now we set state also when auth fails and returned user is
       // `null`, because the LoginView uses this `null` to display error.
-       setUserContext(user);
+       // @ts-ignore
+      setUserContext(user);
       if (user) {
         setTokens(
           result.tokenCreate.token,

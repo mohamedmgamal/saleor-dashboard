@@ -1,15 +1,15 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+// import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Skeleton from "@saleor/components/Skeleton";
 import { AccountErrorFragment } from "@saleor/fragments/types/AccountErrorFragment";
 import { maybe } from "@saleor/misc";
-import { getFormErrors } from "@saleor/utils/errors";
-import getAccountErrorMessage from "@saleor/utils/errors/account";
+// import { getFormErrors } from "@saleor/utils/errors";
+// import getAccountErrorMessage from "@saleor/utils/errors/account";
 import moment from "moment-timezone";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -38,7 +38,6 @@ export interface SupplierDetailsProps {
   Supplier: SupplierDetails_user;
   data: {
     isActive: boolean;
-    note: string;
   };
   disabled: boolean;
   errors: AccountErrorFragment[];
@@ -46,13 +45,10 @@ export interface SupplierDetailsProps {
 }
 
 const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
-  const { Supplier, data, disabled, errors, onChange } = props;
-
+  const { Supplier, data, disabled, onChange } = props;
   const classes = useStyles(props);
   const intl = useIntl();
-
-  const formErrors = getFormErrors(["note"], errors);
-
+console.log(data.isActive)
   return (
     <Card>
       <CardTitle
@@ -81,7 +77,9 @@ const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
         }
       />
       <CardContent className={classes.content}>
-        <ControlledCheckbox
+       <div onClick={()=>{
+         data.isActive=!data.isActive
+       }}> <ControlledCheckbox
           checked={data.isActive}
           className={classes.checkbox}
           disabled={disabled}
@@ -91,21 +89,7 @@ const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
           })}
           name="isActive"
           onChange={onChange}
-        />
-        <TextField
-          disabled={disabled}
-          error={!!formErrors.note}
-          fullWidth
-          multiline
-          helperText={getAccountErrorMessage(formErrors.note, intl)}
-          name="note"
-          label={intl.formatMessage({
-            defaultMessage: "Note",
-            description: "note about Supplier"
-          })}
-          value={data.note}
-          onChange={onChange}
-        />
+        /></div>
       </CardContent>
     </Card>
   );

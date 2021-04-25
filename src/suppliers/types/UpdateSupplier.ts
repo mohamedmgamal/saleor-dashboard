@@ -52,7 +52,7 @@ export interface UpdateSupplier_SupplierUpdate_user_defaultBillingAddress {
   firstName: string;
   id: string;
   lastName: string;
-  phone: string | null;
+  phone: string ;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
@@ -66,10 +66,9 @@ export interface UpdateSupplier_SupplierUpdate_user {
   lastName: string;
   dateJoined: any;
   lastLogin: any | null;
-  defaultShippingAddress: UpdateSupplier_SupplierUpdate_user_defaultShippingAddress | null;
-  defaultBillingAddress: UpdateSupplier_SupplierUpdate_user_defaultBillingAddress | null;
   note: string | null;
   isActive: boolean;
+  phone:string;
 }
 
 export interface UpdateSupplier_SupplierUpdate {

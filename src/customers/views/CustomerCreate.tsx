@@ -46,11 +46,10 @@ export const CustomerCreate: React.FC<{}> = () => {
                 saveButtonBar={createCustomerOpts.status}
                 onBack={() => navigate(customerListUrl())}
                 onSubmit={formData => {
+                  // @ts-ignore
                   createCustomer({
                     variables: {
                       input: {
-                        defaultBillingAddress: formData.address,
-                        defaultShippingAddress: formData.address,
                         email: formData.email,
                         firstName: formData.customerFirstName,
                         lastName: formData.customerLastName,

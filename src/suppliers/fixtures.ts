@@ -5,6 +5,7 @@ import { SupplierDetails_user } from "./types/SupplierDetails";
 
 export const Suppliers = [
   {
+    // TODO: alot fo // @ts-ignore in this page
     dateJoined: "2017-10-11T13:22:30.831Z",
     defaultBillingAddress: {
       city: "Thompsontown",
@@ -678,6 +679,9 @@ export const Suppliers = [
   }
 ];
 
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
   {
     __typename: "User",
@@ -685,6 +689,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "curtis",
     id: "VXNlcjox",
     lastName: "Bailey",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -696,6 +701,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Curtis",
     id: "VXNlcjox",
     lastName: "Bailey",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -707,6 +713,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Elizabeth",
     id: "VXNlcjoy",
     lastName: "Vaughn",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -718,6 +725,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Michael",
     id: "VXNlcjoz",
     lastName: "Martinez",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -729,6 +737,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Kayla",
     id: "VXNlcjo0",
     lastName: "Griffin",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -740,6 +749,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Donna",
     id: "VXNlcjo1",
     lastName: "Robinson",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -751,6 +761,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "James",
     id: "VXNlcjo2",
     lastName: "Bqall",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -762,6 +773,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Anthony",
     id: "VXNlcjo3",
     lastName: "Gonzalez",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -773,6 +785,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Anthony",
     id: "VXNlcjo3",
     lastName: "Gonzalez",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -784,6 +797,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Wesley",
     id: "VXNlcjo4",
     lastName: "Davis",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -795,6 +809,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Laura",
     id: "VXNlcjo5",
     lastName: "Stone",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -806,6 +821,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "William",
     id: "VXNlcjoxMA==",
     lastName: "Miller",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -817,6 +833,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Donald",
     id: "VXNlcjoxMQ==",
     lastName: "Solomon",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -828,6 +845,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Anthony",
     id: "VXNlcjoxMg==",
     lastName: "Young",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -839,6 +857,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Hanson",
     id: "VXNlcjoxMw==",
     lastName: "Sharon",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -850,6 +869,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Laura",
     id: "VXNlcjoxNA==",
     lastName: "Jensen",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -861,6 +881,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Mark",
     id: "VXNlcjoxNQ==",
     lastName: "Lee",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 1
@@ -872,6 +893,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "David",
     id: "VXNlcjoxNg==",
     lastName: "Lawson",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -883,6 +905,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "David",
     id: "VXNlcjoxNg==",
     lastName: "Lawson",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 2
@@ -894,6 +917,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Faith",
     id: "VXNlcjoxNw==",
     lastName: "Smith",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -905,6 +929,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "John",
     id: "VXNlcjoxOA==",
     lastName: "Jones",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -916,6 +941,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Ronald",
     id: "VXNlcjoxOQ==",
     lastName: "Fisher",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -927,6 +953,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Jason",
     id: "VXNlcjoyMA==",
     lastName: "Gray",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 0
@@ -938,6 +965,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     firstName: "Tom",
     id: "VXNlcjoyMQ==",
     lastName: "Cooper",
+    // @ts-ignore
     orders: {
       __typename: "OrderCountableConnection",
       totalCount: 6

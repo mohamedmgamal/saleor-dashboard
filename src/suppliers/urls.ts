@@ -29,7 +29,7 @@ export type SupplierListUrlDialog = "remove" | TabActionDialog;
 export enum SupplierListUrlSortField {
   name = "name",
   email = "email",
-  orders = "orders"
+  phone = "phone"
 }
 export type SupplierListUrlSort = Sort<SupplierListUrlSortField>;
 export type SupplierListUrlQueryParams = ActiveTab &

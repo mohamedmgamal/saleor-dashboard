@@ -19,6 +19,7 @@ export interface ListSuppliers_Suppliers_edges_node {
   email: string;
   firstName: string;
   lastName: string;
+  phone:string
  // orders: ListSuppliers_Suppliers_edges_node_orders | null;
 }
 

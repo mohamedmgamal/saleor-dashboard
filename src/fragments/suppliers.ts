@@ -8,6 +8,7 @@ export const supplierFragment = gql`
     email
     firstName
     lastName
+    phone
   }
 `;
 
@@ -17,6 +18,8 @@ export const supplierDetailsFragment = gql`
     firstName
     lastName
     phone
+    isActive
+    dateJoined
   }
 `;
 

@@ -48,7 +48,7 @@ export interface SupplierListProps
   Suppliers: ListSuppliers_Suppliers_edges_node[];
 }
 
-const numberOfColumns = 2;
+const numberOfColumns = 3;
 
 const SupplierList: React.FC<SupplierListProps> = props => {
   const {
@@ -68,7 +68,6 @@ const SupplierList: React.FC<SupplierListProps> = props => {
     sort,
     isChecked
   } = props;
-
   const classes = useStyles(props);
 
   return (
@@ -106,14 +105,14 @@ const SupplierList: React.FC<SupplierListProps> = props => {
         </TableCellHeader>
         <TableCellHeader
           direction={
-            sort.sort === SupplierListUrlSortField.orders
+            sort.sort === SupplierListUrlSortField.phone
               ? getArrowDirection(sort.asc)
               : undefined
           }
-          textAlign="center"
-          onClick={() => onSort(SupplierListUrlSortField.orders)}
-          className={classes.colOrders}
+          onClick={() => onSort(SupplierListUrlSortField.phone)}
+          className={classes.colPhone}
         >
+          <FormattedMessage defaultMessage="Supplier Phone" />
         </TableCellHeader>
       </TableHead>
       <TableFooter>
@@ -158,6 +157,9 @@ const SupplierList: React.FC<SupplierListProps> = props => {
                 </TableCell>
                 <TableCell className={classes.colEmail}>
                   {maybe<React.ReactNode>(() => Supplier.email, <Skeleton />)}
+                </TableCell>
+                <TableCell className={classes.colPhone}>
+                  {maybe<React.ReactNode>(() => Supplier.phone, <Skeleton />)}
                 </TableCell>
               </TableRow>
             );

@@ -86,7 +86,8 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                         firstName: data.firstName,
                         isActive: data.isActive,
                         lastName: data.lastName,
-                        note: data.note
+                        phone:data.phone
+
                       }
                     }
                   });
@@ -107,7 +108,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                         removeSupplierOpts.loading
                       }
                       errors={
-                        // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors ||
+                        // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors :: cant resolve errors of undefined need to be changed ps: bad response from Graphql
                          []
                       }
                       saveButtonBar={updateSupplierOpts.status}
