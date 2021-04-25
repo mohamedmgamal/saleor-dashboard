@@ -45,7 +45,7 @@ const updateSupplier = gql`
   ${supplierDetailsFragment}
   mutation supplierUpdate($id: ID!, $input: SupplierUpdateInput!) {
     supplierUpdate(id: $id, input: $input) {
-      errors: accountErrors {
+      errors : accountErrors {
         ...AccountErrorFragment
       }
       supplier {

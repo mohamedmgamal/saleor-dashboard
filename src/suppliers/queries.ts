@@ -24,12 +24,14 @@ const supplierList = gql`
     $before: String
     $first: Int
     $last: Int
+    $filter: SupplierFilterInput
       ) {
     suppliers(
       after: $after
       before: $before
       first: $first
       last: $last
+      filter: $filter
     ) {
       edges {
         node {

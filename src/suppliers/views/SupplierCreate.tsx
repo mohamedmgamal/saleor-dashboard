@@ -18,14 +18,14 @@ export const SupplierCreate: React.FC<{}> = () => {
   const intl = useIntl();
 
   const handleCreateSupplierSuccess = (data: CreateSupplier) => {
-    if (data.SupplierCreate.errors.length === 0) {
+    if (data.supplierCreate.errors.length === 0) {
       notify({
         status: "success",
         text: intl.formatMessage({
           defaultMessage: "Supplier created"
         })
       });
-      navigate(supplierUrl(data.SupplierCreate.supplier.id));
+      navigate(supplierUrl(data.supplierCreate.supplier.id));
     }
 
   };
@@ -46,8 +46,7 @@ export const SupplierCreate: React.FC<{}> = () => {
                 countries={maybe(() => data.shop.countries, [])}
                 disabled={loading || createSupplierOpts.loading}
                 // ToDO: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                //   errors={createSupplierOpts.data?.SupplierCreate.errors||  []}
-                errors={[]}
+                   errors={createSupplierOpts.data?.supplierCreate.errors||  []}
                 saveButtonBar={createSupplierOpts.status}
                 onBack={() => navigate(supplierListUrl())}
                 onSubmit={formData => {

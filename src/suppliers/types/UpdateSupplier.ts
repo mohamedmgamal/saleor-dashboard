@@ -12,6 +12,7 @@ export interface UpdateSupplier_SupplierUpdate_errors {
   __typename: "AccountError";
   code: AccountErrorCode;
   field: string | null;
+
 }
 
 export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress_country {
@@ -78,7 +79,7 @@ export interface UpdateSupplier_SupplierUpdate {
 }
 
 export interface UpdateSupplier {
-  SupplierUpdate: UpdateSupplier_SupplierUpdate | null;
+  supplierUpdate: UpdateSupplier_SupplierUpdate | null;
 }
 
 export interface UpdateSupplierVariables {

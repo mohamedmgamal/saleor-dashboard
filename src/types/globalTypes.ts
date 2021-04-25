@@ -1119,10 +1119,6 @@ export interface CustomerFilterInput {
   search?: string | null;
 }
 export interface SupplierFilterInput {
-  dateJoined?: DateRangeInput | null;
-  moneySpent?: PriceRangeInput | null;
-  numberOfOrders?: IntRangeInput | null;
-  placedOrders?: DateRangeInput | null;
   search?: string | null;
 }
 export interface CustomerInput {

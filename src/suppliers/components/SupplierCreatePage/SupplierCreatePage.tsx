@@ -15,6 +15,7 @@ import { SupplierCreateData_shop_countries } from "../../types/SupplierCreateDat
 import SupplierCreateDetails from "../SupplierCreateDetails";
 import SupplierCreateNote from "../SupplierCreateNote/SupplierCreateNote";
 
+
 export interface SupplierCreatePageFormData {
   SupplierFirstName: string;
   SupplierLastName: string;
@@ -45,6 +46,7 @@ export interface SupplierCreatePageProps {
 
 const SupplierCreatePage: React.FC<SupplierCreatePageProps> = ({
   disabled,
+  errors: apiErrors,
   saveButtonBar,
   onBack,
   onSubmit
@@ -74,7 +76,7 @@ const SupplierCreatePage: React.FC<SupplierCreatePageProps> = ({
       });
 
   };
-
+  const errors = [...apiErrors];
   return (
     <Form initial={initialForm} onSubmit={handleSubmit} confirmLeave>
       {({ change, data, hasChanged, submit }) => (
@@ -93,7 +95,7 @@ const SupplierCreatePage: React.FC<SupplierCreatePageProps> = ({
                 <SupplierCreateDetails
                   data={data}
                   disabled={disabled}
-                  errors={[]}
+                  errors={errors}
                   onChange={change}
                 />
                 <CardSpacer />
@@ -101,7 +103,7 @@ const SupplierCreatePage: React.FC<SupplierCreatePageProps> = ({
                 <SupplierCreateNote
                   data={data}
                   disabled={disabled}
-                  errors={[]}
+                  errors={errors}
                   onChange={change}
                 />
               </div>

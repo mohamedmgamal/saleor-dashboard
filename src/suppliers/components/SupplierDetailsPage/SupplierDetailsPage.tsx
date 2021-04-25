@@ -18,7 +18,7 @@ import { SupplierDetails_user } from "../../types/SupplierDetails";
 import SupplierDetails from "../SupplierDetails";
 import SupplierInfo from "../SupplierInfo";
 // import SupplierOrders from "../SupplierOrders";
-import SupplierStats from "../SupplierStats";
+// import SupplierStats from "../SupplierStats";
 // import { date } from "@saleor/fixtures";
 
 export interface SupplierDetailsPageFormData {
@@ -84,14 +84,13 @@ const SupplierDetailsPage: React.FC<SupplierDetailsPageProps> = ({
               />
               <CardSpacer />
               <SupplierInfo
-                // TODO: phone number dont fetched
                 data={data}
                 disabled={disabled}
                 errors={errors}
                 onChange={change}
               />
               <CardSpacer />
-              <SupplierStats Supplier={Supplier} />
+              {/* <SupplierStats Supplier={Supplier} />*/}
             </div>
           </Grid>
           <SaveButtonBar

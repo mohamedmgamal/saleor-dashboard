@@ -6,7 +6,6 @@ import { SupplierFilterInput } from "@saleor/types/globalTypes";
 import {
   createFilterTabUtils,
   createFilterUtils,
-  getGteLteVariables,
   getMinMaxQueryParam
 } from "../../../utils/filters";
 import { SupplierListUrlFilters, SupplierListUrlFiltersEnum, SupplierListUrlQueryParams } from "../../urls";
@@ -63,18 +62,6 @@ export function getFilterVariables(
   params: SupplierListUrlFilters
 ): SupplierFilterInput {
   return {
-    dateJoined: getGteLteVariables({
-      gte: params.joinedFrom,
-      lte: params.joinedTo
-    }),
-    moneySpent: getGteLteVariables({
-      gte: parseInt(params.moneySpentFrom, 0),
-      lte: parseInt(params.moneySpentTo, 0)
-    }),
-    numberOfOrders: getGteLteVariables({
-      gte: parseInt(params.numberOfOrdersFrom, 0),
-      lte: parseInt(params.numberOfOrdersTo, 0)
-    }),
     search: params.query
   };
 }

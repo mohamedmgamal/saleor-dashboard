@@ -40,7 +40,8 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
   const intl = useIntl();
 
   const handleSupplierUpdateSuccess = (data: UpdateSupplier) => {
-    if (data.SupplierUpdate.errors.length === 0) {
+    console.log(data)
+    if (data.supplierUpdate.errors.length < 1) {
       notify({
         status: "success",
         text: intl.formatMessage(commonMessages.savedChanges)
@@ -92,7 +93,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                     }
                   });
 
-                  return result.data.SupplierUpdate.errors;
+                  return result.data.supplierUpdate.errors;
                 };
 
                 return (
@@ -109,7 +110,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                       }
                       errors={
                         // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors :: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                         []
+                        updateSupplierOpts.data?.supplierUpdate.errors|| []
                       }
                       saveButtonBar={updateSupplierOpts.status}
                       onAddressManageClick={() =>

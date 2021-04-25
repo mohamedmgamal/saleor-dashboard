@@ -27,7 +27,7 @@ export interface CreateSupplier_SupplierCreate {
 }
 
 export interface CreateSupplier {
-  SupplierCreate: CreateSupplier_SupplierCreate | null;
+  supplierCreate: CreateSupplier_SupplierCreate | null;
 }
 
 export interface CreateSupplierVariables {
