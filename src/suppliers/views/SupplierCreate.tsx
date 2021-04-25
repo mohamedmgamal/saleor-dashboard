@@ -17,14 +17,14 @@ export const SupplierCreate: React.FC<{}> = () => {
   const intl = useIntl();
 
   const handleCreateSupplierSuccess = (data: CreateSupplier) => {
-    if (data.SupplierCreate.errors.length === 0) {
+    if (!data.SupplierCreate.errors.length) {
       notify({
         status: "success",
         text: intl.formatMessage({
           defaultMessage: "Supplier created"
         })
       });
-      navigate(supplierUrl(data.SupplierCreate.user.id));
+      navigate(supplierUrl(data.SupplierCreate.supplier.id));
     }
   };
   return (
@@ -32,6 +32,7 @@ export const SupplierCreate: React.FC<{}> = () => {
       {({ data, loading }) => (
         <TypedCreateSupplierMutation onCompleted={handleCreateSupplierSuccess}>
           {(createSupplier, createSupplierOpts) => (
+
             <>
               <WindowTitle
                 title={intl.formatMessage({
@@ -42,19 +43,22 @@ export const SupplierCreate: React.FC<{}> = () => {
               <SupplierCreatePage
                 countries={maybe(() => data.shop.countries, [])}
                 disabled={loading || createSupplierOpts.loading}
-                errors={createSupplierOpts.data?.SupplierCreate.errors || []}
+                errors={createSupplierOpts.data?.SupplierCreate.errors||  []}
                 saveButtonBar={createSupplierOpts.status}
                 onBack={() => navigate(supplierListUrl())}
                 onSubmit={formData => {
                   createSupplier({
                     variables: {
                       input: {
-                        defaultBillingAddress: formData.address,
-                        defaultShippingAddress: formData.address,
+                     //   defaultBillingAddress: formData.address,
+                     //   defaultShippingAddress: formData.address,
                         email: formData.email,
                         firstName: formData.SupplierFirstName,
                         lastName: formData.SupplierLastName,
-                        note: formData.note
+                        note: formData.note,
+                        phone:formData.phone,
+                        password:formData.password,
+                        isActive:true
                       }
                     }
                   });

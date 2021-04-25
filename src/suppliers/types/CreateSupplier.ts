@@ -11,6 +11,7 @@ import { UserCreateInput, AccountErrorCode } from "./../../types/globalTypes";
 export interface CreateSupplier_SupplierCreate_errors {
   __typename: "AccountError";
   code: AccountErrorCode;
+  massage:string | null ;
   field: string | null;
 }
 
@@ -22,7 +23,7 @@ export interface CreateSupplier_SupplierCreate_user {
 export interface CreateSupplier_SupplierCreate {
   __typename: "SupplierCreate";
   errors: CreateSupplier_SupplierCreate_errors[];
-  user: CreateSupplier_SupplierCreate_user | null;
+  supplier: CreateSupplier_SupplierCreate_user | null;
 }
 
 export interface CreateSupplier {

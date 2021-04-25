@@ -61,12 +61,12 @@ export const TypedUpdateSupplierMutation = TypedMutation<
 
 const createSupplier = gql`
   ${accountErrorFragment}
-  mutation CreateCustomer($input: UserCreateInput!) {
-    customerCreate(input: $input) {
+  mutation supplierCreate($input: SupplierCreateInput!) {
+    supplierCreate(input: $input) {
       errors: accountErrors {
         ...AccountErrorFragment
       }
-      user {
+      supplier {
         id
       }
     }

@@ -90,6 +90,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                       }
                     }
                   });
+
                   return result.data.SupplierUpdate.errors;
                 };
 
@@ -106,6 +107,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                         removeSupplierOpts.loading
                       }
                       errors={
+                        // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors ||
                          []
                       }
                       saveButtonBar={updateSupplierOpts.status}

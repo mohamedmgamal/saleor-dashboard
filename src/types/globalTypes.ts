@@ -1607,8 +1607,8 @@ export interface TranslationInput {
 }
 
 export interface UserCreateInput {
-  defaultBillingAddress?: AddressInput | null;
-  defaultShippingAddress?: AddressInput | null;
+ phone?:string |null;
+  password?:string |null;
   firstName?: string | null;
   lastName?: string | null;
   email?: string | null;

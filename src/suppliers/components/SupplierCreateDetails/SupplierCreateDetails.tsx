@@ -38,7 +38,7 @@ const SupplierCreateDetails: React.FC<SupplierCreateDetailsProps> = props => {
   const intl = useIntl();
 
   const formErrors = getFormErrors(
-    ["SupplierFirstName", "SupplierLastName", "email"],
+    ["SupplierFirstName", "SupplierLastName", "email","phone","password"],
     errors
   );
 
@@ -89,6 +89,32 @@ const SupplierCreateDetails: React.FC<SupplierCreateDetailsProps> = props => {
             helperText={getAccountErrorMessage(formErrors.email, intl)}
             type="email"
             value={data.email}
+            onChange={onChange}
+          />
+          <TextField
+            disabled={disabled}
+            error={!!formErrors.email}
+            fullWidth
+            name="phone"
+            label={intl.formatMessage({
+              defaultMessage: "Phone"
+            })}
+            helperText={getAccountErrorMessage(formErrors.phone, intl)}
+            type="phone"
+            value={data.phone}
+            onChange={onChange}
+          />
+          <TextField
+            disabled={disabled}
+            error={!!formErrors.email}
+            fullWidth
+            name="password"
+            label={intl.formatMessage({
+              defaultMessage: "password"
+            })}
+            helperText={getAccountErrorMessage(formErrors.password, intl)}
+            type="password"
+            value={data.password}
             onChange={onChange}
           />
         </div>
