@@ -11,7 +11,7 @@ import ErrorBoundary from "react-error-boundary";
 import TagManager from "react-gtm-module";
 import { useIntl } from "react-intl";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
+import { ExistingProductSection } from "./AddExisting Product";
 import AppsSection from "./apps";
 import { appsSection } from "./apps/urls";
 import AttributeSection from "./attributes";
@@ -41,6 +41,7 @@ import HomePage from "./home";
 import { commonMessages } from "./intl";
 import NavigationSection from "./navigation";
 import { navigationSection } from "./navigation/urls";
+import {NewProductSection} from "./newProductRequest";
 import { NotFound } from "./NotFound";
 import OrdersSection from "./orders";
 import PageSection from "./pages";
@@ -55,6 +56,7 @@ import { SupplierSection } from "./suppliers";
 import TaxesSection from "./taxes";
 import TranslationsSection from "./translations";
 import { PermissionEnum } from "./types/globalTypes";
+import { wareHouseMangerSection } from "./wareHouseMangers";
 import WarehouseSection from "./warehouses";
 import { warehouseSection } from "./warehouses/urls";
 
@@ -256,8 +258,9 @@ const Routes: React.FC = () => {
 
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/warehouseManger/"}
-              ><h1>warehouseManger</h1></SectionRoute>
+                path={"/wareHouseMangers"}
+                component={wareHouseMangerSection}
+              />
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
                 path={"/suppliers"}
@@ -265,16 +268,13 @@ const Routes: React.FC = () => {
             />
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/newProductRequest/"}
-              ><h1>new Product Request</h1></SectionRoute>
+                path={"/newProductRequest"}
+              component={NewProductSection}/>
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/existingProductRequest/"}
-              ><h1>existing Product Request</h1></SectionRoute>
-              <SectionRoute
-                permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/DeleteProductRequest/"}
-              ><h1>Delete Product Request</h1></SectionRoute>
+                path={"/existingProductRequest"}
+                component={ExistingProductSection}
+             />
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
                 path={"/AddWareHouse/"}

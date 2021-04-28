@@ -64,6 +64,7 @@ export const SupplierList: React.FC<SupplierListProps> = ({ params }) => {
   const intl = useIntl();
   const shop = useShop();
   // TODO: error was here
+  console.log(settings)
   const  paginationState   = createPaginationState(settings.rowNumber, params);
   const queryVariables = React.useMemo(
     () => ({

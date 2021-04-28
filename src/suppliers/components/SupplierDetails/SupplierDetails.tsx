@@ -7,12 +7,12 @@ import CardTitle from "@saleor/components/CardTitle";
 import { ControlledCheckbox } from "@saleor/components/ControlledCheckbox";
 import Skeleton from "@saleor/components/Skeleton";
 import { AccountErrorFragment } from "@saleor/fragments/types/AccountErrorFragment";
-import { maybe } from "@saleor/misc";
+import { maybe, parseBoolean } from "@saleor/misc";
 // import { getFormErrors } from "@saleor/utils/errors";
 // import getAccountErrorMessage from "@saleor/utils/errors/account";
 import moment from "moment-timezone";
 import React from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 import { SupplierDetails_user } from "../../types/SupplierDetails";
 
@@ -47,8 +47,9 @@ export interface SupplierDetailsProps {
 const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
   const { Supplier, data, disabled, onChange } = props;
   const classes = useStyles(props);
-  const intl = useIntl();
-console.log(data.isActive)
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <Card>
       <CardTitle
@@ -76,20 +77,21 @@ console.log(data.isActive)
           </>
         }
       />
+
       <CardContent className={classes.content}>
-       <div onClick={()=>{
-         data.isActive=!data.isActive
-       }}> <ControlledCheckbox
-          checked={data.isActive}
+       <ControlledCheckbox
+         // @ts-ignore
+          checked={parseBoolean(data.isActive)}
           className={classes.checkbox}
           disabled={disabled}
-          label={intl.formatMessage({
-            defaultMessage: "User account active",
-            description: "check to mark this account as active"
-          })}
+          // label={intl.formatMessage({
+          //   defaultMessage: "User account active",
+          //   description: "check to mark this account as active"
+          // })}
+         label={"Supplier Account status is "+data.isActive}
           name="isActive"
           onChange={onChange}
-        /></div>
+        />
       </CardContent>
     </Card>
   );

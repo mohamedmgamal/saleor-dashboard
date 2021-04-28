@@ -1,6 +1,8 @@
 import appsIcon from "@assets/images/menu-apps-icon.svg";
 import catalogIcon from "@assets/images/menu-catalog-icon.svg";
 import customerIcon from "@assets/images/menu-customers-icon.svg";
+import taskIcon from "@assets/images/menu-task-icon.svg"
+import mangerIcon from "@assets/images/menu-manage-iconr.svg";
 import discountsIcon from "@assets/images/menu-discounts-icon.svg";
 import homeIcon from "@assets/images/menu-home-icon.svg";
 import ordersIcon from "@assets/images/menu-orders-icon.svg";
@@ -98,14 +100,14 @@ function createMenuStructure(intl: IntlShape): IMenuItem[] {
     // TODO: add more menu items
     {
       ariaLabel: "suppliers",
-      icon: "https://www.svgrepo.com/show/92072/manager.svg",
+      icon: mangerIcon,
       children: [
         {
           ariaLabel: "WareHouse_Manager",
           label: intl.formatMessage(sectionNames.WareHouse_Manager),
           permission: PermissionEnum.MANAGE_ORDERS,
           testingContextId: "WareHouse_Manager",
-          url: "/warehouseManger/"
+          url: "/warehouseMangers"
         },
         {
           ariaLabel: "suppliers",
@@ -121,7 +123,7 @@ function createMenuStructure(intl: IntlShape): IMenuItem[] {
     },
     {
       ariaLabel: "requests",
-      icon: "https://www.svgrepo.com/show/40977/task.svg",
+      icon: taskIcon,
       children: [
         {
           ariaLabel: "add_new",

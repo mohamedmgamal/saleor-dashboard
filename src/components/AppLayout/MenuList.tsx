@@ -70,6 +70,7 @@ const useStyles = makeStyles(
       position: "relative"
     },
     menuList: {
+
       display: "flex",
       flexDirection: "column",
       height: "100%",

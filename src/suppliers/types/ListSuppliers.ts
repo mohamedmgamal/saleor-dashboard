@@ -5,7 +5,7 @@
 import { SupplierFilterInput, UserSortingInput } from "./../../types/globalTypes";
 
 // ====================================================
-// GraphQL query operation: ListSuppliers
+// GraphQL query operation: ListWareHouseMangers
 // ====================================================
 
 export interface ListSuppliers_Suppliers_edges_node_orders {

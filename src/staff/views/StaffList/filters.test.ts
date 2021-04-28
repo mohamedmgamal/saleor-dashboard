@@ -38,19 +38,13 @@ describe("Filtering URL params", () => {
   });
 
   it("should be empty if no active filters", () => {
-    const filterQueryParams = getFilterQueryParams(
-      filters,
-      getFilterQueryParam
-    );
+    const filterQueryParams = getFilterQueryParams(filters, getFilterQueryParam);
 
     expect(getExistingKeys(filterQueryParams)).toHaveLength(0);
   });
 
   it("should not be empty if active filters are present", () => {
-    const filterQueryParams = getFilterQueryParams(
-      setFilterOptsStatus(filters, true),
-      getFilterQueryParam
-    );
+    const filterQueryParams = getFilterQueryParams(setFilterOptsStatus(filters, true), getFilterQueryParam);
 
     expect(filterQueryParams).toMatchSnapshot();
     expect(stringifyQs(filterQueryParams)).toMatchSnapshot();

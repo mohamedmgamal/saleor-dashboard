@@ -5,7 +5,7 @@
 import { SupplierInput, AccountErrorCode } from "./../../types/globalTypes";
 
 // ====================================================
-// GraphQL mutation operation: UpdateSupplier
+// GraphQL mutation operation: UpdateWareHouseManger
 // ====================================================
 
 export interface UpdateSupplier_SupplierUpdate_errors {

@@ -1,6 +1,5 @@
 import gql from "graphql-tag";
 
-import { fragmentAddress } from "./address";
 
 export const warehouseFragment = gql`
   fragment WarehouseFragment on Warehouse {
@@ -24,12 +23,18 @@ export const warehouseWithShippingFragment = gql`
 `;
 
 export const warehouseDetailsFragment = gql`
-  ${fragmentAddress}
-  ${warehouseWithShippingFragment}
-  fragment WarehouseDetailsFragment on Warehouse {
-    ...WarehouseWithShippingFragment
-    address {
-      ...AddressFragment
+fragment WarehouseManagerDetailsFragment on Supplier {
+  id
+    supplier{
+      firstName
+      lastName
     }
-  }
+    dateJoined
+    note
+    isActive
+    phone
+    firstName
+    lastName
+    supplierId
+}
 `;

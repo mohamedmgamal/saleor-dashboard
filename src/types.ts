@@ -27,6 +27,7 @@ export enum ListViews {
   COLLECTION_LIST = "COLLECTION_LIST",
   CUSTOMER_LIST = "CUSTOMER_LIST",
   Supplier_LIST="Supplier_LIST",
+  WarehouseMangers_LIST="WarehouseMangers_LIST",
   DRAFT_LIST = "DRAFT_LIST",
   NAVIGATION_LIST = "NAVIGATION_LIST",
   ORDER_LIST = "ORDER_LIST",

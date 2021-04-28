@@ -1,6 +1,7 @@
 import { IFilter, IFilterElement } from "@saleor/components/Filter";
 import { findValueInEnum } from "@saleor/misc";
 import isArray from "lodash-es/isArray";
+import { SupplierFilterKeys } from "@saleor/suppliers/components/SupplierListPage";
 
 function createFilterUtils<
   TQueryParams extends object,
@@ -37,11 +38,9 @@ export type GetFilterQueryParam<
   TFilterKeys extends string,
   TFilters extends object
 > = (filter: IFilterElement<TFilterKeys>, params?: object) => TFilters;
-export function getFilterQueryParams<
-  TFilterKeys extends string,
-  TUrlFilters extends object
->(
-  filter: IFilter<TFilterKeys>,
+export function getFilterQueryParams<TFilterKeys extends string,
+  TUrlFilters extends object>(
+  filter: Array<IFilterElement<SupplierFilterKeys>>,
   getFilterQueryParam: GetFilterQueryParam<TFilterKeys, TUrlFilters>
 ): TUrlFilters {
   return filter.reduce(

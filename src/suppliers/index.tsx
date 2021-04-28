@@ -68,7 +68,7 @@ export const SupplierSection: React.FC<{}> = () => {
   const intl = useIntl();
   return (
     <>
-      <WindowTitle title={intl.formatMessage(sectionNames.suppliers)} />
+      <WindowTitle title={intl.formatMessage(sectionNames.addNew)} />
       <Switch>
         <Route exact path={supplierListPath} component={SupplierListView} />
         <Route exact path={supplierAddPath} component={SupplierCreateView} />

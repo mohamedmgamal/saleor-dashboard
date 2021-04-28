@@ -14,7 +14,7 @@ import { useIntl } from "react-intl";
 
 import { getUserName, maybe } from "../../../misc";
 import { SupplierDetails_user } from "../../types/SupplierDetails";
-// import SupplierAddresses from "../SupplierAddresses";
+// import NewProduct from "../NewProduct";
 import SupplierDetails from "../SupplierDetails";
 import SupplierInfo from "../SupplierInfo";
 // import SupplierOrders from "../SupplierOrders";
