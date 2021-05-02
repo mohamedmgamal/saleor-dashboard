@@ -40,7 +40,6 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
   const intl = useIntl();
 
   const handleSupplierUpdateSuccess = (data: UpdateSupplier) => {
-    console.log(data)
     if (data.supplierUpdate.errors.length < 1) {
       notify({
         status: "success",
@@ -72,6 +71,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
             <TypedSupplierDetailsQuery displayLoader variables={{ id }}>
               {SupplierDetails => {
                 const supplier = SupplierDetails.data?.supplier;
+                console.log(supplier)
                  if (supplier === null) {
                    return <NotFoundPage onBack={handleBack} />;
                  }

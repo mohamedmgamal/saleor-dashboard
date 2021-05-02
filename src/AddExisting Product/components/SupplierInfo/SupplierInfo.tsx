@@ -93,10 +93,10 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
             value={data.status}
             onChange={onChange}
           >
-            <MenuItem value={"PENDING"}>PENDING</MenuItem>
+            <MenuItem value={"PENDING"} disabled>PENDING</MenuItem>
             <MenuItem value={"APPROVED"}>APPROVED</MenuItem>
             <MenuItem value={"REJECT"}>REJECT</MenuItem>
-            <MenuItem value={"CANCEL"}>CANCEL</MenuItem>
+            <MenuItem value={"CANCEL"} disabled>CANCEL</MenuItem>
           </Select>
           <TextField
             disabled={true}

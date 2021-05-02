@@ -122,13 +122,13 @@ const WarehouseMangerCreateDetails: React.FC<SupplierCreateDetailsProps> = props
             disabled={disabled}
             error={!!formErrors.SupplierID}
             fullWidth
-            name="SupplierID"
+            name="supplierId"
             label={intl.formatMessage({
               defaultMessage: "SupplierID"
             })}
             helperText={getAccountErrorMessage(formErrors.SupplierID, intl)}
-            type="number"
-            value={data.SupplierId}
+            type="text"
+            value={data.supplierId}
             onChange={onChange}
           />
         </div>

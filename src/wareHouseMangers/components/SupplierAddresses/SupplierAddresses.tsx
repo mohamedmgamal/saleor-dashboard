@@ -11,7 +11,7 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { maybe } from "../../../misc";
-import { SupplierDetails_user } from "../../types/WareHouseMangerDetails";
+import { WareHouseMangerDetails_user } from "../../types/WareHouseMangerDetails";
 
 const useStyles = makeStyles(
   theme => ({
@@ -24,7 +24,7 @@ const useStyles = makeStyles(
 );
 
 export interface SupplierAddressesProps {
-  Supplier: SupplierDetails_user;
+  Supplier: WareHouseMangerDetails_user;
   disabled: boolean;
   onAddressManageClick: () => void;
 }
@@ -53,10 +53,10 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
           </Button>
         }
       />
-      {maybe(() => Supplier.defaultBillingAddress.id) !==
-      maybe(() => Supplier.defaultShippingAddress.id) ? (
+      {maybe(() => Supplier.id) !==
+      maybe(() => Supplier.id) ? (
         <>
-          {maybe(() => Supplier.defaultBillingAddress) !== null && (
+          {maybe(() => Supplier) !== null && (
             <CardContent>
               <Typography className={classes.label}>
                 <FormattedMessage
@@ -65,15 +65,15 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
                 />
               </Typography>
               <AddressFormatter
-                address={maybe(() => Supplier.defaultBillingAddress)}
+                address={maybe(() => null)}
               />
             </CardContent>
           )}
           {maybe(
             () =>
-              Supplier.defaultBillingAddress && Supplier.defaultShippingAddress
+              Supplier
           ) && <Hr />}
-          {maybe(() => Supplier.defaultShippingAddress) && (
+          {maybe(() => Supplier) && (
             <CardContent>
               <Typography className={classes.label}>
                 <FormattedMessage
@@ -82,13 +82,13 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
                 />
               </Typography>
               <AddressFormatter
-                address={maybe(() => Supplier.defaultShippingAddress)}
+                address={maybe(() => null)}
               />
             </CardContent>
           )}
         </>
-      ) : maybe(() => Supplier.defaultBillingAddress) === null &&
-        maybe(() => Supplier.defaultShippingAddress) === null ? (
+      ) : maybe(() => Supplier) === null &&
+        maybe(() => Supplier) === null ? (
         <CardContent>
           <Typography>
             <FormattedMessage defaultMessage="This Supplier has no addresses yet" />
@@ -103,7 +103,7 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
             />
           </Typography>
           <AddressFormatter
-            address={maybe(() => Supplier.defaultBillingAddress)}
+            address={maybe(() => null)}
           />
         </CardContent>
       )}

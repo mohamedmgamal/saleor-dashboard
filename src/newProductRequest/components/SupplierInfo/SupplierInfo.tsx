@@ -1,5 +1,7 @@
+import { MenuItem } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -12,8 +14,6 @@ import { getFormErrors } from "@saleor/utils/errors";
 import getAccountErrorMessage from "@saleor/utils/errors/account";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import Select from "@material-ui/core/Select";
-import { MenuItem } from "@material-ui/core";
 const useStyles = makeStyles(
   theme => ({
     content: {
@@ -52,7 +52,7 @@ export interface SupplierInfoProps {
 }
 
 const SupplierInfo: React.FC<SupplierInfoProps> = props => {
-  const { data, disabled, errors, onChange } = props;
+  const { data, errors, onChange } = props;
 
   const classes = useStyles(props);
   const intl = useIntl();
@@ -74,7 +74,7 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
         </Typography>
         <Grid variant="uniform">
           <TextField
-            disabled={disabled}
+            disabled={true}
             error={!!formErrors.name}
             fullWidth
             helperText={getAccountErrorMessage(formErrors.name, intl)}
@@ -89,10 +89,10 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
             value={data.status}
             onChange={onChange}
           >
-            <MenuItem value={"PENDING"}>PENDING</MenuItem>
+            <MenuItem value={"PENDING"}disabled>PENDING</MenuItem>
             <MenuItem value={"APPROVED"}>APPROVED</MenuItem>
             <MenuItem value={"REJECT"}>REJECT</MenuItem>
-            <MenuItem value={"CANCEL"}>CANCEL</MenuItem>
+            <MenuItem value={"CANCEL"} disabled>CANCEL</MenuItem>
           </Select>
           <TextField
             disabled={true}
@@ -102,7 +102,7 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
             value={data.id}
           />
           <TextField
-            disabled={disabled}
+            disabled={true}
             fullWidth
             name="image"
             type="text"
@@ -111,7 +111,7 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
             onChange={onChange}
           />
           <TextField
-            disabled={disabled}
+            disabled={true}
             fullWidth
             name="priceAmount"
             type="text"
@@ -142,7 +142,10 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
           label="Product updatedAt"
           value={data.updatedAt}
         />
-
+          <img
+            alt={data.name}
+            src={data.image}
+          />
         </Grid>
         <Hr className={classes.hr} />
         <Typography className={classes.sectionHeader}>

@@ -166,6 +166,7 @@ const useStyles = makeStyles(
       }
     },
     menu: {
+      overflowY:"scroll",
       background: theme.palette.background.paper,
       height: "100vh",
       padding: "25px 20px"

@@ -10,7 +10,7 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { maybe } from "../../../misc";
-import { SupplierDetails_user } from "../../types/WareHouseMangerDetails";
+import { WareHouseMangerDetails_user } from "../../types/WareHouseMangerDetails";
 
 const useStyles = makeStyles(
   theme => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles(
 );
 
 export interface SupplierStatsProps {
-  Supplier: SupplierDetails_user;
+  Supplier: WareHouseMangerDetails_user;
 }
 
 const SupplierStats: React.FC<SupplierStatsProps> = props => {
@@ -49,10 +49,10 @@ const SupplierStats: React.FC<SupplierStatsProps> = props => {
         {maybe(
           () => (
             <Typography variant="h6" className={classes.value}>
-              {Supplier.lastLogin === null ? (
+              {Supplier.dateJoined === null ? (
                 "-"
               ) : (
-                <DateTime date={Supplier.lastLogin} />
+                <DateTime date={Supplier.dateJoined} />
               )}
             </Typography>
           ),
@@ -67,11 +67,11 @@ const SupplierStats: React.FC<SupplierStatsProps> = props => {
         {maybe(
           () => (
             <Typography variant="h6" className={classes.value}>
-              {Supplier.lastPlacedOrder.edges.length === 0 ? (
+              {Supplier.dateJoined.edges.length === 0 ? (
                 "-"
               ) : (
                 <DateTime
-                  date={Supplier.lastPlacedOrder.edges[0].node.created}
+                  date={Supplier.dateJoined.edges[0].node.created}
                 />
               )}
             </Typography>

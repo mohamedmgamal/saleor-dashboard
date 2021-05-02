@@ -1128,7 +1128,13 @@ export interface RequestNewProductFilterInput {
 export interface RequestExistProductFilterInput {
   search?: string | null;
 }
+
 export interface WareHouseMangersFilterInput {
+  search?: string | null;
+}export interface RequestNewWarehouseFilterInput {
+  search?: string | null;
+}
+export interface RequestDeleteWarehouseInput {
   search?: string | null;
 }
 export interface CustomerInput {
@@ -1141,6 +1147,9 @@ export interface CustomerInput {
   note?: string | null;
 }
 // todo: change for mutations
+export interface resetSupplierPasswordInput{
+  passowrd:string
+}
 export interface SupplierInput {
   defaultBillingAddress?: AddressInput | null;
   defaultShippingAddress?: AddressInput | null;
@@ -1157,21 +1166,13 @@ export interface SupplierInput {
 export interface ExistProductInput {
   requestId:string
   status:string
-}export interface WareHouseMangerInput {
-  id: string;
+}export interface WarehouseManagerUpdateInput {
   email: string;
   firstName: string;
   lastName: string;
-  dateJoined: any;
-  note: string | null;
   isActive: boolean;
   phone:string;
-  supplierId:number
-  supplier:
-    {
-      firstName:string;
-      lastName:string;
-    }
+  note:string
 }
 
 export interface DateRangeInput {

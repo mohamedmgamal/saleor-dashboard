@@ -6,7 +6,7 @@ import { RequestNewProductFilterInput, UserSortingInput } from "./../../types/gl
 // import * as url from "url";
 
 // ====================================================
-// GraphQL query operation: ListNewProducts
+// GraphQL query operation: ListNewWarehouses
 // ====================================================
 
 

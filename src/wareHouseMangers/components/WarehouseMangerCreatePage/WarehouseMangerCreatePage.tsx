@@ -23,7 +23,7 @@ export interface SupplierCreatePageFormData {
   password:string
   email: string;
   note: string;
-  SupplierId:number
+  supplierId:string
 }
 
 
@@ -34,7 +34,7 @@ const initialForm: SupplierCreatePageFormData = {
   email: "",
   note: "",
   phone: "",
-  SupplierId:null
+  supplierId:""
 };
 
 export interface SupplierCreatePageProps {
@@ -63,7 +63,7 @@ const WarehouseMangerCreatePage: React.FC<SupplierCreatePageProps> = ({
       LastName: formData.LastName,
       email: formData.email,
       note: formData.note,
-      SupplierId:formData.SupplierId
+      supplierId:formData.supplierId
     })
   );
   const handleSubmit = (
@@ -76,7 +76,7 @@ const WarehouseMangerCreatePage: React.FC<SupplierCreatePageProps> = ({
         LastName: formData.LastName,
         email: formData.email,
         note: formData.note,
-        SupplierId:formData.SupplierId
+        supplierId:formData.supplierId
       });
 
   };

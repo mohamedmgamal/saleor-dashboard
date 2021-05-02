@@ -109,7 +109,7 @@ const WarehouseMangerDetailsPage: React.FC<SupplierDetailsPageProps> = ({
           </Grid>
           <SaveButtonBar
             // todo:disabled because no mutation
-            disabled={true || disabled || !hasChanged}
+            disabled={ disabled || !hasChanged}
             state={saveButtonBar}
             onSave={submit}
             onCancel={onBack}

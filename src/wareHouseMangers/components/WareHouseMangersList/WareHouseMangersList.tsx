@@ -27,6 +27,7 @@ const useStyles = makeStyles(
         width: 200
       }
     },
+    colPhone:{textAlign:"center"},
     colEmail: {},
     colName: {
       paddingLeft: 0

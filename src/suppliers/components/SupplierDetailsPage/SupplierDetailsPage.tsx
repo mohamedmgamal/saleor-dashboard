@@ -22,6 +22,7 @@ import SupplierInfo from "../SupplierInfo";
 // import { date } from "@saleor/fixtures";
 
 export interface SupplierDetailsPageFormData {
+  id:string
   firstName: string;
   lastName: string;
   email: string;
@@ -49,15 +50,13 @@ const SupplierDetailsPage: React.FC<SupplierDetailsPageProps> = ({
   saveButtonBar,
   onBack,
   onSubmit,
-  // onViewAllOrdersClick,
-  // onRowClick,
-  // onAddressManageClick,
   onDelete
 }: SupplierDetailsPageProps) => {
   const intl = useIntl();
   return (
     <Form
       initial={{
+        id:maybe(()=>Supplier.id,""),
         email: maybe(() => Supplier.email, ""),
         firstName: maybe(() => Supplier.firstName, ""),
         isActive: maybe(() => Supplier.isActive, false),

@@ -2,31 +2,31 @@
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
-import { SupplierInput, AccountErrorCode } from "./../../types/globalTypes";
+import { WarehouseManagerUpdateInput, AccountErrorCode } from "./../../types/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: UpdateWareHouseManger
 // ====================================================
 
-export interface UpdateSupplier_SupplierUpdate_errors {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_errors {
   __typename: "AccountError";
   code: AccountErrorCode;
   field: string | null;
 
 }
 
-export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress_country {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultShippingAddress_country {
   __typename: "CountryDisplay";
   code: string;
   country: string;
 }
 
-export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultShippingAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
   companyName: string;
-  country: UpdateSupplier_SupplierUpdate_user_defaultShippingAddress_country;
+  country: UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultShippingAddress_country;
   countryArea: string;
   firstName: string;
   id: string;
@@ -37,18 +37,18 @@ export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress {
   streetAddress2: string;
 }
 
-export interface UpdateSupplier_SupplierUpdate_user_defaultBillingAddress_country {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultBillingAddress_country {
   __typename: "CountryDisplay";
   code: string;
   country: string;
 }
 
-export interface UpdateSupplier_SupplierUpdate_user_defaultBillingAddress {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultBillingAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
   companyName: string;
-  country: UpdateSupplier_SupplierUpdate_user_defaultBillingAddress_country;
+  country: UpdateWarehouseManger_WarehouseMangerUpdate_user_defaultBillingAddress_country;
   countryArea: string;
   firstName: string;
   id: string;
@@ -59,7 +59,7 @@ export interface UpdateSupplier_SupplierUpdate_user_defaultBillingAddress {
   streetAddress2: string;
 }
 
-export interface UpdateSupplier_SupplierUpdate_user {
+export interface UpdateWarehouseManger_WarehouseMangerUpdate_user {
   __typename: "User";
   id: string;
   email: string;
@@ -70,19 +70,20 @@ export interface UpdateSupplier_SupplierUpdate_user {
   note: string | null;
   isActive: boolean;
   phone:string;
+
 }
 
-export interface UpdateSupplier_SupplierUpdate {
-  __typename: "SupplierUpdate";
-  errors: UpdateSupplier_SupplierUpdate_errors[];
-  supplier: UpdateSupplier_SupplierUpdate_user | null;
+export interface UpdateWarehouseManger_WarehouseMangerUpdate {
+  __typename: "WarehouseMangerUpdate";
+  errors: UpdateWarehouseManger_WarehouseMangerUpdate_errors[];
+  warehouseManger: UpdateWarehouseManger_WarehouseMangerUpdate_user | null;
 }
 
 export interface UpdateWareHouseManger {
-  supplierUpdate: UpdateSupplier_SupplierUpdate | null;
+  warehouseManagerUpdate: UpdateWarehouseManger_WarehouseMangerUpdate | null;
 }
 
-export interface UpdateSupplierVariables {
+export interface UpdateWarehouseMangerVariables {
   id: string;
-  input: SupplierInput;
+  input: WarehouseManagerUpdateInput;
 }

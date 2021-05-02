@@ -11,11 +11,11 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { maybe } from "../../misc";
 import { orderListUrl, orderUrl } from "../../orders/urls";
 import WarehouseMangerDetailsPage, {
-  SupplierDetailsPageFormData
+  WarehouseMangerDetailsPageFormData
 } from "../components/WarehouseMangerDetailsPage/WarehouseMangerDetailsPage";
 import {
   TypedRemoveSupplierMutation,
-  TypedUpdateSupplierMutation
+  TypedUpdateWarehouseMangerMutation
 } from "../mutations";
 import { TypedWarehouseMangerDetailsQuery } from "../queries";
 import { RemoveSupplier } from "../types/RemoveSupplier";
@@ -40,7 +40,7 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
   const intl = useIntl();
 
   const handleSupplierUpdateSuccess = (data: UpdateWareHouseManger) => {
-    if (data.supplierUpdate.errors.length < 1) {
+    if (data.warehouseManagerUpdate.errors.length < 1) {
       notify({
         status: "success",
         text: intl.formatMessage(commonMessages.savedChanges)
@@ -48,11 +48,11 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
     }
   };
   const handleSupplierRemoveSuccess = (data: RemoveSupplier) => {
-    if (data.SupplierDelete.errors.length === 0) {
+    if (data.deleteWarehouseManager.errors.length === 0) {
       notify({
         status: "success",
         text: intl.formatMessage({
-          defaultMessage: "Supplier Removed"
+          defaultMessage: "Warehouse manger  Removed"
         })
       });
       navigate(wareHouseMangerListUrl());
@@ -65,7 +65,7 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
       onCompleted={handleSupplierRemoveSuccess}
     >
       {(removeSupplier, removeSupplierOpts) => (
-        <TypedUpdateSupplierMutation onCompleted={handleSupplierUpdateSuccess}>
+        <TypedUpdateWarehouseMangerMutation onCompleted={handleSupplierUpdateSuccess}>
           {(updateSupplier, updateSupplierOpts) => (
             <TypedWarehouseMangerDetailsQuery displayLoader variables={{ id }}>
               {WarehouseManger => {
@@ -75,13 +75,14 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
                  }
 
                 const handleSubmit = async (
-                  data: SupplierDetailsPageFormData
+                  data: WarehouseMangerDetailsPageFormData
                 ) => {
                   const result = await updateSupplier({
                     // todo:Edit here for input in mutations
                     variables: {
                       id,
                       input: {
+                        note:data.note,
                         email: data.email,
                         firstName: data.firstName,
                         isActive: data.isActive,
@@ -92,9 +93,8 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
                     }
                   });
 
-                  return result.data.supplierUpdate.errors;
+                  return result.data.warehouseManagerUpdate.errors;
                 };
-console.log(WarehouseManger)
                 return (
                   <>
                     <WindowTitle
@@ -109,7 +109,7 @@ console.log(WarehouseManger)
                       }
                       errors={
                         // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors :: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                        updateSupplierOpts.data?.supplierUpdate.errors|| []
+                        updateSupplierOpts.data?.warehouseManagerUpdate.errors|| []
                       }
                       saveButtonBar={updateSupplierOpts.status}
                       onAddressManageClick={() =>
@@ -168,7 +168,7 @@ console.log(WarehouseManger)
               }}
             </TypedWarehouseMangerDetailsQuery>
           )}
-        </TypedUpdateSupplierMutation>
+        </TypedUpdateWarehouseMangerMutation>
       )}
     </TypedRemoveSupplierMutation>
   );

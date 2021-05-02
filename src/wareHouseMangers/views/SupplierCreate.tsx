@@ -18,7 +18,6 @@ export const SupplierCreate: React.FC<{}> = () => {
   const intl = useIntl();
 
   const handleCreateWarehouseManagerSuccess = (data: CreateWarehouseManager) => {
-    console.log(data)
     if (data.warehouseManagerCreate.errors.length === 0) {
       notify({
         status: "success",
@@ -55,7 +54,7 @@ export const SupplierCreate: React.FC<{}> = () => {
                       input: {
                         // eslint-disable-next-line radix
                         // supplierId:parseInt(formData.SupplierId),
-                        supplierId:2,
+                        supplierId:formData.supplierId,
                         email: formData.email,
                         firstName: formData.FirstName,
                         lastName: formData.LastName,

@@ -1,4 +1,4 @@
-import { IFilter, IFilterElement } from "@saleor/components/Filter";
+import { IFilterElement } from "@saleor/components/Filter";
 import { findValueInEnum } from "@saleor/misc";
 import isArray from "lodash-es/isArray";
 import { SupplierFilterKeys } from "@saleor/suppliers/components/SupplierListPage";
@@ -46,6 +46,7 @@ export function getFilterQueryParams<TFilterKeys extends string,
   return filter.reduce(
     (acc, filterField) => ({
       ...acc,
+      // @ts-ignore
       ...getFilterQueryParam(filterField, acc)
     }),
     {} as TUrlFilters

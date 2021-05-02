@@ -140,18 +140,11 @@ function createMenuStructure(intl: IntlShape): IMenuItem[] {
           url: "/existingProductRequest/"
         },
         {
-          ariaLabel: "delete_product",
-          label: intl.formatMessage(sectionNames.deleteProduct),
-          permission: PermissionEnum.MANAGE_ORDERS,
-          testingContextId: "delete_product",
-          url: "/DeleteProductRequest/"
-        },
-        {
           ariaLabel: "add_warehouse",
           label: intl.formatMessage(sectionNames.addWareHouse),
           permission: PermissionEnum.MANAGE_ORDERS,
           testingContextId: "add_warehouse",
-          url: "/AddWareHouse/"
+          url: "/AddWareHouse"
         }
         ,
         {
@@ -159,7 +152,7 @@ function createMenuStructure(intl: IntlShape): IMenuItem[] {
           label: intl.formatMessage(sectionNames.deleteWareHouse),
           permission: PermissionEnum.MANAGE_ORDERS,
           testingContextId: "delete_warehouse",
-          url: "/DeleteWareHouse/"
+          url: "/DeleteWareHouse"
         }
       ],
       label: intl.formatMessage(sectionNames.requests),

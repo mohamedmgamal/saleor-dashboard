@@ -39,6 +39,10 @@ import {
   UpdateSupplierAddress,
   UpdateSupplierAddressVariables
 } from "./types/UpdateSupplierAddress";
+import {
+  resetSupplierPassword,
+  resetSupplierPasswordVariables
+} from "./types/ResetSupplierPassword";
 
 const updateSupplier = gql`
   ${accountErrorFragment}
@@ -190,3 +194,20 @@ export const TypedBulkRemoveSuppliers = TypedMutation<
   BulkRemoveSupplier,
   BulkRemoveSuppliersVariables
 >(bulkRemoveSupplier);
+
+
+
+export const resetPassword = gql`
+  ${accountErrorFragment}
+  mutation supplierUpdate($id: ID!,$password: String!) {
+    supplierUpdate(id: $id,input:{password:$password}) {
+      errors: accountErrors {
+        ...AccountErrorFragment
+      }
+    }
+  }
+`;
+export const TypedResetPasswordMutation = TypedMutation<
+  resetSupplierPassword,
+  resetSupplierPasswordVariables
+  >(resetPassword);

@@ -205,7 +205,7 @@ const ExistProductsList: React.FC<ExistProductsListPageProps> = props => {
                 <TableCell className={classes.colType}>
                   {maybe<React.ReactNode>(() => ExistProduct.type, <Skeleton />)}
                 </TableCell>
-                <TableCell className={classes.colDate}>
+                <TableCell >
                   {maybe<React.ReactNode>(() => ExistProduct.createdAt.slice(0,10), <Skeleton />)}
                 </TableCell>
                 <TableCell className={classes.colName}>

@@ -52,7 +52,7 @@ const ExistProductsListPage: React.FC<ExistProductsListPageProps> = ({
 
   return (
     <Container>
-      <PageHeader title={intl.formatMessage(sectionNames.addNew)}>
+      <PageHeader title={intl.formatMessage(sectionNames.addExisting)}>
       </PageHeader>
       <Card>
         <FilterBar

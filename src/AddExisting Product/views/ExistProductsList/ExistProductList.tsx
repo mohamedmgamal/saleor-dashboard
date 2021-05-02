@@ -202,7 +202,7 @@ export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params
              }
              variant="delete"
              title={intl.formatMessage({
-               defaultMessage: "Delete Suppliers",
+               defaultMessage: "Delete Request",
                description: "dialog header"
              })}
            >

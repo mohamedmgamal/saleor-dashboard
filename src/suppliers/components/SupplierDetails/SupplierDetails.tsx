@@ -77,7 +77,6 @@ const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
           </>
         }
       />
-
       <CardContent className={classes.content}>
        <ControlledCheckbox
          // @ts-ignore

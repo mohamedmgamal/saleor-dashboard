@@ -11,7 +11,9 @@ import ErrorBoundary from "react-error-boundary";
 import TagManager from "react-gtm-module";
 import { useIntl } from "react-intl";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import { ExistingProductSection } from "./AddExisting Product";
+import { NewWareHouseSection } from "./AddWarehouseRequests";
 import AppsSection from "./apps";
 import { appsSection } from "./apps/urls";
 import AttributeSection from "./attributes";
@@ -59,6 +61,7 @@ import { PermissionEnum } from "./types/globalTypes";
 import { wareHouseMangerSection } from "./wareHouseMangers";
 import WarehouseSection from "./warehouses";
 import { warehouseSection } from "./warehouses/urls";
+import { DeleteWarehouseSection } from "./DeleteWarehouseRequests";
 
 
 if (process.env.GTM_ID !== undefined) {
@@ -277,12 +280,14 @@ const Routes: React.FC = () => {
              />
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/AddWareHouse/"}
-              ><h1>add WareHouse</h1></SectionRoute>
+                path={"/AddWareHouse"}
+              component={NewWareHouseSection}
+              />
               <SectionRoute
                 permissions={[PermissionEnum.MANAGE_PRODUCTS]}
-                path={"/DeleteWareHouse/"}
-              ><h1>Delete WareHouse</h1></SectionRoute>
+                path={"/DeleteWareHouse"}
+                component={DeleteWarehouseSection}
+              />
 
 ///////////////////////////////////////////////////////////////////////////////
               {createConfigurationMenu(intl).filter(menu =>

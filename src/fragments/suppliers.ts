@@ -14,6 +14,7 @@ export const supplierFragment = gql`
 
 export const supplierDetailsFragment = gql`
   fragment SupplierDetailsFragment on Supplier {
+    id
     email 
     firstName
     lastName

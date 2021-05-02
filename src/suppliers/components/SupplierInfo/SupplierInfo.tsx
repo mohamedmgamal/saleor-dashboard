@@ -1,3 +1,4 @@
+import { Button, Dialog, DialogActions,DialogContent, DialogContentText, DialogTitle } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,7 +13,9 @@ import { getFormErrors } from "@saleor/utils/errors";
 import getAccountErrorMessage from "@saleor/utils/errors/account";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-
+import { resetPassword } from "@saleor/suppliers/mutations";
+import { useMutation } from "react-apollo";
+import useNotifier from "@saleor/hooks/useNotifier";
 const useStyles = makeStyles(
   theme => ({
     content: {
@@ -30,6 +33,7 @@ const useStyles = makeStyles(
 
 export interface SupplierInfoProps {
   data: {
+    id:string
     firstName: string;
     lastName: string;
     email: string;
@@ -46,7 +50,36 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
   const classes = useStyles(props);
   const intl = useIntl();
   const formErrors = getFormErrors(["firstName", "lastName", "email","phone"], errors);
-
+  const [PasswordUpdate] = useMutation(resetPassword);
+  const [open, setOpen] = React.useState(false);
+  const [newPassword, setNewPassword] = React.useState("");
+ // const { loading, error, data } = useQuery(resetPassword);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const notify = useNotifier();
+  const handleSubmit = () => {
+    if (newPassword.length<4)
+    {
+      notify({
+        status: "error",
+        text: "too short password"
+      });
+      return ;
+    }
+    PasswordUpdate({variables:{id:data.id,password:newPassword}})
+    notify({
+      status: "success",
+      text: intl.formatMessage(commonMessages.savedChanges)
+    });
+    setOpen(false);
+  };
+const passwordHandler=(e)=>{
+  setNewPassword(e.target.value)
+}
   return (
     <Card>
       <CardTitle
@@ -115,6 +148,37 @@ const SupplierInfo: React.FC<SupplierInfoProps> = props => {
           value={data.phone}
           onChange={onChange}
         />
+        </Grid>
+        <Grid>
+        <div style={{marginTop:"5%"}}>
+          <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+           <span style={{color:"red"}}> Reset password</span>
+          </Button>
+          <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">new password</DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+               <span style={{color:"red"}}> Password Reset</span>
+              </DialogContentText>
+              <TextField
+                autoFocus
+                onChange={passwordHandler}
+                id="name"
+                label="New Password"
+                type="password"
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSubmit} color="primary">
+                Reset
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
         </Grid>
       </CardContent>
     </Card>

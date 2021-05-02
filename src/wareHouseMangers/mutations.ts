@@ -1,8 +1,7 @@
  import { fragmentAddress } from "@saleor/fragments/address";
 import {
   customerAddressesFragment,
-  supplierDetailsFragment
-} from "@saleor/fragments/suppliers";
+} from "@saleor/fragments/wareHouseMangers";
 import { accountErrorFragment } from "@saleor/fragments/errors";
 import gql from "graphql-tag";
 
@@ -33,7 +32,7 @@ import {
 } from "./types/SetSupplierDefaultAddress";
 import {
   UpdateWareHouseManger,
-  UpdateSupplierVariables
+  UpdateWarehouseMangerVariables
 } from "./types/UpdateWareHouseManger";
 import {
   UpdateSupplierAddress,
@@ -42,21 +41,31 @@ import {
 
 const updateSupplier = gql`
   ${accountErrorFragment}
-  ${supplierDetailsFragment}
-  mutation supplierUpdate($id: ID!, $input: SupplierUpdateInput!) {
-    supplierUpdate(id: $id, input: $input) {
+  mutation warehouseManagerUpdate($id: ID!, $input: WarehouseManagerUpdateInput!) {
+    warehouseManagerUpdate(id: $id, input: $input) {
       errors : accountErrors {
         ...AccountErrorFragment
       }
-      supplier {
-       ...SupplierDetailsFragment
+      warehouseManager {
+       id
+    supplier{
+      firstName
+      lastName
+    }
+    dateJoined
+    note
+    isActive
+    phone
+    firstName
+    lastName
+    supplierId
       }
     }
   }
 `;
-export const TypedUpdateSupplierMutation = TypedMutation<
+export const TypedUpdateWarehouseMangerMutation = TypedMutation<
   UpdateWareHouseManger,
-  UpdateSupplierVariables
+  UpdateWarehouseMangerVariables
 >(updateSupplier);
 
 const createWarehouseManager = gql`
@@ -79,8 +88,8 @@ export const TypedCreateWarehouseManagerMutation = TypedMutation<
 
 const removeSupplier = gql`
   ${accountErrorFragment}
-  mutation RemoveCustomer($id: ID!) {
-    customerDelete(id: $id) {
+  mutation deleteWarehouseManager($id: ID!) {
+    deleteWarehouseManager(id: $id) {
       errors: accountErrors {
         ...AccountErrorFragment
       }
@@ -190,3 +199,14 @@ export const TypedBulkRemoveSuppliers = TypedMutation<
   BulkRemoveWarehouseManger,
   BulkRemoveSuppliersVariables
 >(bulkRemoveSupplier);
+
+ export const resetPassword = gql`
+  ${accountErrorFragment}
+  mutation warehouseManagerUpdate($id: ID!,$password: String!) {
+    warehouseManagerUpdate(id: $id,input:{password:$password}) {
+      errors: accountErrors {
+        ...AccountErrorFragment
+      }
+    }
+  }
+`;

@@ -32,6 +32,7 @@ function createFilterHandlers<
     navigate(
       createUrl({
         ...params,
+        // @ts-ignore
         ...getFilterQueryParams(filter, getFilterQueryParam),
         activeTab: undefined
       })
