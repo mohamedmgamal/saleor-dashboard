@@ -202,6 +202,7 @@ const SiteSettingsPage: React.FC<SiteSettingsPageProps> = props => {
                 </Typography>
               </div>
               <CompanyAddressInput
+                // @ts-ignore
                 data={data}
                 displayCountry={displayCountry}
                 countries={countryChoices}

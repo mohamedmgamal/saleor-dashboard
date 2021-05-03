@@ -47,13 +47,13 @@ const WarehouseCreate: React.FC = () => {
           createWarehouse({
             variables: {
               input: {
+                supplier: data.supplier,
                 address: {
                   city: data.city,
                   cityArea: data.cityArea,
                   country: findValueInEnum(data.country, CountryCode),
-                  countryArea: data.countryArea,
+                  governorate: data.governorate,
                   phone: data.phone,
-                  postalCode: data.postalCode,
                   streetAddress1: data.streetAddress1,
                   streetAddress2: data.streetAddress2
                 },

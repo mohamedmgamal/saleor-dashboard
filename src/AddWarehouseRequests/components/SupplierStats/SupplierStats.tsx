@@ -10,6 +10,7 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { maybe } from "../../../misc";
+// @ts-ignore
 import { SupplierDetails_user } from "../../types/NewWarehouseDetails";
 
 const useStyles = makeStyles(

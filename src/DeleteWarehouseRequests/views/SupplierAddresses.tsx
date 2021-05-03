@@ -13,9 +13,13 @@ import { maybe } from "../../misc";
 import SupplierAddressDialog from "../components/SupplierAddressDialog";
 import SupplierAddressListPage from "../components/SupplierAddressListPage";
 import {
+  // @ts-ignore
   TypedCreateSupplierAddressMutation,
+  // @ts-ignore
   TypedRemoveSupplierAddressMutation,
+  // @ts-ignore
   TypedSetSupplierDefaultAddressMutation,
+  // @ts-ignore
   TypedUpdateSupplierAddressMutation
 } from "../mutations";
 import { TypedSupplierAddressesQuery } from "../queries";
@@ -24,9 +28,13 @@ import { RemoveSupplierAddress } from "../types/RemoveSupplierAddress";
 import { SetSupplierDefaultAddress } from "../types/SetSupplierDefaultAddress";
 import { UpdateSupplierAddress } from "../types/UpdateSupplierAddress";
 import {
+  // @ts-ignore
   supplierAddressesUrl,
+  // @ts-ignore
   SupplierAddressesUrlDialog,
+  // @ts-ignore
   SupplierAddressesUrlQueryParams,
+  // @ts-ignore
   supplierUrl
 } from "../urls";
 

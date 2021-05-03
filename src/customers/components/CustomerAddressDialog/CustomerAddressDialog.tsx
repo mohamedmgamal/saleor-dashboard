@@ -71,15 +71,14 @@ const CustomerAddressDialog = withStyles(
     );
 
     const initialForm: AddressTypeInput = {
+      supplier: null,
       city: maybe(() => address.city, ""),
       cityArea: maybe(() => address.cityArea, ""),
       companyName: maybe(() => address.companyName, ""),
       country: maybe(() => address.country.code, ""),
-      countryArea: maybe(() => address.countryArea, ""),
       firstName: maybe(() => address.firstName, ""),
       lastName: maybe(() => address.lastName, ""),
       phone: maybe(() => address.phone, ""),
-      postalCode: maybe(() => address.postalCode, ""),
       streetAddress1: maybe(() => address.streetAddress1, ""),
       streetAddress2: maybe(() => address.streetAddress2, "")
     };

@@ -1,5 +1,5 @@
 // import { PaymentChargeStatusEnum } from "../types/globalTypes";
-// import { ListExistingProducts_ExistingProducts_edges_node } from "./types/ListExistProducts";
+// import { ListSuppliers_Suppliers_edges_node } from "./types/ListExistProducts";
 // import { SupplierAddresses_user } from "./types/SupplierAddresses";
 // import { SupplierDetails_user } from "./types/ExistingProductDetails";
 //
@@ -682,7 +682,296 @@
 // // @ts-ignore
 // // @ts-ignore
 // // @ts-ignore
-// export const SupplierList: ListExistingProducts_ExistingProducts_edges_node[] = [];
+// export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
+//   {
+//     __typename: "User",
+//     email: "Curtis.bailey@example.com",
+//     firstName: "curtis",
+//     id: "VXNlcjox",
+//     lastName: "Bailey",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "curtis.bailey@example.com",
+//     firstName: "Curtis",
+//     id: "VXNlcjox",
+//     lastName: "Bailey",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "elizabeth.vaughn@example.com",
+//     firstName: "Elizabeth",
+//     id: "VXNlcjoy",
+//     lastName: "Vaughn",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "michael.martinez@example.com",
+//     firstName: "Michael",
+//     id: "VXNlcjoz",
+//     lastName: "Martinez",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "kayla.griffin@example.com",
+//     firstName: "Kayla",
+//     id: "VXNlcjo0",
+//     lastName: "Griffin",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "donna.robinson@example.com",
+//     firstName: "Donna",
+//     id: "VXNlcjo1",
+//     lastName: "Robinson",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "james.ball@example.com",
+//     firstName: "James",
+//     id: "VXNlcjo2",
+//     lastName: "Bqall",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "anthony.gonzalez@example.com",
+//     firstName: "Anthony",
+//     id: "VXNlcjo3",
+//     lastName: "Gonzalez",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "anthony.gonzalez@example.com",
+//     firstName: "Anthony",
+//     id: "VXNlcjo3",
+//     lastName: "Gonzalez",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "wesley.davis@example.com",
+//     firstName: "Wesley",
+//     id: "VXNlcjo4",
+//     lastName: "Davis",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "laura.stone@example.com",
+//     firstName: "Laura",
+//     id: "VXNlcjo5",
+//     lastName: "Stone",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "william.miller@example.com",
+//     firstName: "William",
+//     id: "VXNlcjoxMA==",
+//     lastName: "Miller",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "donald.solomon@example.com",
+//     firstName: "Donald",
+//     id: "VXNlcjoxMQ==",
+//     lastName: "Solomon",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "anthony.young@example.com",
+//     firstName: "Anthony",
+//     id: "VXNlcjoxMg==",
+//     lastName: "Young",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "sharon.hanson@example.com",
+//     firstName: "Hanson",
+//     id: "VXNlcjoxMw==",
+//     lastName: "Sharon",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "laura.jensen@example.com",
+//     firstName: "Laura",
+//     id: "VXNlcjoxNA==",
+//     lastName: "Jensen",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "mark.lee@example.com",
+//     firstName: "Mark",
+//     id: "VXNlcjoxNQ==",
+//     lastName: "Lee",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 1
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "david.lawson@example.com",
+//     firstName: "David",
+//     id: "VXNlcjoxNg==",
+//     lastName: "Lawson",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "david.lawson@example.com",
+//     firstName: "David",
+//     id: "VXNlcjoxNg==",
+//     lastName: "Lawson",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 2
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "faith.smith@example.com",
+//     firstName: "Faith",
+//     id: "VXNlcjoxNw==",
+//     lastName: "Smith",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "john.jones@example.com",
+//     firstName: "John",
+//     id: "VXNlcjoxOA==",
+//     lastName: "Jones",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "ronald.fisher@example.com",
+//     firstName: "Ronald",
+//     id: "VXNlcjoxOQ==",
+//     lastName: "Fisher",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "jason.gray@example.com",
+//     firstName: "Jason",
+//     id: "VXNlcjoyMA==",
+//     lastName: "Gray",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 0
+//     }
+//   },
+//   {
+//     __typename: "User",
+//     email: "admin@example.com",
+//     firstName: "Tom",
+//     id: "VXNlcjoyMQ==",
+//     lastName: "Cooper",
+//     // @ts-ignore
+//     orders: {
+//       __typename: "OrderCountableConnection",
+//       totalCount: 6
+//     }
+//   }
+// ];
 // export const Supplier: SupplierDetails_user & SupplierAddresses_user = {
 //   __typename: "User",
 //   addresses: [
@@ -725,9 +1014,86 @@
 //       streetAddress2: null
 //     }
 //   ],
+//   dateJoined: "2017-05-07T09:37:30.124154+00:00",
+//   defaultBillingAddress: {
+//     __typename: "Address",
+//     city: "Port Danielshire",
+//     cityArea: "",
+//     companyName: "",
+//     country: {
+//       __typename: "CountryDisplay",
+//       code: "SE",
+//       country: "Szwecja"
+//     },
+//     countryArea: "",
+//     firstName: "Elizabeth",
+//     id: "QWRkcmVzczoy",
+//     lastName: "Vaughn",
+//     phone: "",
+//     postalCode: "52203",
+//     streetAddress1: "419 Ruiz Orchard Apt. 199",
+//     streetAddress2: ""
+//   },
+//   defaultShippingAddress: {
+//     __typename: "Address",
+//     city: "Port Danielshire",
+//     cityArea: "",
+//     companyName: "",
+//     country: {
+//       __typename: "CountryDisplay",
+//       code: "SE",
+//       country: "Szwecja"
+//     },
+//     countryArea: "",
+//     firstName: "Elizabeth",
+//     id: "QWRkcmVzczoy",
+//     lastName: "Vaughn",
+//     phone: "",
+//     postalCode: "52203",
+//     streetAddress1: "419 Ruiz Orchard Apt. 199",
+//     streetAddress2: ""
+//   },
 //   email: "elizabeth.vaughn@example.com",
 //   firstName: "Tom",
 //   id: "VXNlcjoy",
+//   isActive: true,
+//   lastLogin: "2018-05-07T09:37:30.124154+00:00",
 //   lastName: "Cooper",
-//
+//   lastPlacedOrder: {
+//     __typename: "OrderCountableConnection",
+//     edges: [
+//       {
+//         __typename: "OrderCountableEdge",
+//         node: {
+//           __typename: "Order",
+//           created: "2018-05-07T09:37:30.124154+00:00",
+//           id: "T3JkZXI6MTk="
+//         }
+//       }
+//     ]
+//   },
+//   note: null,
+//   orders: {
+//     __typename: "OrderCountableConnection",
+//     edges: [
+//       {
+//         __typename: "OrderCountableEdge",
+//         node: {
+//           __typename: "Order",
+//           created: "2018-05-07T09:37:30.124154+00:00",
+//           id: "T3JkZXI6MTk=",
+//           number: "8234",
+//           paymentStatus: PaymentChargeStatusEnum.FULLY_CHARGED,
+//           total: {
+//             __typename: "TaxedMoney",
+//             gross: {
+//               __typename: "Money",
+//               amount: 1215.89,
+//               currency: "USD"
+//             }
+//           }
+//         }
+//       }
+//     ]
+//   }
 // };

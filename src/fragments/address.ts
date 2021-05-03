@@ -10,12 +10,11 @@ export const fragmentAddress = gql`
       code
       country
     }
-    countryArea
+    governorate
     firstName
     id
     lastName
     phone
-    postalCode
     streetAddress1
     streetAddress2
   }

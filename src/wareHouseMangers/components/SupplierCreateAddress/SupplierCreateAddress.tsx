@@ -60,6 +60,7 @@ const SupplierCreateAddress: React.FC<SupplierCreateAddressProps> = props => {
         <FormSpacer />
         <AddressEdit
           countries={countries}
+          // @ts-ignore
           data={data}
           disabled={disabled}
           countryDisplayValue={countryDisplayName}

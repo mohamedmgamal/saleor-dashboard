@@ -65,12 +65,10 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
     "city",
     "cityArea",
     "country",
-    "countryArea",
     "firstName",
     "lastName",
     "companyName",
     "phone",
-    "postalCode",
     "streetAddress1",
     "streetAddress2"
   ];
@@ -180,20 +178,7 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
             fullWidth
           />
         </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!formErrors.postalCode}
-            helperText={getErrorMessage(formErrors.postalCode, intl)}
-            label={intl.formatMessage({
-              defaultMessage: "ZIP / Postal code"
-            })}
-            name="postalCode"
-            onChange={onChange}
-            value={data.postalCode}
-            fullWidth
-          />
-        </div>
+        <div></div>
       </div>
 
       <FormSpacer />
@@ -216,20 +201,7 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
             }}
           />
         </div>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!formErrors.countryArea}
-            helperText={getErrorMessage(formErrors.countryArea, intl)}
-            label={intl.formatMessage({
-              defaultMessage: "Country area"
-            })}
-            name="countryArea"
-            onChange={onChange}
-            value={data.countryArea}
-            fullWidth
-          />
-        </div>
+        <div></div>
       </div>
     </>
   );

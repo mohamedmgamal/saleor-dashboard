@@ -29,16 +29,6 @@ const AddressFormatter: React.FC<AddressFormatterProps> = ({ address }) => {
         <br />
         {address.streetAddress2}
       </Typography>
-      <Typography component="p">
-        {" "}
-        {address.postalCode} {address.city}
-        {address.cityArea ? ", " + address.cityArea : ""}
-      </Typography>
-      <Typography component="p">
-        {address.countryArea
-          ? address.countryArea + ", " + address.country.country
-          : address.country.country}
-      </Typography>
     </address>
   );
 };

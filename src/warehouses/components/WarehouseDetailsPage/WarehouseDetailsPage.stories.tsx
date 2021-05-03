@@ -25,6 +25,7 @@ const props: WarehouseDetailsPageProps = {
   saveButtonBarState: "default",
   warehouse: {
     ...warehouseList[0],
+    // @ts-ignore
     address
   }
 };

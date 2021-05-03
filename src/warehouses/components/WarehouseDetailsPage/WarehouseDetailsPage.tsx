@@ -26,6 +26,7 @@ import WarehouseInfo from "../WarehouseInfo";
 import WarehouseZones from "../WarehouseZones";
 
 export interface WarehouseDetailsPageFormData extends AddressTypeInput {
+  supplier: any;
   name: string;
 }
 export interface WarehouseDetailsPageProps {
@@ -62,15 +63,16 @@ const WarehouseDetailsPage: React.FC<WarehouseDetailsPageProps> = ({
   } = useAddressValidation(onSubmit);
 
   const initialForm: WarehouseDetailsPageFormData = {
+    governorate: maybe(() => warehouse.address.governorate),
+    supplier: maybe(() => warehouse.supplier, { id: "" }),
     city: maybe(() => warehouse.address.city, ""),
     companyName: maybe(() => warehouse.address.companyName, ""),
     country: maybe(() =>
       findValueInEnum(warehouse.address.country.code, CountryCode)
     ),
-    countryArea: maybe(() => warehouse.address.countryArea, ""),
+    cityArea: maybe(() => warehouse.address.cityArea, ""),
     name: maybe(() => warehouse.name, ""),
     phone: maybe(() => warehouse.address.phone, ""),
-    postalCode: maybe(() => warehouse.address.postalCode, ""),
     streetAddress1: maybe(() => warehouse.address.streetAddress1, ""),
     streetAddress2: maybe(() => warehouse.address.streetAddress2, "")
   };

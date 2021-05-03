@@ -12,7 +12,6 @@ import {
 import { PartialMutationProviderOutput } from "@saleor/types";
 import { AddressInput } from "@saleor/types/globalTypes";
 import React from "react";
-
 enum FieldType {
   shipping = "shippingAddress",
   billing = "billingAddress"
@@ -71,6 +70,7 @@ const OrderAddressFields = ({
     <>
       <OrderAddressEditDialog
         {...addressFieldCommonProps}
+        // @ts-ignore
         address={transformAddressToForm(order?.shippingAddress)}
         open={action === "edit-shipping-address"}
         variant="shipping"
@@ -78,6 +78,7 @@ const OrderAddressFields = ({
       />
       <OrderAddressEditDialog
         {...addressFieldCommonProps}
+        // @ts-ignore
         address={transformAddressToForm(order?.billingAddress)}
         open={action === "edit-billing-address"}
         variant="billing"

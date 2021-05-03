@@ -1,8 +1,6 @@
 import { fragmentAddress } from "@saleor/fragments/address";
-import { accountErrorFragment } from "@saleor/fragments/errors";
-import {
-  newProductsFragment
-} from "@saleor/fragments/newProduc";
+import { supplierErrorFragment } from "@saleor/fragments/errors";
+import { newProductsFragment } from "@saleor/fragments/newProduc";
 import gql from "graphql-tag";
 
 import { TypedMutation } from "../mutations";
@@ -32,15 +30,15 @@ import {
 } from "./types/UpdateSupplierAddress";
 
 const updateNewProduct = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${newProductsFragment}
   mutation changeStatusNewProduct($input: ChangeStatusInput!) {
     changeStatusNewProduct(input: $input) {
-      errors : accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       request {
-       ...newProductsFragment
+        ...newProductsFragment
       }
     }
   }
@@ -51,11 +49,11 @@ export const TypedUpdateNewProductMutation = TypedMutation<
 >(updateNewProduct);
 
 const createSupplier = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   mutation supplierCreate($input: SupplierCreateInput!) {
     supplierCreate(input: $input) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       supplier {
         id
@@ -69,11 +67,11 @@ export const TypedCreateSupplierMutation = TypedMutation<
 >(createSupplier);
 
 const removeSupplier = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   mutation RemoveCustomer($id: ID!) {
     customerDelete(id: $id) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
     }
   }
@@ -84,12 +82,12 @@ export const TypedRemoveSupplierMutation = TypedMutation<
 >(removeSupplier);
 
 const updateSupplierAddress = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${fragmentAddress}
   mutation UpdateCustomerAddress($id: ID!, $input: AddressInput!) {
     addressUpdate(id: $id, input: $input) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       address {
         ...AddressFragment
@@ -103,12 +101,12 @@ export const TypedUpdateSupplierAddressMutation = TypedMutation<
 >(updateSupplierAddress);
 
 const removeSupplierAddress = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${newProductsFragment}
   mutation RemoveCustomerAddress($id: ID!) {
     addressDelete(id: $id) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       user {
         ...CustomerAddressesFragment
@@ -122,11 +120,11 @@ export const TypedRemoveSupplierAddressMutation = TypedMutation<
 >(removeSupplierAddress);
 
 export const bulkRemoveSupplier = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   mutation BulkRemoveCustomers($ids: [ID]!) {
     customerBulkDelete(ids: $ids) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
     }
   }

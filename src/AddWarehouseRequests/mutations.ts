@@ -1,25 +1,23 @@
-import { accountErrorFragment } from "@saleor/fragments/errors";
-import {
-  newWarehousesFragment
-} from "@saleor/fragments/RequestNewWareHouses.ts";
+import { supplierErrorFragment } from "@saleor/fragments/errors";
+import { newWarehousesFragment } from "@saleor/fragments/RequestNewWareHouses.ts";
 import gql from "graphql-tag";
 
 import { TypedMutation } from "../mutations";
 import {
-  UpdateWarehouse,
-  UpdateNewWarehouseVariables
+  UpdateNewWarehouseVariables,
+  UpdateWarehouse
 } from "./types/UpdateRequset";
 
 const updateNewProduct = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${newWarehousesFragment}
   mutation changeStatusAddWarehouse($input: ChangeStatusInput!) {
     changeStatusAddWarehouse(input: $input) {
-      errors : accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       request {
-       ...newWarehousesFragment
+        ...newWarehousesFragment
       }
     }
   }
@@ -29,15 +27,15 @@ export const TypedUpdateNewProductMutation = TypedMutation<
   UpdateNewWarehouseVariables
 >(updateNewProduct);
 const deletee = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${newWarehousesFragment}
   mutation changeStatusAddWarehouse($input: ChangeStatusInput!) {
     changeStatusAddWarehouse(input: $input) {
-      errors : accountErrors {
-        ...AccountErrorFragment
+      errors: supplierErrors {
+        ...supplierErrorFragment
       }
       request {
-       ...newWarehousesFragment
+        ...newWarehousesFragment
       }
     }
   }
@@ -45,5 +43,4 @@ const deletee = gql`
 export const TypedBulkRemoveSuppliers = TypedMutation<
   UpdateWarehouse,
   UpdateNewWarehouseVariables
-  >(deletee);
-
+>(deletee);

@@ -13,20 +13,27 @@ import { maybe } from "../../misc";
 import SupplierAddressDialog from "../components/SupplierAddressDialog";
 import SupplierAddressListPage from "../components/SupplierAddressListPage";
 import {
+  // @ts-ignore
   TypedCreateSupplierAddressMutation,
   TypedRemoveSupplierAddressMutation,
+  // @ts-ignore
   TypedSetSupplierDefaultAddressMutation,
   TypedUpdateSupplierAddressMutation
 } from "../mutations";
+// @ts-ignore
 import { TypedSupplierAddressesQuery } from "../queries";
 import { CreateSupplierAddress } from "../types/CreateSupplierAddress";
 import { RemoveSupplierAddress } from "../types/RemoveSupplierAddress";
 import { SetSupplierDefaultAddress } from "../types/SetSupplierDefaultAddress";
 import { UpdateSupplierAddress } from "../types/UpdateSupplierAddress";
 import {
+  // @ts-ignore
   supplierAddressesUrl,
+  // @ts-ignore
   SupplierAddressesUrlDialog,
+  // @ts-ignore
   SupplierAddressesUrlQueryParams,
+  // @ts-ignore
   supplierUrl
 } from "../urls";
 

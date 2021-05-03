@@ -22,6 +22,7 @@ import WarehouseInfo from "../WarehouseInfo";
 
 export interface WarehouseCreatePageFormData extends AddressTypeInput {
   name: string;
+  supplier: string;
 }
 export interface WarehouseCreatePageProps {
   countries: ShopInfo_shop_countries[];
@@ -33,15 +34,17 @@ export interface WarehouseCreatePageProps {
 }
 
 const initialForm: WarehouseCreatePageFormData = {
+  supplier: "",
   city: "",
   companyName: "",
   country: "",
-  countryArea: "",
+  governorate: "",
   name: "",
   phone: "",
-  postalCode: "",
   streetAddress1: "",
-  streetAddress2: ""
+  streetAddress2: "",
+  // todo:change it in future
+  cityArea: "4300"
 };
 
 const WarehouseCreatePage: React.FC<WarehouseCreatePageProps> = ({

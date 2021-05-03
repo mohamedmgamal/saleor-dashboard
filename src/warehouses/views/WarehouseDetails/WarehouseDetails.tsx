@@ -84,15 +84,15 @@ const WarehouseDetails: React.FC<WarehouseDetailsProps> = ({ id, params }) => {
         id,
         input: {
           address: {
+            governorate: data.governorate,
             city: data.city,
             cityArea: data.cityArea,
             country: findValueInEnum(data.country, CountryCode),
-            countryArea: data.countryArea,
             phone: data.phone,
-            postalCode: data.postalCode,
             streetAddress1: data.streetAddress1,
             streetAddress2: data.streetAddress2
           },
+          companyName: data.companyName,
           name: data.name
         }
       }

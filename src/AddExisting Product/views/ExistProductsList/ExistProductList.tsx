@@ -28,12 +28,12 @@ import ExistProductsListPage from "../../components/ExistProductListPage";
 import { TypedBulkRemoveSuppliers } from "../../mutations";
 import { usesExistingProductListQuery } from "../../queries";
 import { BulkRemoveSupplier } from "../../types/BulkRemoveSupplier";
- import {
+import {
   existingProductAddUrl,
-   existingProductListUrl,
-   ExistingProductListUrlDialog,
-   ExistingProductListUrlQueryParams,
-   existProductUrl
+  existingProductListUrl,
+  ExistingProductListUrlDialog,
+  ExistingProductListUrlQueryParams,
+  existProductUrl
 } from "../../urls";
 import {
   areFiltersApplied,
@@ -51,7 +51,9 @@ interface ExistingProductListProps {
   params: ExistingProductListUrlQueryParams;
 }
 
-export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params }) => {
+export const ExistingProductList: React.FC<ExistingProductListProps> = ({
+  params
+}) => {
   const navigate = useNavigator();
   const notify = useNotifier();
   const paginate = usePaginator();
@@ -65,7 +67,7 @@ export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params
   const intl = useIntl();
   const shop = useShop();
   // TODO: error was here
-  const  paginationState   = createPaginationState(settings.rowNumber, params);
+  const paginationState = createPaginationState(settings.rowNumber, params);
   const queryVariables = React.useMemo(
     () => ({
       ...paginationState,
@@ -78,12 +80,13 @@ export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params
     displayLoader: true,
     variables: queryVariables
   });
+  // console.log(data)
   const tabs = getFilterTabs();
   const currentTab =
     params.activeTab === undefined
       ? areFiltersApplied(params)
-      ? tabs.length + 1
-      : 0
+        ? tabs.length + 1
+        : 0
       : parseInt(params.activeTab, 0);
 
   const [
@@ -101,7 +104,7 @@ export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params
   const [openModal, closeModal] = createDialogActionHandlers<
     ExistingProductListUrlDialog,
     ExistingProductListUrlQueryParams
-    >(navigate, existingProductListUrl, params);
+  >(navigate, existingProductListUrl, params);
 
   const handleTabChange = (tab: number) => {
     reset();
@@ -142,98 +145,105 @@ export const ExistingProductList: React.FC<ExistingProductListProps> = ({ params
     }
   };
 
-  const handleSort = createSortHandler(navigate, existingProductListUrl, params);
+  const handleSort = createSortHandler(
+    navigate,
+    existingProductListUrl,
+    params
+  );
   const currencySymbol = maybe(() => shop.defaultCurrency, "USD");
-  return(<TypedBulkRemoveSuppliers onCompleted={handleBulkSupplierDelete}>
-       {(BulkRemoveSupplier, bulkRemoveSuppliersOpts) => (
-         <>
-           <ExistProductsListPage
-             currencySymbol={currencySymbol}
-             currentTab={currentTab}
-             filterOpts={getFilterOpts(params)}
-             initialSearch={params.query || ""}
-             onSearchChange={handleSearchChange}
-             onFilterChange={changeFilters}
-             onAll={resetFilters}
-             onTabChange={handleTabChange}
-             onTabDelete={() => openModal("delete-search")}
-             onTabSave={() => openModal("save-search")}
-             tabs={tabs.map(tab => tab.name)}
-             ExistProducts={maybe(() => data.requestsExistProduct.edges.map(edge => edge.node))}
-             settings={settings}
-             disabled={loading}
-             pageInfo={pageInfo}
-             onAdd={() => navigate(existingProductAddUrl)}
-             onNextPage={loadNextPage}
-             onPreviousPage={loadPreviousPage}
-             onUpdateListSettings={updateListSettings}
-             onRowClick={id => () => navigate(existProductUrl(id))}
-             onSort={handleSort}
-             toolbar={
-               <IconButton
-                 color="primary"
-                 onClick={() =>
-                   openModal("remove", {
-                     ids: listElements
-                   })
-                 }
-               >
-                 <DeleteIcon />
-               </IconButton>
-             }
-             isChecked={isSelected}
-             selected={listElements.length}
-             sort={getSortParams(params)}
-             toggle={toggle}
-             toggleAll={toggleAll}
-           />
-           <ActionDialog
-             open={
-               params.action === "remove" && maybe(() => params.ids.length > 0)
-             }
-             onClose={closeModal}
-             confirmButtonState={bulkRemoveSuppliersOpts.status}
-             onConfirm={() =>
-               BulkRemoveSupplier({
-                 variables: {
-                   ids: params.ids
-                 }
-               })
-             }
-             variant="delete"
-             title={intl.formatMessage({
-               defaultMessage: "Delete Request",
-               description: "dialog header"
-             })}
-           >
-             <DialogContentText>
-               <FormattedMessage
-                 defaultMessage="{counter,plural,one{Are you sure you want to delete this Supplier?} other{Are you sure you want to delete {displayQuantity} Suppliers?}}"
-                 values={{
-                   counter: maybe(() => params.ids.length),
-                   displayQuantity: (
-                     <strong>{maybe(() => params.ids.length)}</strong>
-                   )
-                 }}
-               />
-             </DialogContentText>
-           </ActionDialog>
-           <SaveFilterTabDialog
-             open={params.action === "save-search"}
-             confirmButtonState="default"
-             onClose={closeModal}
-             onSubmit={handleTabSave}
-           />
-           <DeleteFilterTabDialog
-             open={params.action === "delete-search"}
-             confirmButtonState="default"
-             onClose={closeModal}
-             onSubmit={handleTabDelete}
-             tabName={maybe(() => tabs[currentTab - 1].name, "...")}
-           />
-         </>
-       )}
-     </TypedBulkRemoveSuppliers>
-   );
+  return (
+    <TypedBulkRemoveSuppliers onCompleted={handleBulkSupplierDelete}>
+      {(BulkRemoveSupplier, bulkRemoveSuppliersOpts) => (
+        <>
+          <ExistProductsListPage
+            currencySymbol={currencySymbol}
+            currentTab={currentTab}
+            filterOpts={getFilterOpts(params)}
+            initialSearch={params.query || ""}
+            onSearchChange={handleSearchChange}
+            onFilterChange={changeFilters}
+            onAll={resetFilters}
+            onTabChange={handleTabChange}
+            onTabDelete={() => openModal("delete-search")}
+            onTabSave={() => openModal("save-search")}
+            tabs={tabs.map(tab => tab.name)}
+            ExistProducts={maybe(() =>
+              data.requestsExistProduct.edges.map(edge => edge.node)
+            )}
+            settings={settings}
+            disabled={loading}
+            pageInfo={pageInfo}
+            onAdd={() => navigate(existingProductAddUrl)}
+            onNextPage={loadNextPage}
+            onPreviousPage={loadPreviousPage}
+            onUpdateListSettings={updateListSettings}
+            onRowClick={id => () => navigate(existProductUrl(id))}
+            onSort={handleSort}
+            toolbar={
+              <IconButton
+                color="primary"
+                onClick={() =>
+                  openModal("remove", {
+                    ids: listElements
+                  })
+                }
+              >
+                <DeleteIcon />
+              </IconButton>
+            }
+            isChecked={isSelected}
+            selected={listElements.length}
+            sort={getSortParams(params)}
+            toggle={toggle}
+            toggleAll={toggleAll}
+          />
+          <ActionDialog
+            open={
+              params.action === "remove" && maybe(() => params.ids.length > 0)
+            }
+            onClose={closeModal}
+            confirmButtonState={bulkRemoveSuppliersOpts.status}
+            onConfirm={() =>
+              BulkRemoveSupplier({
+                variables: {
+                  ids: params.ids
+                }
+              })
+            }
+            variant="delete"
+            title={intl.formatMessage({
+              defaultMessage: "Delete Request",
+              description: "dialog header"
+            })}
+          >
+            <DialogContentText>
+              <FormattedMessage
+                defaultMessage="{counter,plural,one{Are you sure you want to delete this Supplier?} other{Are you sure you want to delete {displayQuantity} Suppliers?}}"
+                values={{
+                  counter: maybe(() => params.ids.length),
+                  displayQuantity: (
+                    <strong>{maybe(() => params.ids.length)}</strong>
+                  )
+                }}
+              />
+            </DialogContentText>
+          </ActionDialog>
+          <SaveFilterTabDialog
+            open={params.action === "save-search"}
+            confirmButtonState="default"
+            onClose={closeModal}
+            onSubmit={handleTabSave}
+          />
+          <DeleteFilterTabDialog
+            open={params.action === "delete-search"}
+            confirmButtonState="default"
+            onClose={closeModal}
+            onSubmit={handleTabDelete}
+            tabName={maybe(() => tabs[currentTab - 1].name, "...")}
+          />
+        </>
+      )}
+    </TypedBulkRemoveSuppliers>
+  );
 };
 export default ExistingProductList;

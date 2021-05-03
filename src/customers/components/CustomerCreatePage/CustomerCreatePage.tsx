@@ -32,11 +32,11 @@ export interface CustomerCreatePageSubmitData
 }
 
 const initialForm: CustomerCreatePageFormData & AddressTypeInput = {
+  supplier: "",
   city: "",
   cityArea: "",
   companyName: "",
   country: "",
-  countryArea: "",
   customerFirstName: "",
   customerLastName: "",
   email: "",
@@ -44,7 +44,6 @@ const initialForm: CustomerCreatePageFormData & AddressTypeInput = {
   lastName: "",
   note: "",
   phone: "",
-  postalCode: "",
   streetAddress1: "",
   streetAddress2: ""
 };

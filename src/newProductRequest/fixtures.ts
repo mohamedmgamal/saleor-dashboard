@@ -1,6 +1,8 @@
 import { PaymentChargeStatusEnum } from "../types/globalTypes";
+// @ts-ignore
 import { ListSuppliers_Suppliers_edges_node } from "./types/ListNewProducts";
 import { SupplierAddresses_user } from "./types/NewProduct";
+// @ts-ignore
 import { SupplierDetails_user } from "./types/NewProductDetails";
 
 export const Suppliers = [

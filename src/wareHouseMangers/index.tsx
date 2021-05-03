@@ -14,13 +14,14 @@ import {
   wareHouseMangerPath,
   wareHouseMangerUrlQueryParams
 } from "./urls";
-
 import SupplierCreateView from "./views/SupplierCreate";
 import SupplierDetailsViewComponent from "./views/WarehouseMangerDetails";
 import SupplierListViewComponent from "./views/WareHouseMangersList";
 // import { constant } from "lodash-es";
 
-export const wareHouseMangerListView: React.FC<RouteComponentProps<{}>> = ({ location }) => {
+export const wareHouseMangerListView: React.FC<RouteComponentProps<{}>> = ({
+  location
+}) => {
   const qs = parseQs(location.search.substr(1));
   const params: wareHouseMangerListUrlQueryParams = asSortParams(
     qs,
@@ -35,7 +36,7 @@ interface SupplierDetailsRouteParams {
 }
 const SupplierDetailsView: React.FC<RouteComponentProps<
   SupplierDetailsRouteParams
-  >> = ({ location, match }) => {
+>> = ({ location, match }) => {
   const qs = parseQs(location.search.substr(1));
   const params: wareHouseMangerUrlQueryParams = qs;
 
@@ -47,16 +48,26 @@ const SupplierDetailsView: React.FC<RouteComponentProps<
   );
 };
 
-
 export const wareHouseMangerSection: React.FC<{}> = () => {
   const intl = useIntl();
   return (
     <>
       <WindowTitle title={intl.formatMessage(sectionNames.WareHouse_Manager)} />
       <Switch>
-        <Route exact path={wareHouseMangerListPath} component={wareHouseMangerListView} />
-        <Route exact path={wareHouseMangerAddPath} component={SupplierCreateView} />
-        <Route path={wareHouseMangerPath(":id")} component={SupplierDetailsView} />
+        <Route
+          exact
+          path={wareHouseMangerListPath}
+          component={wareHouseMangerListView}
+        />
+        <Route
+          exact
+          path={wareHouseMangerAddPath}
+          component={SupplierCreateView}
+        />
+        <Route
+          path={wareHouseMangerPath(":id")}
+          component={SupplierDetailsView}
+        />
       </Switch>
     </>
   );

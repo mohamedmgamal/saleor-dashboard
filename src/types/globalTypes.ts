@@ -1689,13 +1689,13 @@ export interface WarehouseAddressInput {
   streetAddress2?: string | null;
   city: string;
   cityArea?: string | null;
-  postalCode?: string | null;
   country: CountryCode;
-  countryArea?: string | null;
+  governorate?: string | null;
   phone?: string | null;
 }
 
 export interface WarehouseCreateInput {
+  supplier:string|null,
   slug?: string | null;
   companyName?: string | null;
   email?: string | null;
@@ -1715,7 +1715,9 @@ export interface WarehouseSortingInput {
 }
 
 export interface WarehouseUpdateInput {
-  slug?: string | null;
+  // supplier?:{
+  //   id:string
+  // };
   companyName?: string | null;
   email?: string | null;
   name?: string | null;

@@ -69,9 +69,8 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
     "streetAddress1",
     "streetAddress2",
     "city",
-    "postalCode",
     "country",
-    "countryArea",
+    "governorate",
     "companyArea",
     "phone"
   ];
@@ -131,18 +130,6 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
           value={data.city}
           fullWidth
         />
-        <TextField
-          disabled={disabled}
-          error={!!formErrors.postalCode}
-          helperText={getErrorMessage(formErrors.postalCode, intl)}
-          label={intl.formatMessage({
-            defaultMessage: "ZIP / Postal code"
-          })}
-          name={"postalCode" as keyof AddressTypeInput}
-          onChange={onChange}
-          value={data.postalCode}
-          fullWidth
-        />
       </Grid>
       <FormSpacer />
       <Grid>
@@ -166,14 +153,14 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
         />
         <TextField
           disabled={disabled}
-          error={!!formErrors.countryArea}
-          helperText={getErrorMessage(formErrors.countryArea, intl)}
+          error={!!formErrors.governorate}
+          helperText={getErrorMessage(formErrors.governorate, intl)}
           label={intl.formatMessage({
-            defaultMessage: "Country area"
+            defaultMessage: "Governorate"
           })}
-          name={"countryArea" as keyof AddressTypeInput}
+          name={"governorate" as keyof AddressTypeInput}
           onChange={onChange}
-          value={data.countryArea}
+          value={data.governorate || ""}
           fullWidth
         />
       </Grid>

@@ -39,17 +39,16 @@ export interface WarehouseUpdate_updateWarehouse_warehouse_address_country {
 export interface WarehouseUpdate_updateWarehouse_warehouse_address {
   __typename: "Address";
   city: string;
-  cityArea: string;
   companyName: string;
   country: WarehouseUpdate_updateWarehouse_warehouse_address_country;
-  countryArea: string;
+  cityArea: string;
   firstName: string;
   id: string;
   lastName: string;
   phone: string | null;
-  postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
+  governorate:string
 }
 
 export interface WarehouseUpdate_updateWarehouse_warehouse {

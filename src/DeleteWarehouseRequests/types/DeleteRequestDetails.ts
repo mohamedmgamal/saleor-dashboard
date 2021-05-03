@@ -46,7 +46,7 @@ export interface RequestDetailsVariables {
   id: string;
 }
 export interface UpdateRequest {
-  changeStatusDeleteRequest: UpdateNewProduct_NewProductUpdate | null;
+  changeStatusDeleteWarehouse: UpdateNewProduct_NewProductUpdate | null;
 }
 
 export interface UpdateRequestVariables {

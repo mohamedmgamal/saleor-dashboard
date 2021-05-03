@@ -13,6 +13,7 @@ storiesOf("Orders / OrderAddressEditDialog", module)
   .add("shipping address", () => (
     <OrderAddressEditDialog
       confirmButtonState="default"
+      // @ts-ignore
       address={transformAddressToForm(order.shippingAddress)}
       countries={countries}
       errors={[]}
@@ -25,6 +26,7 @@ storiesOf("Orders / OrderAddressEditDialog", module)
   .add("billing address", () => (
     <OrderAddressEditDialog
       confirmButtonState="default"
+      // @ts-ignore
       address={transformAddressToForm(order.billingAddress)}
       countries={countries}
       errors={[]}

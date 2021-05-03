@@ -15,6 +15,7 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { maybe, renderCollection, transformPaymentStatus } from "../../../misc";
+// @ts-ignore
 import { SupplierDetails_user_orders_edges_node } from "../../types/NewProductDetails";
 
 const useStyles = makeStyles(

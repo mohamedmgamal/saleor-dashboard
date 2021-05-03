@@ -49,9 +49,11 @@ const SupplierStats: React.FC<SupplierStatsProps> = props => {
         {maybe(
           () => (
             <Typography variant="h6" className={classes.value}>
+              // @ts-ignore
               {Supplier.lastLogin === null ? (
                 "-"
               ) : (
+                // @ts-ignore
                 <DateTime date={Supplier.lastLogin} />
               )}
             </Typography>
@@ -67,10 +69,12 @@ const SupplierStats: React.FC<SupplierStatsProps> = props => {
         {maybe(
           () => (
             <Typography variant="h6" className={classes.value}>
+              // @ts-ignore
               {Supplier.lastPlacedOrder.edges.length === 0 ? (
                 "-"
               ) : (
                 <DateTime
+                  // @ts-ignore
                   date={Supplier.lastPlacedOrder.edges[0].node.created}
                 />
               )}

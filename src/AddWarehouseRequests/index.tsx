@@ -6,20 +6,19 @@ import { useIntl } from "react-intl";
 import { Route, RouteComponentProps, Switch } from "react-router-dom";
 
 import { WindowTitle } from "../components/WindowTitle";
-import {NewWareHousesListUrlSortField}from "./components/NewWareHousesList/NewWareHousesList";
+import { NewWareHousesListUrlSortField } from "./components/NewWareHousesList/NewWareHousesList";
 import {
-  newWareHouseAddressesPath,
-  NewWareHouseAddressesUrlQueryParams,
   newWareHouseListPath,
   NewWareHouseListUrlQueryParams,
   newWareHousePath,
   NewWareHouseUrlQueryParams
 } from "./urls";
 import SupplierListViewComponent from "./views/NewProductsList";
-import SupplierAddressesViewComponent from "./views/SupplierAddresses";
 import SupplierDetailsViewComponent from "./views/SupplierDetails";
 
-export const NewWarehouseListView: React.FC<RouteComponentProps<{}>> = ({ location }) => {
+export const NewWarehouseListView: React.FC<RouteComponentProps<{}>> = ({
+  location
+}) => {
   const qs = parseQs(location.search.substr(1));
   const params: NewWareHouseListUrlQueryParams = asSortParams(
     qs,
@@ -33,29 +32,12 @@ interface SupplierDetailsRouteParams {
 }
 const SupplierDetailsView: React.FC<RouteComponentProps<
   SupplierDetailsRouteParams
-  >> = ({ location, match }) => {
+>> = ({ location, match }) => {
   const qs = parseQs(location.search.substr(1));
   const params: NewWareHouseUrlQueryParams = qs;
 
   return (
     <SupplierDetailsViewComponent
-      id={decodeURIComponent(match.params.id)}
-      params={params}
-    />
-  );
-};
-
-interface SupplierAddressesRouteParams {
-  id: string;
-}
-const SupplierAddressesView: React.FC<RouteComponentProps<
-  SupplierAddressesRouteParams
-  >> = ({ match }) => {
-  const qs = parseQs(location.search.substr(1));
-  const params: NewWareHouseAddressesUrlQueryParams = qs;
-
-  return (
-    <SupplierAddressesViewComponent
       id={decodeURIComponent(match.params.id)}
       params={params}
     />
@@ -68,10 +50,10 @@ export const NewWareHouseSection: React.FC<{}> = () => {
     <>
       <WindowTitle title={intl.formatMessage(sectionNames.addWareHouse)} />
       <Switch>
-        <Route exact path={newWareHouseListPath} component={NewWarehouseListView} />
         <Route
-          path={newWareHouseAddressesPath(":id")}
-          component={SupplierAddressesView}
+          exact
+          path={newWareHouseListPath}
+          component={NewWarehouseListView}
         />
         <Route path={newWareHousePath(":id")} component={SupplierDetailsView} />
       </Switch>

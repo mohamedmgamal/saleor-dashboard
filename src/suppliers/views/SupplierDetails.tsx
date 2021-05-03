@@ -71,10 +71,10 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
             <TypedSupplierDetailsQuery displayLoader variables={{ id }}>
               {SupplierDetails => {
                 const supplier = SupplierDetails.data?.supplier;
-                console.log(supplier)
-                 if (supplier === null) {
-                   return <NotFoundPage onBack={handleBack} />;
-                 }
+                //  console.log(supplier)
+                if (supplier === null) {
+                  return <NotFoundPage onBack={handleBack} />;
+                }
 
                 const handleSubmit = async (
                   data: SupplierDetailsPageFormData
@@ -87,8 +87,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                         firstName: data.firstName,
                         isActive: data.isActive,
                         lastName: data.lastName,
-                        phone:data.phone
-
+                        phone: data.phone
                       }
                     }
                   });
@@ -110,7 +109,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                       }
                       errors={
                         // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors :: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                        updateSupplierOpts.data?.supplierUpdate.errors|| []
+                        updateSupplierOpts.data?.supplierUpdate.errors || []
                       }
                       saveButtonBar={updateSupplierOpts.status}
                       onAddressManageClick={() =>

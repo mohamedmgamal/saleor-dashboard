@@ -38,16 +38,16 @@ export interface WarehouseCreate_createWarehouse_warehouse_address_country {
 
 export interface WarehouseCreate_createWarehouse_warehouse_address {
   __typename: "Address";
+  supplier:string
   city: string;
   cityArea: string;
   companyName: string;
   country: WarehouseCreate_createWarehouse_warehouse_address_country;
-  countryArea: string;
+  governorate: string;
   firstName: string;
   id: string;
   lastName: string;
   phone: string | null;
-  postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
 }

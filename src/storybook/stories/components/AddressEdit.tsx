@@ -21,6 +21,7 @@ storiesOf("Generics / AddressEdit", module)
       <CardContent>
         <AddressEdit
           errors={[]}
+          // @ts-ignore
           data={transformAddressToForm(customer.defaultBillingAddress)}
           countries={countries.map(c => ({
             label: c.label,

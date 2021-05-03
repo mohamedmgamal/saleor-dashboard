@@ -15,18 +15,17 @@ import RequestDetailsPage, {
 } from "../components/RequestDetailsPage/RequestDetailsPage";
 import {
   TypedRemoveSupplierMutation,
-  TypedUpdateSupplierMutation
+  TypedUpdateRequestMutation
 } from "../mutations";
 import { TypedRequestDetailsQuery } from "../queries";
+import { UpdateRequest } from "../types/DeleteRequestDetails";
 import { RemoveSupplier } from "../types/RemoveSupplier";
-import {
-  UpdateRequest,
-} from "../types/DeleteRequestDetails";
 import {
   deleteWarehouseListUrl,
   DeleteWarehouseUrlQueryParams,
   existProductUrl,
-  newProductAddressesUrl} from "../urls";
+  newProductAddressesUrl
+} from "../urls";
 interface RequestDetailsViewProps {
   id: string;
   params: DeleteWarehouseUrlQueryParams;
@@ -42,7 +41,7 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
 
   const handleSupplierUpdateSuccess = (data: UpdateRequest) => {
     // console.log(data)
-    if (data.changeStatusDeleteRequest.errors.length < 1) {
+    if (data.changeStatusDeleteWarehouse.errors.length < 1) {
       notify({
         status: "success",
         text: intl.formatMessage(commonMessages.savedChanges)
@@ -67,14 +66,14 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
       onCompleted={handleSupplierRemoveSuccess}
     >
       {(removeSupplier, removeSupplierOpts) => (
-        <TypedUpdateSupplierMutation onCompleted={handleSupplierUpdateSuccess}>
+        <TypedUpdateRequestMutation onCompleted={handleSupplierUpdateSuccess}>
           {(updateSupplier, updateSupplierOpts) => (
             <TypedRequestDetailsQuery displayLoader variables={{ id }}>
               {result => {
                 const Request = result.data?.requestDeleteWarehouse;
-                 if (Request === null) {
-                   return <NotFoundPage onBack={handleBack} />;
-                 }
+                if (Request === null) {
+                  return <NotFoundPage onBack={handleBack} />;
+                }
 
                 const handleSubmit = async (
                   data: SupplierDetailsPageFormData
@@ -82,19 +81,21 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
                   const result = await updateSupplier({
                     variables: {
                       input: {
-                        requestId:data.id,
-                        status:data.status,
+                        requestId: data.id,
+                        status: data.status
                       }
                     }
                   });
 
-                  return result.data.changeStatusExistProduct.errors;
+                  return result.data.changeStatusDeleteWarehouse.errors;
                 };
 
                 return (
                   <>
                     <WindowTitle
-                      title={maybe(() => result.data.requestDeleteWarehouse.warehouse.name)}
+                      title={maybe(
+                        () => result.data.requestDeleteWarehouse.warehouse.name
+                      )}
                     />
                     <RequestDetailsPage
                       request={maybe(() => result.data.requestDeleteWarehouse)}
@@ -105,7 +106,8 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
                       }
                       errors={
                         // TODO: removed updateSupplierOpts.data?.SupplierUpdate.errors :: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                        updateSupplierOpts.data?.changeStatusExistProduct.errors|| []
+                        updateSupplierOpts.data?.changeStatusDeleteWarehouse
+                          .errors || []
                       }
                       saveButtonBar={updateSupplierOpts.status}
                       onAddressManageClick={() =>
@@ -125,7 +127,9 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
                         navigate(
                           orderListUrl({
                             customer: maybe(
-                              () => result.data.requestDeleteWarehouse.warehouse.name
+                              () =>
+                                result.data.requestDeleteWarehouse.warehouse
+                                  .name
                             )
                           })
                         )
@@ -150,7 +154,9 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
                             email: (
                               <strong>
                                 {maybe(
-                                  () => result.data.requestDeleteWarehouse.warehouse.name,
+                                  () =>
+                                    result.data.requestDeleteWarehouse.warehouse
+                                      .name,
                                   "..."
                                 )}
                               </strong>
@@ -164,7 +170,7 @@ export const RequestrDetailsView: React.FC<RequestDetailsViewProps> = ({
               }}
             </TypedRequestDetailsQuery>
           )}
-        </TypedUpdateSupplierMutation>
+        </TypedUpdateRequestMutation>
       )}
     </TypedRemoveSupplierMutation>
   );

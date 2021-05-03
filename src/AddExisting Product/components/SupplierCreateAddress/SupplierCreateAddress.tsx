@@ -1,5 +1,7 @@
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+// @ts-ignore
+import Dialog from "@material-ui/core/Dialog";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AddressEdit from "@saleor/components/AddressEdit";
@@ -60,6 +62,7 @@ const SupplierCreateAddress: React.FC<SupplierCreateAddressProps> = props => {
         <FormSpacer />
         <AddressEdit
           countries={countries}
+          // @ts-ignore
           data={data}
           disabled={disabled}
           countryDisplayValue={countryDisplayName}

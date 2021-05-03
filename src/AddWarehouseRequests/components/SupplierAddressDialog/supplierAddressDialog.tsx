@@ -101,6 +101,7 @@ const SupplierAddressDialog = withStyles(
         fullWidth
         maxWidth="sm"
       >
+        // @ts-ignore
         <Form initial={initialForm} onSubmit={handleSubmit}>
           {({ change, data }) => {
             const handleCountrySelect = createSingleAutocompleteSelectHandler(
@@ -127,6 +128,7 @@ const SupplierAddressDialog = withStyles(
                 <DialogContent className={classes.overflow}>
                   <AddressEdit
                     countries={countryChoices}
+                    // @ts-ignore
                     data={data}
                     countryDisplayValue={countryDisplayName}
                     errors={dialogErrors}

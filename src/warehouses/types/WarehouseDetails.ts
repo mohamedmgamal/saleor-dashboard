@@ -38,8 +38,8 @@ export interface WarehouseDetails_warehouse_address {
   firstName: string;
   id: string;
   lastName: string;
-  phone: string | null;
-  postalCode: string;
+  phone: string ;
+  governorate:string
   streetAddress1: string;
   streetAddress2: string;
 }
@@ -47,6 +47,9 @@ export interface WarehouseDetails_warehouse_address {
 export interface WarehouseDetails_warehouse {
   __typename: "Warehouse";
   id: string;
+  supplier:{
+    id:string
+  };
   name: string;
   shippingZones: WarehouseDetails_warehouse_shippingZones;
   address: WarehouseDetails_warehouse_address;

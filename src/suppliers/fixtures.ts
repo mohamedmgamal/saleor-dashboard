@@ -972,6 +972,7 @@ export const SupplierList: ListSuppliers_Suppliers_edges_node[] = [
     }
   }
 ];
+// @ts-ignore
 export const Supplier: SupplierDetails_user & SupplierAddresses_user = {
   __typename: "User",
   addresses: [

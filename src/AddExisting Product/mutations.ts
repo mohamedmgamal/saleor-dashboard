@@ -1,8 +1,8 @@
-
-import { accountErrorFragment } from "@saleor/fragments/errors";
 import {
-  existingProductsFragment
-} from "@saleor/fragments/existingProduct";
+  accountErrorFragment,
+  supplierErrorFragment
+} from "@saleor/fragments/errors";
+import { existingProductsFragment } from "@saleor/fragments/existingProduct";
 import gql from "graphql-tag";
 
 import { TypedMutation } from "../mutations";
@@ -23,17 +23,16 @@ import {
   RemoveSupplierVariables
 } from "./types/RemoveSupplier";
 
-
 const updateExist = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   ${existingProductsFragment}
   mutation changeStatusExistProduct($input: ChangeStatusInput!) {
     changeStatusExistProduct(input: $input) {
-      errors : accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierError
       }
       request {
-       ...existingProductsFragment
+        ...existingProductsFragment
       }
     }
   }
@@ -75,7 +74,6 @@ export const TypedRemoveSupplierMutation = TypedMutation<
   RemoveSupplier,
   RemoveSupplierVariables
 >(removeSupplier);
-
 
 export const bulkRemoveSupplier = gql`
   ${accountErrorFragment}

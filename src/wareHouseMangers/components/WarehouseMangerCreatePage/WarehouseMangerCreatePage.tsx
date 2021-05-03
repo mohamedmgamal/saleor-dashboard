@@ -13,28 +13,24 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { SupplierCreateData_shop_countries } from "../../types/SupplierCreateData";
 import WarehouseMangerCreateDetails from "../WarehouseMangerCreateDetails";
-import SupplierCreateNote from "../SupplierCreateNote/SupplierCreateNote";
-
+// import SupplierCreateNote from "../SupplierCreateNote/SupplierCreateNote";
 
 export interface SupplierCreatePageFormData {
   FirstName: string;
   LastName: string;
-  phone:string
-  password:string
+  phone: string;
+  password: string;
   email: string;
-  note: string;
-  supplierId:string
+  supplierId: string;
 }
 
-
 const initialForm: SupplierCreatePageFormData = {
-  password:"",
+  password: "",
   FirstName: "",
   LastName: "",
   email: "",
-  note: "",
   phone: "",
-  supplierId:""
+  supplierId: ""
 };
 
 export interface SupplierCreatePageProps {
@@ -54,72 +50,58 @@ const WarehouseMangerCreatePage: React.FC<SupplierCreatePageProps> = ({
   onSubmit
 }: SupplierCreatePageProps) => {
   const intl = useIntl();
-  const {
-  } =(formData =>
+  const {} = formData =>
     onSubmit({
-      password:formData.password,
-      phone:formData.phone,
+      password: formData.password,
+      phone: formData.phone,
       FirstName: formData.FirstName,
       LastName: formData.LastName,
       email: formData.email,
-      note: formData.note,
-      supplierId:formData.supplierId
-    })
-  );
-  const handleSubmit = (
-    formData: SupplierCreatePageFormData
-  ) => {
-      onSubmit({
-       phone:formData.phone,
-        password:formData.password,
-        FirstName: formData.FirstName,
-        LastName: formData.LastName,
-        email: formData.email,
-        note: formData.note,
-        supplierId:formData.supplierId
-      });
-
+      supplierId: formData.supplierId
+    });
+  const handleSubmit = (formData: SupplierCreatePageFormData) => {
+    onSubmit({
+      phone: formData.phone,
+      password: formData.password,
+      FirstName: formData.FirstName,
+      LastName: formData.LastName,
+      email: formData.email,
+      supplierId: formData.supplierId
+    });
   };
   const errors = [...apiErrors];
   return (
     <Form initial={initialForm} onSubmit={handleSubmit} confirmLeave>
       {({ change, data, hasChanged, submit }) => (
-          <Container>
-            <AppHeader onBack={onBack}>
-              <FormattedMessage {...sectionNames.WarehouseManagers} />
-            </AppHeader>
-            <PageHeader
-              title={intl.formatMessage({
-                defaultMessage: "Create Warehouse Manager",
-                description: "page header"
-              })}
-            />
-            <Grid>
-              <div>
-                <WarehouseMangerCreateDetails
-                  data={data}
-                  disabled={disabled}
-                  errors={errors}
-                  onChange={change}
-                />
-                <CardSpacer />
-                <CardSpacer />
-                <SupplierCreateNote
-                  data={data}
-                  disabled={disabled}
-                  errors={errors}
-                  onChange={change}
-                />
-              </div>
-            </Grid>
-            <SaveButtonBar
-              disabled={disabled || !hasChanged}
-              state={saveButtonBar}
-              onSave={submit}
-              onCancel={onBack}
-            />
-          </Container>
-        )}
+        <Container>
+          <AppHeader onBack={onBack}>
+            <FormattedMessage {...sectionNames.WarehouseManagers} />
+          </AppHeader>
+          <PageHeader
+            title={intl.formatMessage({
+              defaultMessage: "Create Warehouse Manager",
+              description: "page header"
+            })}
+          />
+          <Grid>
+            <div>
+              <WarehouseMangerCreateDetails
+                data={data}
+                disabled={disabled}
+                errors={errors}
+                onChange={change}
+              />
+              <CardSpacer />
+            </div>
+          </Grid>
+          <SaveButtonBar
+            disabled={disabled || !hasChanged}
+            state={saveButtonBar}
+            onSave={submit}
+            onCancel={onBack}
+          />
+        </Container>
+      )}
     </Form>
   );
 };

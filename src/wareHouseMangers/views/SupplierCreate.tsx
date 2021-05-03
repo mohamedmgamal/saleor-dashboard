@@ -11,13 +11,14 @@ import { TypedSupplierCreateDataQuery } from "../queries";
 import { CreateWarehouseManager } from "../types/CreateWarehouseManager";
 import { wareHouseMangerListUrl, wareHouseMangerUrl } from "../urls";
 
-
 export const SupplierCreate: React.FC<{}> = () => {
   const navigate = useNavigator();
   const notify = useNotifier();
   const intl = useIntl();
 
-  const handleCreateWarehouseManagerSuccess = (data: CreateWarehouseManager) => {
+  const handleCreateWarehouseManagerSuccess = (
+    data: CreateWarehouseManager
+  ) => {
     if (data.warehouseManagerCreate.errors.length === 0) {
       notify({
         status: "success",
@@ -25,14 +26,17 @@ export const SupplierCreate: React.FC<{}> = () => {
           defaultMessage: "Manger created"
         })
       });
-      navigate(wareHouseMangerUrl(data.warehouseManagerCreate.WarehouseManager.id));
+      navigate(
+        wareHouseMangerUrl(data.warehouseManagerCreate.WarehouseManager.id)
+      );
     }
-
   };
   return (
     <TypedSupplierCreateDataQuery displayLoader>
       {({ data, loading }) => (
-        <TypedCreateWarehouseManagerMutation onCompleted={handleCreateWarehouseManagerSuccess}>
+        <TypedCreateWarehouseManagerMutation
+          onCompleted={handleCreateWarehouseManagerSuccess}
+        >
           {(CreateWarehouseManager, createWarehouseManagerOpts) => (
             <>
               <WindowTitle
@@ -45,7 +49,10 @@ export const SupplierCreate: React.FC<{}> = () => {
                 countries={maybe(() => data.shop.countries, [])}
                 disabled={loading || createWarehouseManagerOpts.loading}
                 // ToDO: cant resolve errors of undefined need to be changed ps: bad response from Graphql
-                   errors={createWarehouseManagerOpts.data?.warehouseManagerCreate.errors||  []}
+                errors={
+                  createWarehouseManagerOpts.data?.warehouseManagerCreate
+                    .errors || []
+                }
                 saveButtonBar={createWarehouseManagerOpts.status}
                 onBack={() => navigate(wareHouseMangerListUrl())}
                 onSubmit={formData => {
@@ -54,14 +61,12 @@ export const SupplierCreate: React.FC<{}> = () => {
                       input: {
                         // eslint-disable-next-line radix
                         // supplierId:parseInt(formData.SupplierId),
-                        supplierId:formData.supplierId,
+                        supplierId: formData.supplierId,
                         email: formData.email,
                         firstName: formData.FirstName,
                         lastName: formData.LastName,
-                        note: formData.note,
                         phone: formData.phone,
-                        password: formData.password,
-                        isActive: true
+                        password: formData.password
                       }
                     }
                   });

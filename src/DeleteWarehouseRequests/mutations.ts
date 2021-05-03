@@ -1,8 +1,8 @@
-
-import { accountErrorFragment } from "@saleor/fragments/errors";
 import {
-  existingProductsFragment
-} from "@saleor/fragments/existingProduct";
+  accountErrorFragment,
+  supplierErrorFragment
+} from "@saleor/fragments/errors";
+import { deleteWarehousesFragment } from "@saleor/fragments/RequestDeleteWarehouse";
 import gql from "graphql-tag";
 
 import { TypedMutation } from "../mutations";
@@ -23,32 +23,31 @@ import {
   RemoveSupplierVariables
 } from "./types/RemoveSupplier";
 
-
 const updateRequest = gql`
-  ${accountErrorFragment}
-  ${existingProductsFragment}
-  mutation changeStatusExistProduct($input: ChangeStatusInput!) {
-    changeStatusExistProduct(input: $input) {
-      errors : accountErrors {
-        ...AccountErrorFragment
+  ${supplierErrorFragment}
+  ${deleteWarehousesFragment}
+  mutation changeStatusDeleteWarehouse($input: ChangeStatusInput!) {
+    changeStatusDeleteWarehouse(input: $input) {
+      errors: supplierError {
+        ...supplierError
       }
       request {
-       ...existingProductsFragment
+        ...deleteWarehousesFragment
       }
     }
   }
 `;
-export const TypedUpdateSupplierMutation = TypedMutation<
+export const TypedUpdateRequestMutation = TypedMutation<
   UpdateRequest,
   UpdateRequestVariables
 >(updateRequest);
 
 const createSupplier = gql`
-  ${accountErrorFragment}
+  ${supplierErrorFragment}
   mutation supplierCreate($input: SupplierCreateInput!) {
     supplierCreate(input: $input) {
-      errors: accountErrors {
-        ...AccountErrorFragment
+      errors: supplierError {
+        ...supplierErrorFragment
       }
       supplier {
         id
@@ -75,7 +74,6 @@ export const TypedRemoveSupplierMutation = TypedMutation<
   RemoveSupplier,
   RemoveSupplierVariables
 >(removeSupplier);
-
 
 export const bulkRemoveSupplier = gql`
   ${accountErrorFragment}

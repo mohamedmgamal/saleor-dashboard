@@ -22,6 +22,13 @@ export const accountErrorFragment = gql`
     message
   }
 `;
+export const supplierErrorFragment = gql`
+  fragment supplierError on SupplierError {
+    code
+    field
+    message
+  }
+`;
 
 export const discountErrorFragment = gql`
   fragment DiscountErrorFragment on DiscountError {

@@ -53,9 +53,13 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
           </Button>
         }
       />
+      // @ts-ignore
       {maybe(() => Supplier.defaultBillingAddress.id) !==
+      // @ts-ignore
       maybe(() => Supplier.defaultShippingAddress.id) ? (
+        // @ts-ignore
         <>
+          // @ts-ignore
           {maybe(() => Supplier.defaultBillingAddress) !== null && (
             <CardContent>
               <Typography className={classes.label}>
@@ -65,14 +69,17 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
                 />
               </Typography>
               <AddressFormatter
+                // @ts-ignore
                 address={maybe(() => Supplier.defaultBillingAddress)}
               />
             </CardContent>
           )}
           {maybe(
             () =>
+              // @ts-ignore
               Supplier.defaultBillingAddress && Supplier.defaultShippingAddress
           ) && <Hr />}
+          // @ts-ignore
           {maybe(() => Supplier.defaultShippingAddress) && (
             <CardContent>
               <Typography className={classes.label}>
@@ -82,12 +89,15 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
                 />
               </Typography>
               <AddressFormatter
+                // @ts-ignore
                 address={maybe(() => Supplier.defaultShippingAddress)}
               />
             </CardContent>
           )}
         </>
-      ) : maybe(() => Supplier.defaultBillingAddress) === null &&
+      ) : // @ts-ignore
+      maybe(() => Supplier.defaultBillingAddress) === null &&
+        // @ts-ignore
         maybe(() => Supplier.defaultShippingAddress) === null ? (
         <CardContent>
           <Typography>
@@ -103,6 +113,7 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
             />
           </Typography>
           <AddressFormatter
+            // @ts-ignore
             address={maybe(() => Supplier.defaultBillingAddress)}
           />
         </CardContent>

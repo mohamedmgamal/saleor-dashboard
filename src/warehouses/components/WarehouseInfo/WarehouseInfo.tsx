@@ -2,6 +2,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import TextField from "@material-ui/core/TextField";
 import CardTitle from "@saleor/components/CardTitle";
+import FormSpacer from "@saleor/components/FormSpacer";
 import { WarehouseErrorFragment } from "@saleor/fragments/types/WarehouseErrorFragment";
 import { FormChange } from "@saleor/hooks/useForm";
 import { commonMessages } from "@saleor/intl";
@@ -9,9 +10,11 @@ import { getFormErrors } from "@saleor/utils/errors";
 import getWarehouseErrorMessage from "@saleor/utils/errors/warehouse";
 import React from "react";
 import { useIntl } from "react-intl";
-
 export interface WarehouseInfoProps {
-  data: Record<"name", string>;
+  data: {
+    name: string;
+    supplier: any;
+  };
   disabled: boolean;
   errors: WarehouseErrorFragment[];
   onChange: FormChange;
@@ -25,7 +28,7 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
 }) => {
   const intl = useIntl();
 
-  const formErrors = getFormErrors(["name"], errors);
+  const formErrors = getFormErrors(["name", "supplier"], errors);
 
   return (
     <Card data-test="generalInformationSection">
@@ -43,6 +46,19 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
           })}
           name={"name" as keyof typeof data}
           value={data.name}
+          onChange={onChange}
+        />
+        <FormSpacer />
+        <TextField
+          disabled={disabled}
+          error={!!formErrors.supplier}
+          fullWidth
+          helperText={getWarehouseErrorMessage(formErrors.supplier, intl)}
+          label={intl.formatMessage({
+            defaultMessage: "Supplier Id"
+          })}
+          name={"supplier"}
+          value={data.supplier.id}
           onChange={onChange}
         />
       </CardContent>
