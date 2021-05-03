@@ -95,7 +95,8 @@ const SupplierAddresses: React.FC<SupplierAddressesProps> = props => {
             </CardContent>
           )}
         </>
-      ) : // @ts-ignore
+      ) :
+        // @ts-ignore
       maybe(() => Supplier.defaultBillingAddress) === null &&
         // @ts-ignore
         maybe(() => Supplier.defaultShippingAddress) === null ? (

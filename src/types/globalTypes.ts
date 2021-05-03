@@ -1692,6 +1692,7 @@ export interface WarehouseAddressInput {
   country: CountryCode;
   governorate?: string | null;
   phone?: string | null;
+  companyName?: string ;
 }
 
 export interface WarehouseCreateInput {
@@ -1718,7 +1719,6 @@ export interface WarehouseUpdateInput {
   // supplier?:{
   //   id:string
   // };
-  companyName?: string | null;
   email?: string | null;
   name?: string | null;
   address?: WarehouseAddressInput | null;

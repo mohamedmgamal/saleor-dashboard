@@ -71,7 +71,6 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
     "city",
     "country",
     "governorate",
-    "companyArea",
     "phone"
   ];
   const formErrors = getFormErrors(formFields, errors);

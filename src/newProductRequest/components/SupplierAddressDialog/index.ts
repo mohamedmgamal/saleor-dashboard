@@ -1,2 +1,2 @@
-export { default } from "./SupplierAddressDialog";
-export * from "./SupplierAddressDialog";
+export { default } from "./supplierAddressDialog";
+export * from "./supplierAddressDialog";
