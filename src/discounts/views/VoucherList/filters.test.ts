@@ -65,8 +65,9 @@ describe("Filtering URL params", () => {
   });
 
   it("should be empty if no active filters", () => {
-    // @ts-ignore
+
     const filterQueryParams = getFilterQueryParams(
+      // @ts-ignore
       filters,
       getFilterQueryParam
     );
@@ -75,9 +76,10 @@ describe("Filtering URL params", () => {
   });
 
   it("should not be empty if active filters are present", () => {
-    // @ts-ignore
+
     const filterQueryParams = getFilterQueryParams(
-      setFilterOptsStatus(filters, true),
+      // @ts-ignore
+       setFilterOptsStatus(filters, true),
       getFilterQueryParam
     );
 
