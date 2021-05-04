@@ -64,7 +64,7 @@ const WarehouseDetailsPage: React.FC<WarehouseDetailsPageProps> = ({
 
   const initialForm: WarehouseDetailsPageFormData = {
     governorate: maybe(() => warehouse.address.governorate),
-    supplier: maybe(() => warehouse.supplier, { id: "" }),
+    supplier: maybe(() => warehouse.supplier, { id: "",firstName:"",lastName:"" }),
     city: maybe(() => warehouse.address.city, ""),
     companyName: maybe(() => warehouse.address.companyName, ""),
     country: maybe(() =>

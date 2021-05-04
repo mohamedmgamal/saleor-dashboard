@@ -15,7 +15,7 @@ import React from "react";
 import {useIntl } from "react-intl";
 
 import { ListNewProducts_NewProducts_edges_node } from "../../types/ListNewProducts";
-import NewProductsList , {NewProductsListUrlSortField}from "../NewPRoductsList/NewProductsList";
+import NewProductsList , {NewProductsListUrlSortField}from "../NewProductsList/NewProductsList";
 import {
   createFilterStructure,
   SupplierFilterKeys,

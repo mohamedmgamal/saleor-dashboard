@@ -5,7 +5,7 @@
 import { PaymentChargeStatusEnum } from "./../../types/globalTypes";
 
 // ====================================================
-// GraphQL query operation: WarehouseMangerDetails
+// GraphQL query operation: WarehouseManagerDetails
 // ====================================================
 
 export interface SupplierDetails_user_defaultShippingAddress_country {

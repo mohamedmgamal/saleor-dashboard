@@ -6,7 +6,7 @@ import { NewProductInput} from "./../../types/globalTypes";
 import { UpdateNewProduct_NewProductUpdate } from "@saleor/newProductRequest/types/UpdateSupplier";
 
 // ====================================================
-// GraphQL query operation: WarehouseMangerDetails
+// GraphQL query operation: WarehouseManagerDetails
 // ====================================================
 
 

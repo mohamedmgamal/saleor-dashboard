@@ -49,6 +49,8 @@ export interface WarehouseDetails_warehouse {
   id: string;
   supplier:{
     id:string
+    firstName:string
+    lastName:string
   };
   name: string;
   shippingZones: WarehouseDetails_warehouse_shippingZones;

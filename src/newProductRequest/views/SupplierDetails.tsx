@@ -12,7 +12,7 @@ import { maybe } from "../../misc";
 import { orderListUrl, orderUrl } from "../../orders/urls";
 import NewProductDetailsPage, {
   NewProductDetailsPageFormData
-} from "../components/SupplierDetailsPage/NewProductDetailsPage";
+} from "../components/NewProductDetailsPage/NewProductDetailsPage";
 import {
   TypedRemoveSupplierMutation,
   TypedUpdateNewProductMutation

@@ -8,16 +8,13 @@ import { Route, RouteComponentProps, Switch } from "react-router-dom";
 import { WindowTitle } from "../components/WindowTitle";
 import {DeleteWarehousesListUrlSortField}from "./components/ExistPRoductsList/DeleteWarehousesList";
 import {
-  deleteWarehouseAddressesPath,
-  DeleteWarehouseAddressesUrlQueryParams,
   deleteWarehouseListPath,
   DeleteWarehouseListUrlQueryParams,
   deleteWarehousePath,
   DeleteWarehouseUrlQueryParams
 } from "./urls";
 import DeleteWarehouseListViewComponent from "./views/ExistProductsList";
-import SupplierAddressesViewComponent from "./views/SupplierAddresses";
-import SupplierDetailsViewComponent from "./views/RequestDetails";
+import RequestDetailsView from "./views/DeleteWarehouseRequestDetails";
 
 export const DeleteWarehouseListView: React.FC<RouteComponentProps<{}>> = ({ location }) => {
   const qs = parseQs(location.search.substr(1));
@@ -38,24 +35,7 @@ const SupplierDetailsView: React.FC<RouteComponentProps<
   const params: DeleteWarehouseUrlQueryParams = qs;
 
   return (
-    <SupplierDetailsViewComponent
-      id={decodeURIComponent(match.params.id)}
-      params={params}
-    />
-  );
-};
-
-interface SupplierAddressesRouteParams {
-  id: string;
-}
-const SupplierAddressesView: React.FC<RouteComponentProps<
-  SupplierAddressesRouteParams
-  >> = ({ match }) => {
-  const qs = parseQs(location.search.substr(1));
-  const params: DeleteWarehouseAddressesUrlQueryParams = qs;
-
-  return (
-    <SupplierAddressesViewComponent
+    <RequestDetailsView
       id={decodeURIComponent(match.params.id)}
       params={params}
     />
@@ -69,10 +49,6 @@ export const DeleteWarehouseSection: React.FC<{}> = () => {
       <WindowTitle title={intl.formatMessage(sectionNames.deleteWareHouse)} />
       <Switch>
         <Route exact path={deleteWarehouseListPath} component={DeleteWarehouseListView} />
-        <Route
-          path={deleteWarehouseAddressesPath(":id")}
-          component={SupplierAddressesView}
-        />
         <Route path={deleteWarehousePath(":id")} component={SupplierDetailsView} />
       </Switch>
     </>

@@ -48,6 +48,8 @@ export const warehouseDetailsFragment = gql`
     }
     supplier {
       id
+      firstName
+      lastName
     }
   }
 `;

@@ -10,7 +10,7 @@ import TableCellHeader from "@saleor/components/TableCellHeader";
 import TableHead from "@saleor/components/TableHead";
 import TablePagination from "@saleor/components/TablePagination";
 import { getUserName, maybe, renderCollection } from "@saleor/misc";
-import { SupplierListUrlSortField } from "@saleor/Suppliers/urls";
+import { SupplierListUrlSortField } from "@saleor/suppliers/urls";
 import { ListActions, ListProps, SortPage } from "@saleor/types";
 import { getArrowDirection } from "@saleor/utils/sort";
 import React from "react";

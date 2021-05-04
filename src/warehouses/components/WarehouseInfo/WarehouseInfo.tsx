@@ -29,7 +29,6 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
   const intl = useIntl();
 
   const formErrors = getFormErrors(["name", "supplier"], errors);
-
   return (
     <Card data-test="generalInformationSection">
       <CardTitle
@@ -50,15 +49,15 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
         />
         <FormSpacer />
         <TextField
-          disabled={disabled}
+          disabled={true}
           error={!!formErrors.supplier}
           fullWidth
           helperText={getWarehouseErrorMessage(formErrors.supplier, intl)}
           label={intl.formatMessage({
-            defaultMessage: "Supplier Id"
+            defaultMessage: "Supplier"
           })}
           name={"supplier"}
-          value={data.supplier.id}
+          value={data.supplier.firstName+" "+data.supplier.lastName}
           onChange={onChange}
         />
       </CardContent>

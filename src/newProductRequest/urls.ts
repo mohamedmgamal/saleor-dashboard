@@ -11,7 +11,7 @@ import {
   Sort,
   TabActionDialog
 } from "../types";
-import {NewProductsListUrlSortField} from "./components/NewPRoductsList"
+import {NewProductsListUrlSortField} from "./components/NewProductsList"
 export const newProductSection = "/newProductRequest";
 
 export const newProductListPath = newProductSection;

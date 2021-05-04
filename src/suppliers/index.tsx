@@ -8,15 +8,12 @@ import { Route, RouteComponentProps, Switch } from "react-router-dom";
 import { WindowTitle } from "../components/WindowTitle";
 import {
   supplierAddPath,
-  supplierAddressesPath,
-  SupplierAddressesUrlQueryParams,
   supplierListPath,
   SupplierListUrlQueryParams,
   SupplierListUrlSortField,
   supplierPath,
   SupplierUrlQueryParams
 } from "./urls";
-import SupplierAddressesViewComponent from "./views/SupplierAddresses";
 import SupplierCreateView from "./views/SupplierCreate";
 import SupplierDetailsViewComponent from "./views/SupplierDetails";
 import SupplierListViewComponent from "./views/SupplierList";
@@ -47,22 +44,6 @@ const SupplierDetailsView: React.FC<RouteComponentProps<
   );
 };
 
-interface SupplierAddressesRouteParams {
-  id: string;
-}
-const SupplierAddressesView: React.FC<RouteComponentProps<
-  SupplierAddressesRouteParams
-  >> = ({ match }) => {
-  const qs = parseQs(location.search.substr(1));
-  const params: SupplierAddressesUrlQueryParams = qs;
-
-  return (
-    <SupplierAddressesViewComponent
-      id={decodeURIComponent(match.params.id)}
-      params={params}
-    />
-  );
-};
 
 export const SupplierSection: React.FC<{}> = () => {
   const intl = useIntl();
@@ -72,10 +53,6 @@ export const SupplierSection: React.FC<{}> = () => {
       <Switch>
         <Route exact path={supplierListPath} component={SupplierListView} />
         <Route exact path={supplierAddPath} component={SupplierCreateView} />
-        <Route
-          path={supplierAddressesPath(":id")}
-          component={SupplierAddressesView}
-        />
         <Route path={supplierPath(":id")} component={SupplierDetailsView} />
       </Switch>
     </>

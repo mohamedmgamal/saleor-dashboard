@@ -18,7 +18,7 @@ import { mapCountriesToChoices } from "@saleor/utils/maps";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import WarehouseInfo from "../WarehouseInfo";
+import CreateWarehouseInfo from "../CreateWarehouseInfo";
 
 export interface WarehouseCreatePageFormData extends AddressTypeInput {
   name: string;
@@ -86,8 +86,8 @@ const WarehouseCreatePage: React.FC<WarehouseCreatePageProps> = ({
             />
             <Grid>
               <div>
-                <WarehouseInfo
-                  data={data}
+                <CreateWarehouseInfo
+                  dataa={data}
                   disabled={disabled}
                   errors={errors}
                   onChange={change}

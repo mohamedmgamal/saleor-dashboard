@@ -14,9 +14,9 @@ import { useIntl } from "react-intl";
 
 import { getUserName, maybe } from "../../../misc";
 import { WareHouseMangerDetails_user } from "../../types/WareHouseMangerDetails";
-import SupplierInfo from "../SupplierInfo";
+import WarehouseManagerInfo from "../WarehouseManagerInfo";
 // import NewProduct from "../NewProduct";
-import WarehouseMangerDetails from "../WarehouseMangerDetails";
+import WarehouseMangerDetails from "../WarehouseManagerDetails";
 // import SupplierOrders from "../SupplierOrders";
 // import SupplierStats from "../SupplierStats";
 // import { date } from "@saleor/fixtures";
@@ -97,7 +97,7 @@ const WarehouseMangerDetailsPage: React.FC<SupplierDetailsPageProps> = ({
                 onChange={change}
               />
               <CardSpacer />
-              <SupplierInfo
+              <WarehouseManagerInfo
                 data={data}
                 disabled={disabled}
                 errors={errors}

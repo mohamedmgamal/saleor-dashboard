@@ -20,7 +20,7 @@ export interface RemoveSupplier_SupplierDelete {
 }
 
 export interface RemoveSupplier {
-  SupplierDelete: RemoveSupplier_SupplierDelete | null;
+  customerDelete: RemoveSupplier_SupplierDelete | null;
 }
 
 export interface RemoveSupplierVariables {

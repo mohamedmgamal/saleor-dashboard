@@ -48,7 +48,8 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
     }
   };
   const handleSupplierRemoveSuccess = (data: RemoveSupplier) => {
-    if (data.SupplierDelete.errors.length === 0) {
+    console.log(data)
+    if (data.customerDelete.errors.length === 0) {
       notify({
         status: "success",
         text: intl.formatMessage({

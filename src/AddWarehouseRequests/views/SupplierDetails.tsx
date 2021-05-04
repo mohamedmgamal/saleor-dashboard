@@ -10,7 +10,7 @@ import { maybe } from "../../misc";
 import { orderListUrl, orderUrl } from "../../orders/urls";
 import NewWarehouseDetailsPage , {
   NewWarehouseDetailsPageFormData
-} from "../components/SupplierDetailsPage/NewWarehouseDetailsPage";
+} from "../components/NewWarehouseDetailsPage/NewWarehouseDetailsPage";
 import {
   TypedUpdateNewProductMutation
 } from "../mutations";

@@ -14,7 +14,7 @@ import {
   wareHouseMangerPath,
   wareHouseMangerUrlQueryParams
 } from "./urls";
-import SupplierCreateView from "./views/SupplierCreate";
+import SupplierCreateView from "./views/WarehouseManagerCreate";
 import SupplierDetailsViewComponent from "./views/WarehouseMangerDetails";
 import SupplierListViewComponent from "./views/WareHouseMangersList";
 // import { constant } from "lodash-es";

@@ -10,9 +10,9 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { maybe } from "../../misc";
 import { orderListUrl, orderUrl } from "../../orders/urls";
-import SupplierDetailsPage, {
+import ExistProductDetailsPage, {
   SupplierDetailsPageFormData
-} from "../components/SupplierDetailsPage/SupplierDetailsPage";
+} from "../components/ExistProductDetailsPage/ExistProductDetailsPage";
 import {
   TypedRemoveSupplierMutation,
   TypedUpdateSupplierMutation
@@ -96,7 +96,7 @@ export const SupplierDetailsView: React.FC<SupplierDetailsViewProps> = ({
                     <WindowTitle
                       title={maybe(() => result.data.requestExistProduct.product.name)}
                     />
-                    <SupplierDetailsPage
+                    <ExistProductDetailsPage
                       request={maybe(() => result.data.requestExistProduct)}
                       disabled={
                         result.loading ||

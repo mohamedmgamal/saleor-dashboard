@@ -24,7 +24,7 @@ import { getSortParams } from "@saleor/utils/sort";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import ExistProductsListPage from "../../components/ExistProductListPage";
+import DeleteWarehouseRequestsListPage from "../../components/DeleteWarehouseRequestsListPage";
 import { TypedBulkRemoveSuppliers } from "../../mutations";
 import { usesDeleteWarehousesListListQuery } from "../../queries";
 import { BulkRemoveSupplier } from "../../types/BulkRemoveSupplier";
@@ -146,7 +146,7 @@ export const DeleteWarehouseListViewComponent: React.FC<DeleteWarehouseListProps
   return(<TypedBulkRemoveSuppliers onCompleted={handleBulkSupplierDelete}>
        {(BulkRemoveSupplier, bulkRemoveSuppliersOpts) => (
          <>
-           <ExistProductsListPage
+           <DeleteWarehouseRequestsListPage
              currencySymbol={currencySymbol}
              currentTab={currentTab}
              filterOpts={getFilterOpts(params)}

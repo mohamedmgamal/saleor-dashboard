@@ -98,3 +98,17 @@ const supplierCreateData = gql`
 export const TypedSupplierCreateDataQuery = TypedQuery<SupplierCreateData, {}>(
   supplierCreateData
 );
+export const getSuppliers = gql`
+  query suppliers{
+  suppliers(first:100){
+    edges{
+      node{
+        id
+        firstName
+        lastName
+        phone
+      }
+    }
+  }
+}
+`;
