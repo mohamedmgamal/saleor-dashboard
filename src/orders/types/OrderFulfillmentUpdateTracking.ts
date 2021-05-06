@@ -43,6 +43,7 @@ export interface OrderFulfillmentUpdateTracking_orderFulfillmentUpdateTracking_o
   id: string;
   lastName: string;
   phone: string | null;
+  governorate:string;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
@@ -208,6 +209,7 @@ export interface OrderFulfillmentUpdateTracking_orderFulfillmentUpdateTracking_o
   id: string;
   lastName: string;
   phone: string | null;
+  governorate:string;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;

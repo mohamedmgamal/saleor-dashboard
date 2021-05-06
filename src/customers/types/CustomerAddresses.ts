@@ -18,7 +18,6 @@ export interface CustomerAddresses_user_addresses {
   cityArea: string;
   companyName: string;
   country: CustomerAddresses_user_addresses_country;
-  countryArea: string;
   firstName: string;
   id: string;
   lastName: string;
@@ -26,6 +25,7 @@ export interface CustomerAddresses_user_addresses {
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
+  governorate:string
 }
 
 export interface CustomerAddresses_user_defaultBillingAddress {

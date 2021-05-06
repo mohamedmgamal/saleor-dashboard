@@ -30,6 +30,7 @@ export interface ShopSettingsUpdate_shopSettingsUpdate_shop_companyAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: ShopSettingsUpdate_shopSettingsUpdate_shop_companyAddress_country;
   countryArea: string;
@@ -111,6 +112,7 @@ export interface ShopSettingsUpdate_shopAddressUpdate_shop_companyAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: ShopSettingsUpdate_shopAddressUpdate_shop_companyAddress_country;
   countryArea: string;

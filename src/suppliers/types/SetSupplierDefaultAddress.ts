@@ -27,6 +27,7 @@ export interface SetSupplierDefaultAddress_addressSetDefault_user_addresses {
   companyName: string;
   country: SetSupplierDefaultAddress_addressSetDefault_user_addresses_country;
   countryArea: string;
+  governorate:string;
   firstName: string;
   id: string;
   lastName: string;

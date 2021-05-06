@@ -30,6 +30,7 @@ export interface UpdateSupplierAddress_addressUpdate_address {
   firstName: string;
   id: string;
   lastName: string;
+  governorate:string;
   phone: string | null;
   postalCode: string;
   streetAddress1: string;

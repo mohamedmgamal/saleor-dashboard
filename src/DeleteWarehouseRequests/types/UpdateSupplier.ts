@@ -25,6 +25,7 @@ export interface UpdateNewProduct_NewProductUpdate_user_defaultShippingAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: UpdateNewProduct_NewProductUpdate_user_defaultShippingAddress_country;
   countryArea: string;
@@ -47,6 +48,7 @@ export interface UpdateNewProduct_NewProductUpdate_user_defaultBillingAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: UpdateNewProduct_NewProductUpdate_user_defaultBillingAddress_country;
   countryArea: string;

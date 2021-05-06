@@ -23,6 +23,7 @@ export interface SupplierAddresses_user_addresses {
   id: string;
   lastName: string;
   phone: string | null;
+  governorate:string;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;

@@ -36,15 +36,13 @@ export interface WarehouseCreatePageProps {
 const initialForm: WarehouseCreatePageFormData = {
   supplier: "",
   city: "",
-  companyName: "",
-  country: "",
+  country: "EG",
   governorate: "",
   name: "",
   phone: "",
   streetAddress1: "",
   streetAddress2: "",
-  // todo:change it in future
-  cityArea: "4300"
+  cityArea: ""
 };
 
 const WarehouseCreatePage: React.FC<WarehouseCreatePageProps> = ({
@@ -95,7 +93,7 @@ const WarehouseCreatePage: React.FC<WarehouseCreatePageProps> = ({
                 <CardSpacer />
                 <CompanyAddressInput
                   countries={countryChoices}
-                  data={data}
+                  dataa={data}
                   disabled={disabled}
                   displayCountry={displayCountry}
                   errors={[...errors, ...validationErrors]}

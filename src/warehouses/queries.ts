@@ -59,3 +59,38 @@ export const useWarehouseDetails = makeQuery<
   WarehouseDetails,
   WarehouseDetailsVariables
 >(warehouseDetails);
+
+export const getGovernorates = gql`
+  query addressValidationRules($countryCode: CountryCode!) {
+    addressValidationRules(countryCode: $countryCode) {
+       governorate{
+      code
+      nameAr
+      nameEn
+  }
+    }
+  }
+`;
+
+export const getCitesQ = gql`
+  query addressValidationRules($countryCode: CountryCode!,$governorate: String!) {
+    addressValidationRules(countryCode: $countryCode,governorate: $governorate) {
+      city{
+      code
+      nameAr
+      nameEn
+    }
+    }
+  }
+`;
+export const getCitiesAreas = gql`
+  query addressValidationRules($countryCode: CountryCode!,$governorate: String!,$city: String!) {
+    addressValidationRules(countryCode: $countryCode,governorate: $governorate,city:$city) {
+      cityArea{
+      code
+      nameAr
+      nameEn
+    }
+    }
+  }
+`;

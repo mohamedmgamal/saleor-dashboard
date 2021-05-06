@@ -2,9 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormSpacer from "@saleor/components/FormSpacer";
 import Grid from "@saleor/components/Grid";
-import SingleAutocompleteSelectField, {
-  SingleAutocompleteChoiceType
-} from "@saleor/components/SingleAutocompleteSelectField";
+
 import { AddressTypeInput } from "@saleor/customers/types";
 import { AccountErrorFragment } from "@saleor/fragments/types/AccountErrorFragment";
 import { ShopErrorFragment } from "@saleor/fragments/types/ShopErrorFragment";
@@ -16,10 +14,14 @@ import getShopErrorMessage from "@saleor/utils/errors/shop";
 import getWarehouseErrorMessage from "@saleor/utils/errors/warehouse";
 import React from "react";
 import { IntlShape, useIntl } from "react-intl";
-
+import { useQuery } from "react-apollo";
+import { getGovernorates, getCitesQ, getCitiesAreas } from "@saleor/warehouses/queries";
+import { SingleAutocompleteChoiceType } from "@saleor/components/SingleAutocompleteSelectField";
+import { MenuItem } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
 export interface CompanyAddressFormProps {
   countries: SingleAutocompleteChoiceType[];
-  data: AddressTypeInput;
+  dataa: AddressTypeInput;
   displayCountry: string;
   errors: Array<
     AccountErrorFragment | ShopErrorFragment | WarehouseErrorFragment
@@ -52,18 +54,14 @@ function getErrorMessage(
 
 const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
   const {
-    countries,
-    data,
+    dataa,
     disabled,
-    displayCountry,
     errors,
     onChange,
-    onCountryChange
   } = props;
 
   const classes = useStyles(props);
   const intl = useIntl();
-
   const formFields = [
     "companyName",
     "streetAddress1",
@@ -72,24 +70,21 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
     "country",
     "governorate",
     "phone"
+    ,"cityArea"
   ];
   const formErrors = getFormErrors(formFields, errors);
+    const {data} = useQuery(getGovernorates, {
+      variables: { countryCode:"EG" },
+    });
+  const {data:citesData,refetch} = useQuery(getCitesQ, {
+    variables: { countryCode:"EG",governorate:dataa.governorate},
+  });
+  const {data:citesAreasData,refetch:getCitesAreas} = useQuery(getCitiesAreas, {
+    variables: { countryCode:"EG",governorate:dataa.governorate,city:dataa.city},
+  });
 
   return (
     <div className={classes.root}>
-      <TextField
-        disabled={disabled}
-        error={!!formErrors.companyName}
-        helperText={getErrorMessage(formErrors.companyName, intl)}
-        label={intl.formatMessage({
-          defaultMessage: "Company"
-        })}
-        name={"companyName" as keyof AddressTypeInput}
-        onChange={onChange}
-        value={data.companyName}
-        fullWidth
-      />
-      <FormSpacer />
       <TextField
         disabled={disabled}
         error={!!formErrors.streetAddress1}
@@ -99,7 +94,7 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
         })}
         name={"streetAddress1" as keyof AddressTypeInput}
         onChange={onChange}
-        value={data.streetAddress1}
+        value={dataa.streetAddress1}
         fullWidth
       />
       <FormSpacer />
@@ -112,56 +107,89 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
         })}
         name={"streetAddress2" as keyof AddressTypeInput}
         onChange={onChange}
-        value={data.streetAddress2}
+        value={dataa.streetAddress2}
         fullWidth
       />
       <FormSpacer />
       <Grid>
         <TextField
-          disabled={disabled}
-          error={!!formErrors.city}
-          helperText={getErrorMessage(formErrors.city, intl)}
-          label={intl.formatMessage({
-            defaultMessage: "City"
-          })}
-          name={"city" as keyof AddressTypeInput}
-          onChange={onChange}
-          value={data.city}
-          fullWidth
-        />
-      </Grid>
-      <FormSpacer />
-      <Grid>
-        <SingleAutocompleteSelectField
-          disabled={disabled}
-          displayValue={displayCountry}
-          error={!!formErrors.country}
-          helperText={getErrorMessage(formErrors.country, intl)}
+          disabled={true}
           label={intl.formatMessage({
             defaultMessage: "Country"
           })}
-          name={"country" as keyof AddressTypeInput}
-          onChange={onCountryChange}
-          value={data.country}
-          choices={countries}
-          InputProps={{
-            inputProps: {
-              autoComplete: "none"
-            }
-          }}
+          name={"Country" as keyof AddressTypeInput}
+          value={"Egypt"}
         />
-        <TextField
+        <Select
           disabled={disabled}
+          name="governorate"
           error={!!formErrors.governorate}
-          helperText={getErrorMessage(formErrors.governorate, intl)}
-          label={intl.formatMessage({
-            defaultMessage: "Governorate"
-          })}
-          name={"governorate" as keyof AddressTypeInput}
+          value={dataa.governorate}
+          onChange={(e)=>{
+            // @ts-ignore
+            onChange(e)
+            refetch()
+          }}
+        ><MenuItem disabled selected>Governorates</MenuItem>
+          {
+            data?.["addressValidationRules"]?.["governorate"] && data?.["addressValidationRules"]?.["governorate"].map((governorate)=>{
+              return ( <MenuItem value={governorate?.code}>{governorate?. nameEn}</MenuItem>)
+            })
+          }
+        </Select>
+        <Select
+          disabled={disabled}
+          name="city"
+          error={!!formErrors.city}
+          value={dataa.city}
+
+          onChange={(e)=>{
+            // @ts-ignore
+            onChange(e)
+            getCitesAreas()
+          }}
+        ><MenuItem disabled selected>cities</MenuItem>
+          {
+            citesData?.["addressValidationRules"]?.["city"] && citesData?.["addressValidationRules"]?.["city"].map((city)=>{
+              return ( <MenuItem value={city?.code}>{city?. nameEn}</MenuItem>)
+            })
+          }
+        </Select>
+        <Select
+          disabled={disabled}
+          name="cityArea"
+          error={!!formErrors.cityArea}
+          value={dataa.cityArea}
+          // @ts-ignore
           onChange={onChange}
-          value={data.governorate || ""}
-          fullWidth
-        />
+        ><MenuItem disabled selected>cities Areas</MenuItem>
+          {
+            citesAreasData?.["addressValidationRules"]?.["cityArea"] && citesAreasData?.["addressValidationRules"]?.["cityArea"].map((cityArea)=>{
+              return ( <MenuItem value={cityArea?.code}>{cityArea?.nameEn}</MenuItem>)
+            })
+          }
+        </Select>
+      </Grid>
+      <FormSpacer />
+      <Grid>
+        {/*<SingleAutocompleteSelectField*/}
+        {/*  disabled={disabled}*/}
+        {/*  displayValue={displayCountry}*/}
+        {/*  error={!!formErrors.country}*/}
+        {/*  helperText={getErrorMessage(formErrors.country, intl)}*/}
+        {/*  label={intl.formatMessage({*/}
+        {/*    defaultMessage: "Country"*/}
+        {/*  })}*/}
+        {/*  name={"country" as keyof AddressTypeInput}*/}
+        {/*  onChange={onCountryChange && getGovernorate}*/}
+        {/*  value={dataa.country}*/}
+        {/*  choices={countries}*/}
+        {/*  InputProps={{*/}
+        {/*    inputProps: {*/}
+        {/*      autoComplete: "none"*/}
+        {/*    }*/}
+        {/*  }}*/}
+        {/*/>*/}
       </Grid>
       <FormSpacer />
       <TextField
@@ -173,7 +201,7 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
           defaultMessage: "Phone"
         })}
         name={"phone" as keyof AddressTypeInput}
-        value={data.phone}
+        value={dataa.phone}
         onChange={onChange}
       />
     </div>

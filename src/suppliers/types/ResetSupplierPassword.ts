@@ -24,6 +24,7 @@ export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress_count
 export interface UpdateSupplier_SupplierUpdate_user_defaultShippingAddress {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: UpdateSupplier_SupplierUpdate_user_defaultShippingAddress_country;
@@ -54,6 +55,7 @@ export interface UpdateSupplier_SupplierUpdate_user_defaultBillingAddress {
   id: string;
   lastName: string;
   phone: string ;
+  governorate:string;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;

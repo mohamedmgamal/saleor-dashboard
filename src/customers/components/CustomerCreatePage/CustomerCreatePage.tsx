@@ -25,6 +25,8 @@ export interface CustomerCreatePageFormData {
   customerLastName: string;
   email: string;
   note: string;
+  phone:string;
+  password:string
 }
 export interface CustomerCreatePageSubmitData
   extends CustomerCreatePageFormData {
@@ -34,7 +36,7 @@ export interface CustomerCreatePageSubmitData
 const initialForm: CustomerCreatePageFormData & AddressTypeInput = {
   supplier: "",
   city: "",
-  cityArea: "",
+  password:"",
   companyName: "",
   country: "",
   customerFirstName: "",
@@ -45,7 +47,10 @@ const initialForm: CustomerCreatePageFormData & AddressTypeInput = {
   note: "",
   phone: "",
   streetAddress1: "",
-  streetAddress2: ""
+  streetAddress2: "",
+  // todo:change it in future
+  cityArea: "",
+  governorate:""
 };
 
 export interface CustomerCreatePageProps {
@@ -79,17 +84,16 @@ const CustomerCreatePage: React.FC<CustomerCreatePageProps> = ({
     onSubmit({
       address: {
         city: formData.city,
-        cityArea: formData.cityArea,
         companyName: formData.companyName,
         country: formData.country,
-        countryArea: formData.countryArea,
+        cityArea: formData.cityArea,
         firstName: formData.firstName,
         lastName: formData.lastName,
-        phone: formData.phone,
-        postalCode: formData.postalCode,
         streetAddress1: formData.streetAddress1,
         streetAddress2: formData.streetAddress2
       },
+      password:formData.password,
+      phone:formData.phone,
       customerFirstName: formData.customerFirstName,
       customerLastName: formData.customerLastName,
       email: formData.email,
@@ -106,11 +110,10 @@ const CustomerCreatePage: React.FC<CustomerCreatePageProps> = ({
       "city",
       "companyName",
       "country",
-      "countryArea",
+      "cityArea",
+      "governorate",
       "firstName",
       "lastName",
-      "phone",
-      "postalCode",
       "streetAddress1",
       "streetAddress2"
     ] as Array<keyof AddressTypeInput>)
@@ -121,7 +124,18 @@ const CustomerCreatePage: React.FC<CustomerCreatePageProps> = ({
       handleSubmitWithAddress(formData);
     } else {
       onSubmit({
-        address: null,
+        address: {
+          city: formData.city,
+          companyName: formData.companyName,
+          country: formData.country,
+          cityArea: formData.cityArea,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          streetAddress1: formData.streetAddress1,
+          streetAddress2: formData.streetAddress2
+        },
+        phone:formData.phone,
+        password:formData.password,
         customerFirstName: formData.customerFirstName,
         customerLastName: formData.customerLastName,
         email: formData.email,

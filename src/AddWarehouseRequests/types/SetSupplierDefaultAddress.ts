@@ -23,6 +23,7 @@ export interface SetSupplierDefaultAddress_addressSetDefault_user_addresses_coun
 export interface SetSupplierDefaultAddress_addressSetDefault_user_addresses {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: SetSupplierDefaultAddress_addressSetDefault_user_addresses_country;

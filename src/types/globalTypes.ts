@@ -423,6 +423,9 @@ export enum FileTypesEnum {
 export enum FulfillmentStatus {
   CANCELED = "CANCELED",
   FULFILLED = "FULFILLED",
+  PENDING="PENDING",
+  APPROVED="APPROVED",
+  REJECT="REJECT"
 }
 
 export enum InvoiceErrorCode {
@@ -614,6 +617,7 @@ export enum OrderStatus {
   FULFILLED = "FULFILLED",
   PARTIALLY_FULFILLED = "PARTIALLY_FULFILLED",
   UNFULFILLED = "UNFULFILLED",
+
 }
 
 export enum OrderStatusFilter {
@@ -930,9 +934,10 @@ export enum WeightUnitsEnum {
   OZ = "OZ",
 }
 
-export interface AddressInput {
+export interface  AddressInput {
   firstName?: string | null;
   lastName?: string | null;
+  governorate:string|null;
   companyName?: string | null;
   streetAddress1?: string | null;
   streetAddress2?: string | null;
@@ -1637,7 +1642,7 @@ export interface TranslationInput {
 }
 
 export interface UserCreateInput {
- phone?:string |null;
+  phone:string |null;
   password?:string |null;
   firstName?: string | null;
   lastName?: string | null;
@@ -1692,7 +1697,6 @@ export interface WarehouseAddressInput {
   country: CountryCode;
   governorate?: string | null;
   phone?: string | null;
-  companyName?: string ;
 }
 
 export interface WarehouseCreateInput {

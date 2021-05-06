@@ -102,7 +102,6 @@ const OrderAddressEditDialog: React.FC<OrderAddressEditDialogProps> = props => {
               </DialogTitle>
               <DialogContent className={classes.overflow}>
                 <AddressEdit
-                  countries={countryChoices}
                   countryDisplayValue={countryDisplayName}
                   data={data}
                   errors={dialogErrors}

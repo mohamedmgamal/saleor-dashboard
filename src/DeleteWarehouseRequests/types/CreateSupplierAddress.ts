@@ -23,6 +23,7 @@ export interface CreateSupplierAddress_addressCreate_address_country {
 export interface CreateSupplierAddress_addressCreate_address {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: CreateSupplierAddress_addressCreate_address_country;
@@ -45,6 +46,7 @@ export interface CreateSupplierAddress_addressCreate_user_addresses_country {
 export interface CreateSupplierAddress_addressCreate_user_addresses {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: CreateSupplierAddress_addressCreate_user_addresses_country;

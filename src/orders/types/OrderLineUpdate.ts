@@ -36,6 +36,7 @@ export interface OrderLineUpdate_draftOrderLineUpdate_order_billingAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: OrderLineUpdate_draftOrderLineUpdate_order_billingAddress_country;
   countryArea: string;

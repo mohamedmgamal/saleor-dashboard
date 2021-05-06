@@ -31,6 +31,7 @@ export interface CreateSupplierAddress_addressCreate_address {
   id: string;
   lastName: string;
   phone: string | null;
+  governorate:String;
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
@@ -56,6 +57,7 @@ export interface CreateSupplierAddress_addressCreate_user_addresses {
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
+  governorate:string;
 }
 
 export interface CreateSupplierAddress_addressCreate_user_defaultBillingAddress {

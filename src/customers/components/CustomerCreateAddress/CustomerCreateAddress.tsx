@@ -33,7 +33,6 @@ export interface CustomerCreateAddressProps {
 
 const CustomerCreateAddress: React.FC<CustomerCreateAddressProps> = props => {
   const {
-    countries,
     countryDisplayName,
     data,
     disabled,
@@ -59,7 +58,6 @@ const CustomerCreateAddress: React.FC<CustomerCreateAddressProps> = props => {
         </Typography>
         <FormSpacer />
         <AddressEdit
-          countries={countries}
           data={data}
           disabled={disabled}
           countryDisplayValue={countryDisplayName}

@@ -24,6 +24,7 @@ export interface SiteSettings_shop_companyAddress {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: SiteSettings_shop_companyAddress_country;
   countryArea: string;

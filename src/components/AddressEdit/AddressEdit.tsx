@@ -9,11 +9,12 @@ import getAccountErrorMessage from "@saleor/utils/errors/account";
 import getOrderErrorMessage from "@saleor/utils/errors/order";
 import React from "react";
 import { IntlShape, useIntl } from "react-intl";
-
 import FormSpacer from "../FormSpacer";
-import SingleAutocompleteSelectField, {
-  SingleAutocompleteChoiceType
-} from "../SingleAutocompleteSelectField";
+import { useQuery } from "react-apollo";
+import { getCitesQ, getCitiesAreas, getGovernorates } from "@saleor/warehouses/queries";
+import Select from "@material-ui/core/Select";
+import { MenuItem } from "@material-ui/core";
+import Grid from "../Grid/Grid";
 
 const useStyles = makeStyles(
   theme => ({
@@ -27,7 +28,6 @@ const useStyles = makeStyles(
 );
 
 interface AddressEditProps {
-  countries: SingleAutocompleteChoiceType[];
   countryDisplayValue: string;
   data: AddressTypeInput;
   disabled?: boolean;
@@ -49,13 +49,10 @@ function getErrorMessage(
 
 const AddressEdit: React.FC<AddressEditProps> = props => {
   const {
-    countries,
-    countryDisplayValue,
     data,
     disabled,
     errors,
     onChange,
-    onCountryChange
   } = props;
 
   const classes = useStyles(props);
@@ -68,15 +65,24 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
     "firstName",
     "lastName",
     "companyName",
-    "phone",
     "streetAddress1",
-    "streetAddress2"
+    "streetAddress2",
+    "governorate"
   ];
   const formErrors = getFormErrors<
     keyof AddressTypeInput,
     AccountErrorFragment | OrderErrorFragment
   >(formFields, errors);
-
+  data.country="EG";
+  const {data:govsData} = useQuery(getGovernorates, {
+    variables: { countryCode:"EG" },
+  });
+  const {data:citesData,refetch} = useQuery(getCitesQ, {
+    variables: { countryCode:"EG",governorate:data.governorate},
+  });
+  const {data:citesAreasData,refetch:getCitesAreas} = useQuery(getCitiesAreas, {
+    variables: { countryCode:"EG",governorate:data.governorate,city:data.city},
+  });
   return (
     <>
       <div className={classes.root}>
@@ -122,18 +128,6 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
           />
         </div>
         <div>
-          <TextField
-            disabled={disabled}
-            error={!!formErrors.phone}
-            fullWidth
-            helperText={getErrorMessage(formErrors.phone, intl)}
-            label={intl.formatMessage({
-              defaultMessage: "Phone"
-            })}
-            name="phone"
-            value={data.phone}
-            onChange={onChange}
-          />
         </div>
       </div>
       <FormSpacer />
@@ -150,59 +144,64 @@ const AddressEdit: React.FC<AddressEditProps> = props => {
         fullWidth
       />
       <FormSpacer />
-      <TextField
+      <Grid>
+        <TextField
+          disabled={true}
+          label={intl.formatMessage({
+            defaultMessage: "Country"
+          })}
+          value={data.country}
+          fullWidth/>
+      <Select
         disabled={disabled}
-        error={!!formErrors.streetAddress2}
-        helperText={getErrorMessage(formErrors.streetAddress2, intl)}
-        label={intl.formatMessage({
-          defaultMessage: "Address line 2"
-        })}
-        name="streetAddress2"
+        name="governorate"
+        error={!!formErrors.governorate}
+        value={data.governorate}
+        onChange={(e)=>{
+          // @ts-ignore
+          onChange(e)
+          console.log("GOV : "+data.governorate)
+          refetch()
+        }}
+      ><MenuItem disabled selected>Governorates</MenuItem>
+        {
+          govsData?.["addressValidationRules"]?.["governorate"] && govsData?.["addressValidationRules"]?.["governorate"].map((governorate)=>{
+            return ( <MenuItem value={governorate?.code}>{governorate?. nameEn}</MenuItem>)
+          })
+        }
+      </Select>
+      <Select
+        disabled={disabled}
+        name="city"
+        error={!!formErrors.city}
+        value={data.city}
+        onChange={(e)=>{
+          // @ts-ignore
+          onChange(e)
+          console.log(data.country+" "+data.city)
+          getCitesAreas()
+        }}
+      ><MenuItem disabled selected>cities</MenuItem>
+        {
+          citesData?.["addressValidationRules"]?.["city"] && citesData?.["addressValidationRules"]?.["city"].map((city)=>{
+            return ( <MenuItem value={city?.code}>{city?. nameEn}</MenuItem>)
+          })
+        }
+      </Select>
+      <Select
+        disabled={disabled}
+        name="cityArea"
+        error={!!formErrors.cityArea}
+        value={data.cityArea}
+        // @ts-ignore
         onChange={onChange}
-        value={data.streetAddress2}
-        fullWidth
-      />
-      <FormSpacer />
-      <div className={classes.root}>
-        <div>
-          <TextField
-            disabled={disabled}
-            error={!!formErrors.city}
-            helperText={getErrorMessage(formErrors.city, intl)}
-            label={intl.formatMessage({
-              defaultMessage: "City"
-            })}
-            name="city"
-            onChange={onChange}
-            value={data.city}
-            fullWidth
-          />
-        </div>
-        <div></div>
-      </div>
-
-      <FormSpacer />
-      <div className={classes.root}>
-        <div>
-          <SingleAutocompleteSelectField
-            disabled={disabled}
-            displayValue={countryDisplayValue}
-            error={!!formErrors.country}
-            helperText={getErrorMessage(formErrors.country, intl)}
-            label={intl.formatMessage({
-              defaultMessage: "Country"
-            })}
-            name="country"
-            onChange={onCountryChange}
-            value={data.country}
-            choices={countries}
-            InputProps={{
-              autoComplete: "off"
-            }}
-          />
-        </div>
-        <div></div>
-      </div>
+      ><MenuItem disabled selected>cities Areas</MenuItem>
+        {
+          citesAreasData?.["addressValidationRules"]?.["cityArea"] && citesAreasData?.["addressValidationRules"]?.["cityArea"].map((cityArea)=>{
+            return ( <MenuItem value={cityArea?.code}>{cityArea?.nameEn}</MenuItem>)
+          })
+        }
+      </Select></Grid>
     </>
   );
 };

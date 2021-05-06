@@ -120,7 +120,7 @@ const createCustomerAddress = gql`
   ${customerAddressesFragment}
   ${fragmentAddress}
   mutation CreateCustomerAddress($id: ID!, $input: AddressInput!) {
-    addressCreate(userId: $id, input: $input) {
+      addressCreate(userId: $id, input: $input) {
       errors: accountErrors {
         ...AccountErrorFragment
       }

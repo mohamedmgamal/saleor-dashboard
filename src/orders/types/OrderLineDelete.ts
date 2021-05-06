@@ -39,6 +39,7 @@ export interface OrderLineDelete_draftOrderLineDelete_order_billingAddress {
   companyName: string;
   country: OrderLineDelete_draftOrderLineDelete_order_billingAddress_country;
   countryArea: string;
+  governorate:string;
   firstName: string;
   id: string;
   lastName: string;
@@ -202,6 +203,7 @@ export interface OrderLineDelete_draftOrderLineDelete_order_shippingAddress {
   city: string;
   cityArea: string;
   companyName: string;
+  governorate:string;
   country: OrderLineDelete_draftOrderLineDelete_order_shippingAddress_country;
   countryArea: string;
   firstName: string;

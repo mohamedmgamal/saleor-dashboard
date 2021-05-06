@@ -52,8 +52,8 @@ const CustomerInfo: React.FC<CustomerInfoProps> = props => {
       <CardTitle
         title={
           <FormattedMessage
-            defaultMessage="Personal Informations"
-            description="customer informations, header"
+            defaultMessage="Personal Information"
+            description="customer information, header"
           />
         }
       />
@@ -102,6 +102,7 @@ const CustomerInfo: React.FC<CustomerInfoProps> = props => {
           label={intl.formatMessage(commonMessages.email)}
           value={data.email}
           onChange={onChange}
+        />
         />
       </CardContent>
     </Card>

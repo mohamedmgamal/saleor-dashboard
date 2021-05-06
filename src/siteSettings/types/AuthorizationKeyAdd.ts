@@ -29,6 +29,7 @@ export interface AuthorizationKeyAdd_authorizationKeyAdd_shop_companyAddress_cou
 export interface AuthorizationKeyAdd_authorizationKeyAdd_shop_companyAddress {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: AuthorizationKeyAdd_authorizationKeyAdd_shop_companyAddress_country;

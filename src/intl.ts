@@ -33,6 +33,9 @@ export const commonMessages = defineMessages({
   phone: {
     defaultMessage: "Phone Number"
   },
+  password: {
+    defaultMessage: "Password"
+  },
   endDate: {
     defaultMessage: "End Date"
   },

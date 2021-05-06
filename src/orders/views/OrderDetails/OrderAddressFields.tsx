@@ -70,7 +70,6 @@ const OrderAddressFields = ({
     <>
       <OrderAddressEditDialog
         {...addressFieldCommonProps}
-        // @ts-ignore
         address={transformAddressToForm(order?.shippingAddress)}
         open={action === "edit-shipping-address"}
         variant="shipping"
@@ -78,7 +77,6 @@ const OrderAddressFields = ({
       />
       <OrderAddressEditDialog
         {...addressFieldCommonProps}
-        // @ts-ignore
         address={transformAddressToForm(order?.billingAddress)}
         open={action === "edit-billing-address"}
         variant="billing"

@@ -71,7 +71,7 @@ const CustomerAddressDialog = withStyles(
     );
 
     const initialForm: AddressTypeInput = {
-      supplier: null,
+      governorate:maybe(()=>address.governorate,""),
       city: maybe(() => address.city, ""),
       cityArea: maybe(() => address.cityArea, ""),
       companyName: maybe(() => address.companyName, ""),
@@ -125,7 +125,6 @@ const CustomerAddressDialog = withStyles(
                 </DialogTitle>
                 <DialogContent className={classes.overflow}>
                   <AddressEdit
-                    countries={countryChoices}
                     data={data}
                     countryDisplayValue={countryDisplayName}
                     errors={dialogErrors}

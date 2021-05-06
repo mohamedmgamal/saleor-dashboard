@@ -30,6 +30,7 @@ export interface SetSupplierDefaultAddress_addressSetDefault_user_addresses {
   firstName: string;
   id: string;
   lastName: string;
+  governorate:string;
   phone: string | null;
   postalCode: string;
   streetAddress1: string;

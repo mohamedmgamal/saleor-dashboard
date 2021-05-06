@@ -23,6 +23,7 @@ export interface UpdateSupplierAddress_addressUpdate_address_country {
 export interface UpdateSupplierAddress_addressUpdate_address {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: UpdateSupplierAddress_addressUpdate_address_country;

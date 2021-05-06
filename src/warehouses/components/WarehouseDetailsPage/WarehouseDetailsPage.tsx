@@ -20,7 +20,6 @@ import createSingleAutocompleteSelectHandler from "@saleor/utils/handlers/single
 import { mapCountriesToChoices } from "@saleor/utils/maps";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-
 import { WarehouseDetails_warehouse } from "../../types/WarehouseDetails";
 import WarehouseInfo from "../WarehouseInfo";
 import WarehouseZones from "../WarehouseZones";
@@ -66,7 +65,6 @@ const WarehouseDetailsPage: React.FC<WarehouseDetailsPageProps> = ({
     governorate: maybe(() => warehouse.address.governorate),
     supplier: maybe(() => warehouse.supplier, { id: "",firstName:"",lastName:"" }),
     city: maybe(() => warehouse.address.city, ""),
-    companyName: maybe(() => warehouse.address.companyName, ""),
     country: maybe(() =>
       findValueInEnum(warehouse.address.country.code, CountryCode)
     ),
@@ -104,7 +102,7 @@ const WarehouseDetailsPage: React.FC<WarehouseDetailsPageProps> = ({
                 <CardSpacer />
                 <CompanyAddressInput
                   countries={countryChoices}
-                  data={data}
+                  dataa={data}
                   disabled={disabled}
                   displayCountry={displayCountry}
                   errors={[...errors, ...validationErrors]}

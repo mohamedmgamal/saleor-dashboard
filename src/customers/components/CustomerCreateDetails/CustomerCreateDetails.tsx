@@ -38,7 +38,7 @@ const CustomerCreateDetails: React.FC<CustomerCreateDetailsProps> = props => {
   const intl = useIntl();
 
   const formErrors = getFormErrors(
-    ["customerFirstName", "customerLastName", "email"],
+    ["customerFirstName", "customerLastName", "email","phone","password"],
     errors
   );
 
@@ -91,6 +91,27 @@ const CustomerCreateDetails: React.FC<CustomerCreateDetailsProps> = props => {
             value={data.email}
             onChange={onChange}
           />
+          <TextField
+            disabled={disabled}
+            error={!!formErrors.phone}
+            fullWidth
+            helperText={getAccountErrorMessage(formErrors.phone, intl)}
+            name="phone"
+            type="text"
+            label={intl.formatMessage(commonMessages.phone)}
+            value={data.phone}
+            onChange={onChange}
+          />
+          <TextField
+            disabled={disabled}
+            error={!!formErrors.password}
+            fullWidth
+            helperText={getAccountErrorMessage(formErrors.password, intl)}
+            name="password"
+            type="password"
+            label={intl.formatMessage(commonMessages.password)}
+            value={data.password}
+            onChange={onChange}/>
         </div>
       </CardContent>
     </Card>

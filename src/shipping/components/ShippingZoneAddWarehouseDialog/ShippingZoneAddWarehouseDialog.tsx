@@ -129,7 +129,7 @@ const ShippingZoneAddWarehouseDialog: React.FC<ShippingZoneAddWarehouseDialogPro
                 <FormSpacer />
                 <CompanyAddressForm
                   countries={countryChoices}
-                  data={data}
+                  dataa={data}
                   disabled={disabled}
                   displayCountry={countryDisplayName}
                   errors={errors}

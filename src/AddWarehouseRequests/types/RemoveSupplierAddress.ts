@@ -23,6 +23,7 @@ export interface RemoveSupplierAddress_addressDelete_user_addresses_country {
 export interface RemoveSupplierAddress_addressDelete_user_addresses {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: RemoveSupplierAddress_addressDelete_user_addresses_country;

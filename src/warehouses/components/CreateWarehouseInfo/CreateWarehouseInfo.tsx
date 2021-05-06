@@ -33,10 +33,7 @@ const CreateWarehouseInfo: React.FC<WarehouseInfoProps> = ({
   const intl = useIntl();
 
   const formErrors = getFormErrors(["name", "supplier"], errors);
-  const { loading, error, data } = useQuery(getSuppliers);
-  console.log(data)
-  console.log(loading)
-  console.log(error)
+  const {data } = useQuery(getSuppliers);
   return (
     <Card dataa-test="generalInformationSection">
       <CardTitle

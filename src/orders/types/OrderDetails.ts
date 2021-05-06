@@ -35,6 +35,7 @@ export interface OrderDetails_order_billingAddress {
   countryArea: string;
   firstName: string;
   id: string;
+  governorate:string;
   lastName: string;
   phone: string | null;
   postalCode: string;
@@ -194,6 +195,7 @@ export interface OrderDetails_order_shippingAddress_country {
 export interface OrderDetails_order_shippingAddress {
   __typename: "Address";
   city: string;
+  governorate:string;
   cityArea: string;
   companyName: string;
   country: OrderDetails_order_shippingAddress_country;

@@ -46,6 +46,7 @@ export interface OrderDraftFinalize_draftOrderComplete_order_billingAddress {
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
+  governorate:string;
 }
 
 export interface OrderDraftFinalize_draftOrderComplete_order_events_user {
@@ -211,6 +212,7 @@ export interface OrderDraftFinalize_draftOrderComplete_order_shippingAddress {
   postalCode: string;
   streetAddress1: string;
   streetAddress2: string;
+  governorate:string;
 }
 
 export interface OrderDraftFinalize_draftOrderComplete_order_shippingMethod {

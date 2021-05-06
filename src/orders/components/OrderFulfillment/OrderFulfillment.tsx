@@ -13,9 +13,7 @@ import Money from "@saleor/components/Money";
 import ResponsiveTable from "@saleor/components/ResponsiveTable";
 import Skeleton from "@saleor/components/Skeleton";
 import StatusLabel from "@saleor/components/StatusLabel";
-import TableCellAvatar, {
-  AVATAR_MARGIN
-} from "@saleor/components/TableCellAvatar";
+import TableCellAvatar, { AVATAR_MARGIN } from "@saleor/components/TableCellAvatar";
 import classNames from "classnames";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -87,7 +85,7 @@ const numberOfColumns = 5;
 const OrderFulfillment: React.FC<OrderFulfillmentProps> = props => {
   const {
     fulfillment,
-    orderNumber,
+
     onOrderFulfillmentCancel,
     onTrackingCodeAdd
   } = props;
@@ -108,35 +106,10 @@ const OrderFulfillment: React.FC<OrderFulfillmentProps> = props => {
           !!lines ? (
             <StatusLabel
               label={
-                <>
-                  {status === FulfillmentStatus.FULFILLED
-                    ? intl.formatMessage(
-                        {
-                          defaultMessage: "Fulfilled ({quantity})",
-                          description: "section header"
-                        },
-                        {
-                          quantity
-                        }
-                      )
-                    : intl.formatMessage(
-                        {
-                          defaultMessage: "Cancelled ({quantity})",
-                          description: "cancelled fulfillment, section header"
-                        },
-                        {
-                          quantity
-                        }
-                      )}
-                  <Typography className={classes.orderNumber} variant="body1">
-                    {maybe(
-                      () => `#${orderNumber}-${fulfillment.fulfillmentOrder}`
-                    )}
-                  </Typography>
-                </>
+                status+" ("+quantity+")"
               }
               status={
-                status === FulfillmentStatus.FULFILLED ? "success" : "error"
+                status === (FulfillmentStatus.APPROVED||FulfillmentStatus.FULFILLED) ? "success" : "error"
               }
             />
           ) : (

@@ -185,6 +185,7 @@ export const transformOrderStatus = (status: string, intl: IntlShape) => {
 };
 
 export const transformAddressToForm = (data: AddressType) => ({
+  governorate:maybe(()=>data.governorate,""),
   city: maybe(() => data.city, ""),
   cityArea: maybe(() => data.cityArea, ""),
   companyName: maybe(() => data.companyName, ""),

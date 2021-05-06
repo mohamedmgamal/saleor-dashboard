@@ -16,6 +16,7 @@ export interface SupplierAddresses_user_addresses {
   __typename: "Address";
   city: string;
   cityArea: string;
+  governorate:string;
   companyName: string;
   country: SupplierAddresses_user_addresses_country;
   countryArea: string;
