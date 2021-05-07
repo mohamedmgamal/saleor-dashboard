@@ -77,8 +77,8 @@ const LoginCard: React.FC<LoginCardProps> = props => {
             autoFocus
             fullWidth
             autoComplete="username"
-            label={intl.formatMessage(commonMessages.email)}
-            name="email"
+            label={intl.formatMessage(commonMessages.phone)}
+            name="text"
             onChange={handleChange}
             value={data.email}
             inputProps={{
