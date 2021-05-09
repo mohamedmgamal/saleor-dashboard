@@ -25,15 +25,23 @@ import Link from "@saleor/components/Link";
 import { ProductErrorFragment } from "@saleor/fragments/types/ProductErrorFragment";
 import { WarehouseFragment } from "@saleor/fragments/types/WarehouseFragment";
 import { FormChange } from "@saleor/hooks/useForm";
-import { FormsetAtomicData, FormsetChange } from "@saleor/hooks/useFormset";
+import {  FormsetChange } from "@saleor/hooks/useFormset";
 import { renderCollection } from "@saleor/misc";
 import { ICONBUTTON_SIZE } from "@saleor/theme";
 import { getFormErrors, getProductErrorMessage } from "@saleor/utils/errors";
 import createNonNegativeValueChangeHandler from "@saleor/utils/handlers/nonNegativeValueChangeHandler";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import createlimitedHandler from "@saleor/utils/handlers/limitedHandler";
+// export type ProductStockInput = FormsetAtomicData<null, string>;
+export type ProductStockInput ={
+  data: null;
+  id: string;
+  label: string;
+  value: string;
+  limited:boolean;
+}
 
-export type ProductStockInput = FormsetAtomicData<null, string>;
 export interface ProductStockFormData {
   sku: string;
   trackInventory: boolean;
@@ -131,8 +139,8 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
     warehouses?.filter(
       warehouse => !stocks.some(stock => stock.id === warehouse.id)
     ) || [];
-  const formErrors = getFormErrors(["sku"], errors);
-
+  const formErrors = getFormErrors(["sku","limited"], errors);
+ // console.log(data)
   return (
     <Card>
       <CardTitle
@@ -232,6 +240,12 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
               </TableCell>
               <TableCell className={classes.colQuantity}>
                 <FormattedMessage
+                  defaultMessage="Limited"
+                  description="unlimited  quantity"
+                />
+              </TableCell>
+              <TableCell className={classes.colQuantity}>
+                <FormattedMessage
                   defaultMessage="Quantity Available"
                   description="tabel column header"
                 />
@@ -244,11 +258,23 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
               const handleQuantityChange = createNonNegativeValueChangeHandler(
                 event => onChange(stock.id, event.target.value)
               );
-
+              const limitedChange = createlimitedHandler(
+                event => onChange(stock.id, event.target.value)
+              );
               return (
                 <TableRow key={stock.id}>
                   <TableCell className={classes.colName}>
                     {stock.label}
+                  </TableCell>
+                  <TableCell className={classes.colQuantity}>
+                    <ControlledCheckbox
+                      checked={stock.limited|| null}
+                      disabled={disabled}
+                      name={"limited"}
+                      onChange={
+                        limitedChange
+                      }
+                    />
                   </TableCell>
                   <TableCell className={classes.colQuantity}>
                     <TextField

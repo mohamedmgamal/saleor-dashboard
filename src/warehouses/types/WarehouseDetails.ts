@@ -52,6 +52,7 @@ export interface WarehouseDetails_warehouse {
     firstName:string
     lastName:string
   };
+  warehouseManager:string;
   name: string;
   shippingZones: WarehouseDetails_warehouse_shippingZones;
   address: WarehouseDetails_warehouse_address;

@@ -27,6 +27,7 @@ export interface ProductVariantCreateData_product_productType_variantAttributes 
   name: string | null;
   valueRequired: boolean;
   values: (ProductVariantCreateData_product_productType_variantAttributes_values | null)[] | null;
+  limited:null;
 }
 
 export interface ProductVariantCreateData_product_productType {

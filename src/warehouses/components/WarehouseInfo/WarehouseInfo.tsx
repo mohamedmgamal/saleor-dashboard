@@ -10,10 +10,16 @@ import { getFormErrors } from "@saleor/utils/errors";
 import getWarehouseErrorMessage from "@saleor/utils/errors/warehouse";
 import React from "react";
 import { useIntl } from "react-intl";
+import { useQuery } from "react-apollo";
+import { getWarehouseManagers } from "@saleor/warehouses/queries";
+import { MenuItem } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
+import { Grid } from "@saleor/macaw-ui/Grid";
 export interface WarehouseInfoProps {
   data: {
     name: string;
     supplier: any;
+    warehouseManager:any;
   };
   disabled: boolean;
   errors: WarehouseErrorFragment[];
@@ -28,7 +34,11 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
 }) => {
   const intl = useIntl();
 
-  const formErrors = getFormErrors(["name", "supplier"], errors);
+  const formErrors = getFormErrors(["name", "supplier","warehouseManager"], errors);
+  console.log(data.supplier.id)
+  const {data:WarehouseManagers} = useQuery(getWarehouseManagers, {
+    variables: {supplierId:data.supplier.id},
+  });
   return (
     <Card data-test="generalInformationSection">
       <CardTitle
@@ -48,6 +58,7 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
           onChange={onChange}
         />
         <FormSpacer />
+        <Grid>
         <TextField
           disabled={true}
           error={!!formErrors.supplier}
@@ -60,6 +71,22 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
           value={data.supplier.firstName+" "+data.supplier.lastName}
           onChange={onChange}
         />
+        <Select
+          fullWidth
+          disabled={disabled}
+          name="warehouseManager"
+          error={!!formErrors.warehouseManager}
+          value={data.warehouseManager && data.warehouseManager.id||""}
+          // @ts-ignore
+          onChange={onChange}
+        ><MenuItem disabled selected>Warehouse Manager</MenuItem>
+          {
+            WarehouseManagers?.["warehouseManagers"]?.["edges"] && WarehouseManagers?.["warehouseManagers"]?.["edges"].map((warehouseManager)=>{
+              return ( <MenuItem value={warehouseManager?.node.id}>{warehouseManager?.node.firstName+"  "+warehouseManager?.node.lastName+" "
+              +warehouseManager?.node.phone}</MenuItem>)
+            })
+          }
+        </Select></Grid>
       </CardContent>
     </Card>
   );

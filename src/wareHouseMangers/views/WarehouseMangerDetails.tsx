@@ -140,7 +140,7 @@ export const WareHouseMangerDetailsView: React.FC<WareHouseMangerDetailsViewProp
                       onClose={() => navigate(wareHouseMangerUrl(id), true)}
                       onConfirm={() => removeSupplier()}
                       title={intl.formatMessage({
-                        defaultMessage: "Delete Supplier",
+                        defaultMessage: "Delete Warehouse Manager",
                         description: "dialog header"
                       })}
                       variant="delete"

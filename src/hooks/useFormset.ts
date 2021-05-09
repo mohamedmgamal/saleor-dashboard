@@ -8,6 +8,7 @@ export interface FormsetAtomicData<TData = object, TValue = any> {
   id: string;
   label: string;
   value: TValue;
+  limited:boolean;
 }
 export type FormsetData<TData = object, TValue = any> = Array<
   FormsetAtomicData<TData, TValue>

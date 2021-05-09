@@ -1631,6 +1631,8 @@ export interface StaffUserInput {
 export interface StockInput {
   warehouse: string;
   quantity?: number | null;
+  limited:boolean;
+
 }
 
 export interface TranslationInput {
@@ -1700,11 +1702,12 @@ export interface WarehouseAddressInput {
 }
 
 export interface WarehouseCreateInput {
-  supplier:string|null,
+  supplier:string,
   slug?: string | null;
   companyName?: string | null;
   email?: string | null;
   name: string;
+  warehouseManager:string;
   address: WarehouseAddressInput;
   shippingZones?: (string | null)[] | null;
 }
@@ -1723,6 +1726,7 @@ export interface WarehouseUpdateInput {
   // supplier?:{
   //   id:string
   // };
+  warehouseManager:string|null;
   email?: string | null;
   name?: string | null;
   address?: WarehouseAddressInput | null;

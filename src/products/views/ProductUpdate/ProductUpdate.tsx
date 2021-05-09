@@ -94,8 +94,7 @@ export const ProductUpdate: React.FC<ProductUpdateProps> = ({ id, params }) => {
   const shop = useShop();
   const [updateMetadata] = useMetadataUpdate({});
   const [updatePrivateMetadata] = usePrivateMetadataUpdate({});
-
-  const { data, loading, refetch } = useProductDetails({
+    const { data, loading, refetch } = useProductDetails({
     displayLoader: true,
     variables: {
       id
@@ -278,7 +277,6 @@ export const ProductUpdate: React.FC<ProductUpdateProps> = ({ id, params }) => {
     product ? product.id : null,
     null
   );
-
   return (
     <>
       <WindowTitle title={maybe(() => data.product.name)} />

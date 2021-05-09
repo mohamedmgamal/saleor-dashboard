@@ -120,6 +120,7 @@ export interface ProductVariant_stocks {
   id: string;
   quantity: number;
   quantityAllocated: number;
+  limited:boolean;
   warehouse: ProductVariant_stocks_warehouse;
 }
 

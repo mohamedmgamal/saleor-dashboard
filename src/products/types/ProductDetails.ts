@@ -179,6 +179,7 @@ export interface ProductDetails_product_variants_stocks {
   quantity: number;
   quantityAllocated: number;
   warehouse: ProductDetails_product_variants_stocks_warehouse;
+  limited:boolean;
 }
 
 export interface ProductDetails_product_variants {

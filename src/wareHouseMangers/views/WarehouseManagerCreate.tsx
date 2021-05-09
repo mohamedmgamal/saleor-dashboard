@@ -61,7 +61,7 @@ export const WarehouseManagerCreate: React.FC<{}> = () => {
                       input: {
                         // eslint-disable-next-line radix
                         // supplierId:parseInt(formData.SupplierId),
-                        supplierId: formData.supplierId,
+                        supplier: formData.supplier,
                         email: formData.email,
                         firstName: formData.FirstName,
                         lastName: formData.LastName,

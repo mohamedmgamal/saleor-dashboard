@@ -27,6 +27,7 @@ import WarehouseZones from "../WarehouseZones";
 export interface WarehouseDetailsPageFormData extends AddressTypeInput {
   supplier: any;
   name: string;
+  warehouseManager:string;
 }
 export interface WarehouseDetailsPageProps {
   countries: ShopInfo_shop_countries[];
@@ -62,6 +63,7 @@ const WarehouseDetailsPage: React.FC<WarehouseDetailsPageProps> = ({
   } = useAddressValidation(onSubmit);
 
   const initialForm: WarehouseDetailsPageFormData = {
+    warehouseManager:maybe(()=>warehouse.warehouseManager),
     governorate: maybe(() => warehouse.address.governorate),
     supplier: maybe(() => warehouse.supplier, { id: "",firstName:"",lastName:"" }),
     city: maybe(() => warehouse.address.city, ""),

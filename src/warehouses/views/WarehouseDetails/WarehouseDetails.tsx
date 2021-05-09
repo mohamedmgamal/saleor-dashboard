@@ -91,8 +91,8 @@ const WarehouseDetails: React.FC<WarehouseDetailsProps> = ({ id, params }) => {
             phone: data.phone,
             streetAddress1: data.streetAddress1,
             streetAddress2: data.streetAddress2,
-            companyName: data.companyName,
           },
+          warehouseManager:data.warehouseManager,
           name: data.name
         }
       }

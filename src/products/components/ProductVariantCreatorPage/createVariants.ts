@@ -62,6 +62,7 @@ function createVariant(
     sku: "",
     stocks: stocks.map((quantity, stockIndex) => ({
       quantity,
+      limited:false,
       warehouse: data.warehouses[stockIndex]
     }))
   };

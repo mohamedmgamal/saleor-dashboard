@@ -35,14 +35,12 @@ export interface SupplierCreateDetailsProps {
 }
 const WarehouseMangerCreateDetails: React.FC<SupplierCreateDetailsProps> = props => {
   const { dataa, disabled, errors, onChange } = props;
-  const { loading, error, data } = useQuery(getSuppliers);
-  console.log(loading)
-  console.log(error)
+  const {data } = useQuery(getSuppliers);
   const classes = useStyles(props);
   const intl = useIntl();
 
   const formErrors = getFormErrors(
-    ["FirstName", "LastName", "email","phone","password","SupplierID"],
+    ["FirstName", "LastName", "email","phone","password","supplier"],
     errors
   );
 
@@ -123,8 +121,8 @@ const WarehouseMangerCreateDetails: React.FC<SupplierCreateDetailsProps> = props
           />
           <Select
             disabled={disabled}
-            name="supplierId"
-            value={dataa.supplierId}
+            name="supplier"
+            value={dataa.supplier}
             onChange={onChange}
           ><MenuItem disabled selected>Suppliers</MenuItem>
             {

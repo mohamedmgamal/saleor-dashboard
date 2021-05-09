@@ -51,5 +51,10 @@ export const warehouseDetailsFragment = gql`
       firstName
       lastName
     }
+    warehouseManager{
+    id
+    firstName
+    lastName
+    }
   }
 `;

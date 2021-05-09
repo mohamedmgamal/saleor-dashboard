@@ -57,7 +57,7 @@ const WarehouseManagerInfo: React.FC<SupplierInfoProps> = props => {
 
   const classes = useStyles(props);
   const intl = useIntl();
-  const formErrors = getFormErrors(["firstName", "lastName", "email","phone","supplierId"], errors);
+  const formErrors = getFormErrors(["firstName", "lastName", "email","phone","supplier"], errors);
   const [PasswordUpdate] = useMutation(resetPassword);
   const [open, setOpen] = React.useState(false);
   const [newPassword, setNewPassword] = React.useState("");
@@ -158,12 +158,12 @@ const WarehouseManagerInfo: React.FC<SupplierInfoProps> = props => {
         />
           <TextField
             disabled={true}
-            error={!!formErrors.supplierId}
+            error={!!formErrors.supplier}
             fullWidth
-            helperText={getAccountErrorMessage(formErrors.supplierId, intl)}
-            name="supplierId"
+            helperText={getAccountErrorMessage(formErrors.supplier, intl)}
+            name="SupplierId"
             type="string"
-            label="supplierId"
+            label="Supplier Id"
             value={data.supplierId}
             onChange={onChange}
           />

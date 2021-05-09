@@ -63,7 +63,6 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
   const classes = useStyles(props);
   const intl = useIntl();
   const formFields = [
-    "companyName",
     "streetAddress1",
     "streetAddress2",
     "city",
@@ -72,6 +71,7 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
     "phone"
     ,"cityArea"
   ];
+  console.log(dataa)
   const formErrors = getFormErrors(formFields, errors);
     const {data} = useQuery(getGovernorates, {
       variables: { countryCode:"EG" },

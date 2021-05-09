@@ -76,6 +76,8 @@ export const ProductVariant: React.FC<ProductUpdateProps> = ({
       id: variantId
     }
   });
+  // todo: limited  arrived
+  console.log(data)
   const [updateMetadata] = useMetadataUpdate({});
   const [updatePrivateMetadata] = usePrivateMetadataUpdate({});
 
@@ -169,7 +171,7 @@ export const ProductVariant: React.FC<ProductUpdateProps> = ({
         addStocks: data.addStocks.map(mapFormsetStockToStockInput),
         attributes: data.attributes.map(attribute => ({
           id: attribute.id,
-          values: [attribute.value]
+          values: [attribute.value],
         })),
         costPrice: decimal(data.costPrice),
         id: variantId,
@@ -195,7 +197,6 @@ export const ProductVariant: React.FC<ProductUpdateProps> = ({
     variables => updateMetadata({ variables }),
     variables => updatePrivateMetadata({ variables })
   );
-
   return (
     <>
       <WindowTitle title={data?.productVariant?.name} />

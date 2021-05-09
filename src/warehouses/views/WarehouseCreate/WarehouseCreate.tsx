@@ -47,6 +47,7 @@ const WarehouseCreate: React.FC = () => {
           createWarehouse({
             variables: {
               input: {
+                warehouseManager:data.warehouseManager,
                 supplier: data.supplier,
                 address: {
                   city: data.city,
@@ -57,7 +58,6 @@ const WarehouseCreate: React.FC = () => {
                   streetAddress1: data.streetAddress1,
                   streetAddress2: data.streetAddress2
                 },
-                companyName: data.companyName,
                 name: data.name
               }
             }

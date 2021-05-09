@@ -44,7 +44,7 @@ export const wareHouseMangersDetailsFragment = gql`
     phone
     firstName
     lastName
-    supplierId
+    supplier
   }
 `;
 

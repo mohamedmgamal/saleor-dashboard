@@ -23,6 +23,7 @@ import CreateWarehouseInfo from "../CreateWarehouseInfo";
 export interface WarehouseCreatePageFormData extends AddressTypeInput {
   name: string;
   supplier: string;
+  warehouseManager:string;
 }
 export interface WarehouseCreatePageProps {
   countries: ShopInfo_shop_countries[];
@@ -34,6 +35,7 @@ export interface WarehouseCreatePageProps {
 }
 
 const initialForm: WarehouseCreatePageFormData = {
+  warehouseManager:"",
   supplier: "",
   city: "",
   country: "EG",

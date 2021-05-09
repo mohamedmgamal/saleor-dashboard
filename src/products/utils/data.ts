@@ -49,7 +49,8 @@ export function getAttributeInputFromProduct(
         },
         id: attribute.attribute.id,
         label: attribute.attribute.name,
-        value: attribute.values.map(value => value.slug)
+        value: attribute.values.map(value => value.slug),
+        limited:null
       })),
     []
   );
@@ -86,7 +87,8 @@ export function getAttributeInputFromProductType(
     },
     id: attribute.id,
     label: attribute.name,
-    value: []
+    value: [],
+    limited:null
   }));
 }
 
@@ -101,7 +103,8 @@ export function getAttributeInputFromVariant(
         },
         id: attribute.attribute.id,
         label: attribute.attribute.name,
-        value: maybe(() => attribute.values[0].slug, null)
+        value: maybe(() => attribute.values[0].slug, null),
+        limited:null
       })),
     []
   );
@@ -115,7 +118,8 @@ export function getStockInputFromVariant(
       data: null,
       id: stock.warehouse.id,
       label: stock.warehouse.name,
-      value: stock.quantity.toString()
+      value: stock.quantity.toString(),
+      limited:stock.limited
     })) || []
   );
 }
@@ -129,7 +133,8 @@ export function getVariantAttributeInputFromProduct(
     },
     id: attribute.id,
     label: attribute.name,
-    value: ""
+    value: "",
+    limited:attribute.limited
   }));
 }
 
@@ -140,7 +145,8 @@ export function getStockInputFromProduct(
     data: null,
     id: stock.warehouse.id,
     label: stock.warehouse.name,
-    value: stock.quantity.toString()
+    value: stock.quantity.toString(),
+    limited:stock.limited,
   }));
 }
 
@@ -235,8 +241,10 @@ export function getProductUpdatePageFormData(
 export function mapFormsetStockToStockInput(
   stock: FormsetAtomicData<null, string>
 ): StockInput {
+  console.log("Limited"+stock.limited)
   return {
     quantity: parseInt(stock.value, 10) || 0,
-    warehouse: stock.id
+    warehouse: stock.id,
+    limited:stock.limited
   };
 }

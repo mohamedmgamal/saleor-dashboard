@@ -96,7 +96,7 @@ export const ProductCreateView: React.FC = () => {
         input: {
           attributes: formData.attributes.map(attribute => ({
             id: attribute.id,
-            values: attribute.value
+            values: attribute.value,
           })),
           basePrice: decimal(formData.basePrice),
           category: formData.category,
@@ -116,6 +116,7 @@ export const ProductCreateView: React.FC = () => {
           slug: formData.slug,
           stocks: formData.stocks.map(stock => ({
             quantity: parseInt(stock.value, 0),
+            limited:stock.limited,
             warehouse: stock.id
           })),
           taxCode: formData.changeTaxCode ? formData.taxCode : undefined,

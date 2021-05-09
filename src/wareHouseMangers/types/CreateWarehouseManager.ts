@@ -39,5 +39,5 @@ export interface CreateWarehouseManagerVariables {
   firstName?: string | null;
   lastName?: string | null;
   email?: string | null;
-  supplierId:string|null
+  supplier:string|null
 }

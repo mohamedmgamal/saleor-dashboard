@@ -131,7 +131,6 @@ export const ProductCreatePage: React.FC<ProductCreatePageProps> = ({
       {({ change, data, handlers, hasChanged, submit }) => {
         // Comparing explicitly to false because `hasVariants` can be undefined
         const isSimpleProduct = data.productType?.hasVariants === false;
-
         return (
           <Container>
             <AppHeader onBack={onBack}>

@@ -21,7 +21,7 @@ export interface SupplierCreatePageFormData {
   phone: string;
   password: string;
   email: string;
-  supplierId: string;
+  supplier: string;
 }
 
 const initialForm: SupplierCreatePageFormData = {
@@ -30,7 +30,7 @@ const initialForm: SupplierCreatePageFormData = {
   LastName: "",
   email: "",
   phone: "",
-  supplierId: ""
+  supplier: ""
 };
 
 export interface SupplierCreatePageProps {
@@ -57,7 +57,7 @@ const WarehouseMangerCreatePage: React.FC<SupplierCreatePageProps> = ({
       FirstName: formData.FirstName,
       LastName: formData.LastName,
       email: formData.email,
-      supplierId: formData.supplierId
+      supplier: formData.supplier
     });
   const handleSubmit = (formData: SupplierCreatePageFormData) => {
     onSubmit({
@@ -66,7 +66,7 @@ const WarehouseMangerCreatePage: React.FC<SupplierCreatePageProps> = ({
       FirstName: formData.FirstName,
       LastName: formData.LastName,
       email: formData.email,
-      supplierId: formData.supplierId
+      supplier: formData.supplier
     });
   };
   const errors = [...apiErrors];

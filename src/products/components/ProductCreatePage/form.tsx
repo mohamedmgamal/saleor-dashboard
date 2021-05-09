@@ -197,7 +197,8 @@ function useProductCreateForm(
       data: null,
       id,
       label: opts.warehouses.find(warehouse => warehouse.id === id).name,
-      value: "0"
+      value: "0",
+      limited:false
     });
   };
   const handleStockDelete = (id: string) => {

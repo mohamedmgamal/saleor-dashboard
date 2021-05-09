@@ -27,7 +27,6 @@ import ProductVariantNavigation from "../ProductVariantNavigation";
 import ProductVariantPrice from "../ProductVariantPrice";
 import ProductVariantSetDefault from "../ProductVariantSetDefault";
 import ProductVariantUpdateForm from "./form";
-
 export interface ProductVariantPageFormData extends MetadataFormData {
   costPrice: string;
   price: string;
@@ -89,7 +88,6 @@ const ProductVariantPage: React.FC<ProductVariantPageProps> = ({
 }) => {
   const [isModalOpened, setModalStatus] = React.useState(false);
   const toggleModal = () => setModalStatus(!isModalOpened);
-
   const variantImages = variant?.images?.map(image => image.id);
   const productImages = variant?.product?.images?.sort((prev, next) =>
     prev.sortOrder > next.sortOrder ? 1 : -1
@@ -97,7 +95,7 @@ const ProductVariantPage: React.FC<ProductVariantPageProps> = ({
   const images = productImages
     ?.filter(image => variantImages.indexOf(image.id) !== -1)
     .sort((prev, next) => (prev.sortOrder > next.sortOrder ? 1 : -1));
-
+  console.log(variant)
   return (
     <>
       <Container>

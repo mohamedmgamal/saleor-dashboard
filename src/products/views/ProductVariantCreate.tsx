@@ -91,7 +91,8 @@ export const ProductVariant: React.FC<ProductVariantCreateProps> = ({
             .filter(attribute => attribute.value !== "")
             .map(attribute => ({
               id: attribute.id,
-              values: [attribute.value]
+              values: [attribute.value],
+              limited:attribute.limited
             })),
           costPrice: decimal(formData.costPrice),
           price: decimal(formData.price),
@@ -99,7 +100,8 @@ export const ProductVariant: React.FC<ProductVariantCreateProps> = ({
           sku: formData.sku,
           stocks: formData.stocks.map(stock => ({
             quantity: parseInt(stock.value, 0) || 0,
-            warehouse: stock.id
+            warehouse: stock.id,
+            limited:stock.limited
           })),
           trackInventory: true,
           weight: weight(formData.weight)

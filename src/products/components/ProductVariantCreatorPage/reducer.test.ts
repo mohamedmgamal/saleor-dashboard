@@ -266,6 +266,7 @@ describe("Reducer is able to", () => {
         changeVariantStockData: {
           stock: {
             quantity,
+            limited:false,
             warehouse: warehouses[0].id
           },
           variantIndex

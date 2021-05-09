@@ -94,3 +94,18 @@ export const getCitiesAreas = gql`
     }
   }
 `;
+
+export const getWarehouseManagers = gql`
+  query warehouseManagers($supplierId:String!){
+  warehouseManagers(filter: { supplierId: $supplierId},first:100){
+    edges{
+      node{
+      id
+      firstName
+      lastName
+      phone
+      }
+    }
+  }
+}
+`;
