@@ -13,13 +13,9 @@ import React from "react";
 import { useIntl } from "react-intl";
 
 import { maybe } from "../../../misc";
-import { SupplierDetails_user } from "../../types/ExistingProductDetails";
-// import NewProduct from "../NewProduct";
+import { RequestDetails_user } from "../../types/ExistingProductDetails";
 import ExistProductDetails from "../ExistProductDetails";
 import ExitProductInfo from "../ExistProductInfo";
-// import SupplierOrders from "../SupplierOrders";
-// import SupplierStats from "../SupplierStats";
-// import { date } from "@saleor/fixtures";
 
 export interface ExistProductDetailsPageFormData {
   id: any
@@ -28,6 +24,9 @@ export interface ExistProductDetailsPageFormData {
   updatedAt: string
   type:string
   product: {
+    product:{
+      name:string
+    }
     name: string
     sku: string
     price: {
@@ -41,7 +40,7 @@ export interface ExistProductDetailsPageFormData {
   }
 }
 export interface ExistProductDetailsPageProps {
-  request: SupplierDetails_user;
+  request: RequestDetails_user;
   disabled: boolean;
   errors: AccountErrorFragment[];
   saveButtonBar: ConfirmButtonTransitionState;
@@ -66,13 +65,14 @@ const ExistProductDetailsPage: React.FC<ExistProductDetailsPageProps> = ({
   onDelete
 }: ExistProductDetailsPageProps) => {
   const intl = useIntl();
+  console.log(request)
   return (
     <Form
       initial={{
         type:maybe(()=>request.type,""),
         id: maybe(() => request.id, ""),
         createdAt: maybe(() => request.createdAt, ""),
-        product: maybe(() => request.product, {name:"",price:{amount:"",currency:""},sku:""}),
+        product: maybe(() => request.product, {name:"",price:{amount:"",currency:""},sku:"",product:{name:""}}),
         status: maybe(() => request.status, ""),
         supplier: maybe(() => request.supplier, {firstName:"",lastName:"",phone:""}),
         updatedAt: maybe(() => request.updatedAt, ""),
@@ -89,8 +89,7 @@ const ExistProductDetailsPage: React.FC<ExistProductDetailsPageProps> = ({
           <Grid>
             <div>
               <ExistProductDetails
-                Supplier={request}
-                // data={data}
+                Request={request}
                 disabled={disabled}
                 errors={errors}
                 onChange={change}
@@ -103,7 +102,6 @@ const ExistProductDetailsPage: React.FC<ExistProductDetailsPageProps> = ({
                 onChange={change}
               />
               <CardSpacer />
-              {/* <SupplierStats Supplier={Supplier} />*/}
             </div>
           </Grid>
           <SaveButtonBar

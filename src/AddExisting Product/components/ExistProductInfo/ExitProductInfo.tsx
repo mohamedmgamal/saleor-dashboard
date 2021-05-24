@@ -37,6 +37,9 @@ export interface ExistProductInfoProps {
     updatedAt: string
     type:string
     product: {
+      product:{
+        name:string
+      }
       name: string
       sku: string
       price: {
@@ -84,6 +87,17 @@ const ExitProductInfo: React.FC<ExistProductInfoProps> = props => {
             name="name"
             type="text"
             label="Product Name"
+            value={data.product.product.name}
+            onChange={onChange}
+          />
+          <TextField
+            disabled={true}
+            error={!!formErrors.name}
+            fullWidth
+            helperText={getAccountErrorMessage(formErrors.name, intl)}
+            name="name"
+            type="text"
+            label="Variant Name"
             value={data.product.name}
             onChange={onChange}
           />
@@ -108,7 +122,7 @@ const ExitProductInfo: React.FC<ExistProductInfoProps> = props => {
           <TextField
             disabled={true}
             fullWidth
-            name="image"
+            name="Price"
             type="text"
             label="Product Price"
             value={data.product.price.amount+" "+data.product.price.currency}

@@ -6,7 +6,7 @@ import { useIntl } from "react-intl";
 import { Route, RouteComponentProps, Switch } from "react-router-dom";
 
 import { WindowTitle } from "../components/WindowTitle";
-import {DeleteWarehousesListUrlSortField}from "./components/ExistPRoductsList/DeleteWarehousesList";
+import {DeleteWarehousesListUrlSortField}from "./components/DeleteWarehouseRequestsList/DeleteWarehousesList";
 import {
   deleteWarehouseListPath,
   DeleteWarehouseListUrlQueryParams,

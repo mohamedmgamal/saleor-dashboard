@@ -95,7 +95,6 @@ const ProductVariantPage: React.FC<ProductVariantPageProps> = ({
   const images = productImages
     ?.filter(image => variantImages.indexOf(image.id) !== -1)
     .sort((prev, next) => (prev.sortOrder > next.sortOrder ? 1 : -1));
-  console.log(variant)
   return (
     <>
       <Container>

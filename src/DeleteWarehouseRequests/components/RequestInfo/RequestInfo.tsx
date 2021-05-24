@@ -82,14 +82,6 @@ const RequestrInfo: React.FC<RequestInfoProps> = props => {
             label="Warehouse Name"
             value={data.warehouse && data.warehouse.name || ""}
           />
-          <TextField
-            disabled={true}
-            fullWidth
-            name="name"
-            type="text"
-            label={"Company Name"}
-            value={data.warehouse && data.warehouse.companyName || ""}
-          />
           <Select
             name="status"
             value={data.status }

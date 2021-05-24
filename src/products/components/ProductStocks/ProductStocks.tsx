@@ -32,7 +32,6 @@ import { getFormErrors, getProductErrorMessage } from "@saleor/utils/errors";
 import createNonNegativeValueChangeHandler from "@saleor/utils/handlers/nonNegativeValueChangeHandler";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import createlimitedHandler from "@saleor/utils/handlers/limitedHandler";
 // export type ProductStockInput = FormsetAtomicData<null, string>;
 export type ProductStockInput ={
   data: null;
@@ -116,6 +115,7 @@ const useStyles = makeStyles(
     name: "ProductStocks"
   }
 );
+export const testArray=[]
 
 const ProductStocks: React.FC<ProductStocksProps> = ({
   data,
@@ -258,9 +258,6 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
               const handleQuantityChange = createNonNegativeValueChangeHandler(
                 event => onChange(stock.id, event.target.value)
               );
-              const limitedChange = createlimitedHandler(
-                event => onChange(stock.id, event.target.value)
-              );
               return (
                 <TableRow key={stock.id}>
                   <TableCell className={classes.colName}>
@@ -268,11 +265,19 @@ const ProductStocks: React.FC<ProductStocksProps> = ({
                   </TableCell>
                   <TableCell className={classes.colQuantity}>
                     <ControlledCheckbox
-                      checked={stock.limited|| null}
+                      checked={stock.limited}
+                      label={stock.limited}
                       disabled={disabled}
                       name={"limited"}
                       onChange={
-                        limitedChange
+                        (e)=>{
+                          stock.limited=e.target.value
+                          testArray.push({
+                            id:stock.id,
+                            limited:e.target.value
+                          })
+                          console.log(testArray[testArray.length-1].limited)
+                        }
                       }
                     />
                   </TableCell>

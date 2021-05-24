@@ -80,6 +80,7 @@ const WarehouseInfo: React.FC<WarehouseInfoProps> = ({
           // @ts-ignore
           onChange={onChange}
         ><MenuItem disabled selected>Warehouse Manager</MenuItem>
+          <MenuItem value={null}>Empty</MenuItem>
           {
             WarehouseManagers?.["warehouseManagers"]?.["edges"] && WarehouseManagers?.["warehouseManagers"]?.["edges"].map((warehouseManager)=>{
               return ( <MenuItem value={warehouseManager?.node.id}>{warehouseManager?.node.firstName+"  "+warehouseManager?.node.lastName+" "

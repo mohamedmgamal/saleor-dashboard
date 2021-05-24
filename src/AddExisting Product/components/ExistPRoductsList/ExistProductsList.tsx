@@ -194,7 +194,7 @@ const ExistProductsList: React.FC<ExistProductsListPageProps> = props => {
                   />
                 </TableCell>
                 <TableCell className={classes.colName}>
-                  {maybe<React.ReactNode>(() => ExistProduct.product.name, <Skeleton />)}
+                  {maybe<React.ReactNode>(() => ExistProduct.product.product.name+" "+ExistProduct.product.name, <Skeleton />)}
                 </TableCell>
                 <TableCell className={classes.colSupName}>
                   {maybe<React.ReactNode>(() => ExistProduct.product.sku, <Skeleton />)}

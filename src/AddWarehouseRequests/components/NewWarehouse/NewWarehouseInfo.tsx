@@ -91,13 +91,6 @@ const NewWarehouseInfo: React.FC<SupplierInfoProps> = props => {
           <TextField
             disabled={true}
             fullWidth
-            type="text"
-            label="Product ID"
-            value={data.id}
-          />
-          <TextField
-            disabled={true}
-            fullWidth
             name="createdAt"
             type="text"
             label="Product createdAt"

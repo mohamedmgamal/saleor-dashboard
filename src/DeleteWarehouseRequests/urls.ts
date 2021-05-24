@@ -11,7 +11,7 @@ import {
   Sort,
   TabActionDialog
 } from "../types";
-import {DeleteWarehousesListUrlSortField} from "./components/ExistPRoductsList"
+import {DeleteWarehousesListUrlSortField} from "./components/DeleteWarehouseRequestsList"
 export const deleteWarehouseSection = "/DeleteWareHouse";
 
 export const deleteWarehouseListPath = deleteWarehouseSection;

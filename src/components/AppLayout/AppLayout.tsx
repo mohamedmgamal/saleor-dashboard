@@ -1,6 +1,8 @@
-import saleorDarkLogoSmall from "@assets/images/logo-dark-small.svg";
-import saleorDarkLogo from "@assets/images/logo-dark.svg";
+// import saleorDarkLogoSmall from "@assets/images/logo-dark-small.svg";
+// import saleorDarkLogo from "@assets/images/logo-dark.svg";
 import menuArrowIcon from "@assets/images/menu-arrow-icon.svg";
+import logo from "@assets/images/logo.png"
+import logoEnglish from "@assets/images/english_logo_0.png"
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -390,9 +392,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
                     [classes.logoDark]: isDark
                   })}
                 >
-                  <SVG
-                    src={isMenuSmall ? saleorDarkLogoSmall : saleorDarkLogo}
-                  />
+                  {isMenuSmall? <img  style={{height:"100%"}} src={logo} />:<img src={logoEnglish} style={{width:"100%"}} /> }
                 </div>
                 <Hidden smDown>
                   <div

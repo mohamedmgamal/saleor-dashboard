@@ -97,13 +97,6 @@ const NewProductInfo: React.FC<SupplierInfoProps> = props => {
           <TextField
             disabled={true}
             fullWidth
-            type="text"
-            label="Product ID"
-            value={data.id}
-          />
-          <TextField
-            disabled={true}
-            fullWidth
             name="image"
             type="text"
             label="Product Image"
@@ -118,14 +111,6 @@ const NewProductInfo: React.FC<SupplierInfoProps> = props => {
             label="Product priceAmount "
             value={data.priceAmount}
             onChange={onChange}
-          />
-          <TextField
-            disabled={true}
-            fullWidth
-            name="sku"
-            type="text"
-            label="Product sku"
-            value={data.sku}
           />
           <TextField
             disabled={true}

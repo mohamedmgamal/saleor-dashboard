@@ -82,7 +82,6 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
   const {data:citesAreasData,refetch:getCitesAreas} = useQuery(getCitiesAreas, {
     variables: { countryCode:"EG",governorate:dataa.governorate,city:dataa.city},
   });
-
   return (
     <div className={classes.root}>
       <TextField
@@ -113,13 +112,35 @@ const CompanyAddressForm: React.FC<CompanyAddressFormProps> = props => {
       <FormSpacer />
       <Grid>
         <TextField
+          fullWidth
           disabled={true}
-          label={intl.formatMessage({
-            defaultMessage: "Country"
-          })}
-          name={"Country" as keyof AddressTypeInput}
           value={"Egypt"}
+          label={"Country"}
         />
+        <FormSpacer/>
+        {dataa.governorate&& dataa.city && dataa.cityArea &&<div>
+          <TextField
+            fullWidth
+          disabled={true}
+          value={dataa.governorate}
+          label={"Governorate"}
+          />
+          <FormSpacer/>
+          <TextField
+            fullWidth
+          disabled={true}
+          value={dataa.city}
+          label={"City"}
+          />
+          <FormSpacer/>
+          <TextField
+            fullWidth
+          disabled={true}
+          value={dataa.cityArea}
+          label={"City Area"}
+          /></div>
+        }
+        <br/>
         <Select
           disabled={disabled}
           name="governorate"

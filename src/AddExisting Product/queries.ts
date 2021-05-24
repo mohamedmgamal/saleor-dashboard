@@ -62,6 +62,9 @@ const usesExistingProductDetails = gql`
         updatedAt
         type
         product {
+        product{
+        name
+        }
           name
           sku
           price {

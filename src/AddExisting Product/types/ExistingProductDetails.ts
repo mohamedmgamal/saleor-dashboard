@@ -99,7 +99,7 @@ export interface SupplierDetails_user_lastPlacedOrder {
   edges: SupplierDetails_user_lastPlacedOrder_edges[];
 }
 
-export interface SupplierDetails_user {
+export interface RequestDetails_user {
   __typename: "User";
   id:any
   status:string
@@ -107,6 +107,9 @@ export interface SupplierDetails_user {
   updatedAt:string
   type
   product :{
+    product:{
+      name:string
+    }
   name:string
   sku:string
   price :{
@@ -122,7 +125,7 @@ supplier :{
 }
 
 export interface ExistingProductDetails {
-  requestExistProduct: SupplierDetails_user | null;
+  requestExistProduct: RequestDetails_user | null;
 }
 
 export interface ExistingProductDetailsVariables {

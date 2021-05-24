@@ -76,8 +76,6 @@ export const ProductVariant: React.FC<ProductUpdateProps> = ({
       id: variantId
     }
   });
-  // todo: limited  arrived
-  console.log(data)
   const [updateMetadata] = useMetadataUpdate({});
   const [updatePrivateMetadata] = usePrivateMetadataUpdate({});
 

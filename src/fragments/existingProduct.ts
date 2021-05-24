@@ -7,6 +7,9 @@ export const existingProductsFragment = gql`
         updatedAt
         type
         product {
+        product{
+            name
+          }
           name
           sku
           price {

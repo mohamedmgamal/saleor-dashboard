@@ -87,7 +87,7 @@ const SupplierDetails: React.FC<SupplierDetailsProps> = props => {
           //   defaultMessage: "User account active",
           //   description: "check to mark this account as active"
           // })}
-         label={"Supplier Account status is "+data.isActive}
+         label={"Account Active "+data.isActive}
           name="isActive"
           onChange={onChange}
         />

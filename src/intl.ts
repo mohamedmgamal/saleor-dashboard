@@ -199,7 +199,7 @@ export const sectionNames = defineMessages({
   },
   // TODO: add new list items
   suppliers: {
-    defaultMessage: "suppliers",
+    defaultMessage: "Suppliers",
     description: "suppliers section name"
   },
   WarehouseManagers: {
@@ -211,15 +211,15 @@ export const sectionNames = defineMessages({
     description: "Requests section name"
   },
   WareHouse_Manager: {
-    defaultMessage: "WareHouse Manager",
+    defaultMessage: "Warehouse Managers",
     description: "WareHouse Manager section name"
   },
   addExisting: {
-    defaultMessage: "Add Existing Product",
+    defaultMessage: "Existing Product Requests",
     description: "addExisting section name"
   },
   addNew: {
-    defaultMessage: "Add New Product",
+    defaultMessage: "New Product Requests",
     description: "addNew section name"
   },
   deleteProduct: {
@@ -227,11 +227,11 @@ export const sectionNames = defineMessages({
     description: "Delete Product section name"
   },
   addWareHouse: {
-    defaultMessage: "Add WareHouse",
-    description: "addWareHouse section name"
+    defaultMessage: "New Warehouse Requests",
+    description: "add Warehouse section name"
   },
   deleteWareHouse: {
-    defaultMessage: "Delete WareHouse",
+    defaultMessage: "Delete Warehouse Requests",
     description: "deleteWareHouse section name"
   },
   draftOrders: {

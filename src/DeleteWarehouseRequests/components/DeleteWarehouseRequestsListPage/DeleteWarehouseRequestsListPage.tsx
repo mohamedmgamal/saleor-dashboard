@@ -15,7 +15,7 @@ import React from "react";
 import {useIntl } from "react-intl";
 
 import { ListRequestDeleteWarehouse_RequestDeleteWarehouse_edges_node } from "../../types/RequesstDeleteWarehouse";
-import DeleteWarehousesList , {DeleteWarehousesListUrlSortField}from "../ExistPRoductsList/DeleteWarehousesList";
+import DeleteWarehousesList , {DeleteWarehousesListUrlSortField}from "../DeleteWarehouseRequestsList/DeleteWarehousesList";
 import {
   createFilterStructure,
   SupplierFilterKeys,
@@ -52,7 +52,7 @@ const DeleteWarehouseRequestsListPage: React.FC<ExistProductsListPageProps> = ({
 
   return (
     <Container>
-      <PageHeader title={intl.formatMessage(sectionNames.addExisting)}>
+      <PageHeader title={intl.formatMessage(sectionNames.deleteWareHouse)}>
       </PageHeader>
       <Card>
         <FilterBar

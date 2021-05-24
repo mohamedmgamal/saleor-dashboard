@@ -13,7 +13,7 @@ import { SearchProductTypes_search_edges_node_productAttributes } from "@saleor/
 import { StockInput } from "@saleor/types/globalTypes";
 import { mapMetadataItemToInput } from "@saleor/utils/maps";
 import { RawDraftContentState } from "draft-js";
-
+import {testArray} from "../components/ProductStocks"
 import { ProductAttributeInput } from "../components/ProductAttributes";
 import { ProductStockInput } from "../components/ProductStocks";
 import { VariantAttributeInput } from "../components/ProductVariantAttributes";
@@ -241,10 +241,17 @@ export function getProductUpdatePageFormData(
 export function mapFormsetStockToStockInput(
   stock: FormsetAtomicData<null, string>
 ): StockInput {
-  console.log("Limited"+stock.limited)
+  console.log("limited "+stock.limited)
   return {
     quantity: parseInt(stock.value, 10) || 0,
     warehouse: stock.id,
-    limited:stock.limited
+    limited:limited(stock)
   };
+  function limited(stock){
+    for (let i=0;i<testArray.length;i++){
+      if (testArray[i].id==stock.id)
+        return testArray[i].limited;
+    }
+    return stock.limited
+  }
 }

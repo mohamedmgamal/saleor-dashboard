@@ -22,6 +22,9 @@ export interface ListExistingProducts_ExistingProducts_edges_node {
   updatedAt:string
   type
   product :{
+    product:{
+    name:string
+  }
   name:string
   sku:string
 price :{
